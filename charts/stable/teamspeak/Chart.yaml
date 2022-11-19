@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 3.13.7
 description: TeamSpeak Server
 name: teamspeak
-version: 1.0.1
+version: 1.0.2
 kubeVersion: ">=1.16.0-0"
 keywords:
   - teamspeak
@@ -21,5 +21,5 @@ dependencies:
     version: 1.0.0
 annotations:
   artifacthub.io/changes: |-
-    - kind: changed
-      description: Updated documentation.
+    - kind: fixed
+      description: Fixed selector labels.
