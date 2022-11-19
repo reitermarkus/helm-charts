@@ -1,0 +1,33 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+# If there's an existing secret, reuse it, otherwise generate a new one.
+{{- define "traefik-forward-auth.secret" -}}
+{{- $secret := (lookup "v1" "Secret" .Release.Namespace (include "bjw-s.common.lib.chart.names.fullname" .) ) -}}
+  {{- if $secret -}}
+    {{-  index $secret "data" "secret" -}}
+  {{- else -}}
+    {{- randAlphaNum 16 | b64enc | quote -}}
+  {{- end -}}
+{{- end -}}
+
+{{- define "traefik-forward-auth.harcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+
+{{- if not .Values.env.SECRET }}
+env:
+  SECRET:
+    valueFrom:
+      secretKeyRef:
+        name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+        key: secret
+{{- end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "traefik-forward-auth.harcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}

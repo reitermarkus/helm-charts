@@ -1,0 +1,13 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+{{- if .Values.middleware.enabled -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ default (include "bjw-s.common.lib.chart.names.fullname" .) .Values.middleware.nameOverride }}
+spec:
+  forwardAuth:
+    address: "http://{{ include "bjw-s.common.lib.chart.names.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.main.ports.http.port }}"
+    authResponseHeaders:
+      - X-Forwarded-User
+{{- end }}
