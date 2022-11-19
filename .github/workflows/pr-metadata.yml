@@ -79,3 +79,5 @@ jobs:
       - name: Collect changed charts
         uses: bjw-s/helm-charts-actions/collect-charts@main
         id: changed-charts
+        with:
+          repoConfigFile: ./.ci/repo-config.yml
