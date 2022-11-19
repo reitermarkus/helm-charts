@@ -3,12 +3,12 @@ apiVersion: v2
 appVersion: 3.13.7
 description: TeamSpeak Server
 name: teamspeak
-version: 1.0.0
+version: 1.0.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - teamspeak
   - voice-chat
-home: https://github.com/k8s-at-home/charts/tree/master/charts/incubator/teamspeak
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/teamspeak
 icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
 sources:
   - https://hub.docker.com/_/teamspeak
@@ -22,6 +22,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Updated library chart.
-    - kind: changed
-      description: Updated to version 3.13.7.
+      description: Updated documentation.
