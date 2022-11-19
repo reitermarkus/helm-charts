@@ -43,7 +43,7 @@ jobs:
 
   release-library-charts:
     name: Release Library charts to GitHub pages
-    uses: ./.github/workflows/charts-release-ghpages.yaml
+    uses: ./.github/workflows/charts-release-gh-pages.yml
     needs:
       - prepare
     with:
@@ -52,7 +52,7 @@ jobs:
 
   release-application-charts:
     name: Release Application charts to GitHub pages
-    uses: ./.github/workflows/charts-release-ghpages.yaml
+    uses: ./.github/workflows/charts-release-gh-pages.yml
     needs:
       - prepare
       - release-library-charts
