@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: Get branch name
         id: branch-name
-        uses: tj-actions/branch-names@v6.3
+        uses: tj-actions/branch-names@a594c1e96eab7790611fdaf5bc8f76ea55cedabd # v6.3
 
       - name: Save PR data to file
         env:
@@ -44,7 +44,7 @@ jobs:
           echo $PR_NUMBER > pr_number.txt
 
       - name: Store pr data in artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # v3
         with:
           name: pr_metadata
           path: ./pr_number.txt
@@ -63,7 +63,7 @@ jobs:
       chartsToInstall: ${{ steps.changed-charts.outputs.chartsToInstall }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3
         with:
           fetch-depth: 0
 
