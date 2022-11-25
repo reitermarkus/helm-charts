@@ -42,6 +42,7 @@ service:
       http:
         enabled: false
         primary: false
+        port: 8000
       isakmp:
         enabled: true
         port: 500
