@@ -95,11 +95,11 @@ persistence:
     mountPath: /etc/ipsec.d
   # -- Individual certificate directories.
   cacerts:
-    enabled: true
+    enabled: false
     mountPath: /etc/ipsec.d/cacerts
   certs:
-    enabled: true
+    enabled: false
     mountPath: /etc/ipsec.d/certs
   private:
-    enabled: true
+    enabled: false
     mountPath: /etc/ipsed.d/private
