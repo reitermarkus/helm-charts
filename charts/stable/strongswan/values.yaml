@@ -102,4 +102,4 @@ persistence:
     mountPath: /etc/ipsec.d/certs
   private:
     enabled: false
-    mountPath: /etc/ipsed.d/private
+    mountPath: /etc/ipsec.d/private
