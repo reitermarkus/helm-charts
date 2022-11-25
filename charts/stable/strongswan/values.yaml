@@ -14,7 +14,7 @@ image:
   # -- image repository
   repository: ghcr.io/reitermarkus/strongswan
   # -- image tag
-  tag: v1.3.0
+  tag: v1.4.0
   # -- image pull policy
   pullPolicy: IfNotPresent
 
