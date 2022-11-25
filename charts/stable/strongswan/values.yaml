@@ -89,6 +89,17 @@ probes:
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
+  # -- Single configuration directory.
   config:
     enabled: false
     mountPath: /etc/ipsec.d
+  # -- Individual certificate directories.
+  cacerts:
+    enabled: true
+    mountPath: /etc/ipsec.d/cacerts
+  certs:
+    enabled: true
+    mountPath: /etc/ipsec.d/certs
+  private:
+    enabled: true
+    mountPath: /etc/ipsed.d/private
