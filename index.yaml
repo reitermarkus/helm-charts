@@ -7,7 +7,7 @@ entries:
           description: Updated to version 1.20.2.
     apiVersion: v2
     appVersion: 1.20.2
-    created: "2022-12-09T04:19:53.400545691Z"
+    created: "2022-12-09T06:26:08.777484284Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -36,7 +36,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2022-12-09T04:19:53.397715176Z"
+    created: "2022-12-09T06:26:08.77241624Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -65,7 +65,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2022-12-09T04:19:53.393374253Z"
+    created: "2022-12-09T06:26:08.769399314Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -95,7 +95,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-12-09T04:19:53.40781253Z"
+    created: "2022-12-09T06:26:08.783854439Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -126,7 +126,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-12-09T04:19:53.403372206Z"
+    created: "2022-12-09T06:26:08.780692112Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -158,7 +158,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2022-12-09T04:19:53.414790767Z"
+    created: "2022-12-09T06:26:08.791657506Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -186,7 +186,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2022-12-09T04:19:53.412029252Z"
+    created: "2022-12-09T06:26:08.786961966Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -215,7 +215,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2022-12-09T04:19:53.420196095Z"
+    created: "2022-12-09T06:26:08.79788936Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -243,7 +243,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2022-12-09T04:19:53.417462981Z"
+    created: "2022-12-09T06:26:08.794942635Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -272,7 +272,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2022-12-09T04:19:53.426959131Z"
+    created: "2022-12-09T06:26:08.803806011Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -299,7 +299,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2022-12-09T04:19:53.424137616Z"
+    created: "2022-12-09T06:26:08.800792885Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -324,10 +324,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Updated version to 1.4.1.
+    apiVersion: v2
+    appVersion: 1.4.1
+    created: "2022-12-09T06:26:08.814890607Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.0
+    description: strongSwan – the OpenSource IPsec-based VPN Solution
+    digest: 44234c5897ab536ebc2f408b7f1517b36ca6ee6885729b4190cc59cef4c8f9a5
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/strongswan
+    icon: https://strongswan.org/images/strongswan_neu.png
+    keywords:
+    - strongswan
+    - vpn
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: strongswan
+    sources:
+    - https://github.com/reitermarkus/strongswan
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/strongswan-1.4.0.tgz
+    version: 1.4.0
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2022-12-09T04:19:53.43243726Z"
+    created: "2022-12-09T06:26:08.81178398Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -355,7 +383,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2022-12-09T04:19:53.429666045Z"
+    created: "2022-12-09T06:26:08.808622253Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -384,7 +412,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2022-12-09T04:19:53.439368797Z"
+    created: "2022-12-09T06:26:08.823045977Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -412,7 +440,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2022-12-09T04:19:53.436507482Z"
+    created: "2022-12-09T06:26:08.817951833Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -441,7 +469,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2022-12-09T04:19:53.444749125Z"
+    created: "2022-12-09T06:26:08.82908963Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -473,7 +501,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2022-12-09T04:19:53.442038611Z"
+    created: "2022-12-09T06:26:08.826043603Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -499,4 +527,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2022-12-09T04:19:53.390453138Z"
+generated: "2022-12-09T06:26:08.766180087Z"
