@@ -11,7 +11,7 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
   # -- image tag
-  tag: 1.20.1
+  tag: 1.20.2
 
 # -- environment variables. See more environment variables in the [freshrss documentation](https://github.com/linuxserver/docker-freshrss#parameters).
 # @default -- See below
