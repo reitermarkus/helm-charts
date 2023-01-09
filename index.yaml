@@ -7,7 +7,7 @@ entries:
           description: Updated to version 1.20.2.
     apiVersion: v2
     appVersion: 1.20.2
-    created: "2022-12-09T06:26:08.777484284Z"
+    created: "2023-01-09T23:29:52.473823524Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -36,7 +36,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2022-12-09T06:26:08.77241624Z"
+    created: "2023-01-09T23:29:52.470635803Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -65,7 +65,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2022-12-09T06:26:08.769399314Z"
+    created: "2023-01-09T23:29:52.467948085Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -95,7 +95,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-12-09T06:26:08.783854439Z"
+    created: "2023-01-09T23:29:52.480802471Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -126,7 +126,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-12-09T06:26:08.780692112Z"
+    created: "2023-01-09T23:29:52.477933852Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -158,7 +158,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2022-12-09T06:26:08.791657506Z"
+    created: "2023-01-09T23:29:52.486129007Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -186,7 +186,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2022-12-09T06:26:08.786961966Z"
+    created: "2023-01-09T23:29:52.483472689Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -215,7 +215,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2022-12-09T06:26:08.79788936Z"
+    created: "2023-01-09T23:29:52.493014653Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -243,7 +243,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2022-12-09T06:26:08.794942635Z"
+    created: "2023-01-09T23:29:52.490300535Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -272,7 +272,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2022-12-09T06:26:08.803806011Z"
+    created: "2023-01-09T23:29:52.498244388Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -299,7 +299,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2022-12-09T06:26:08.800792885Z"
+    created: "2023-01-09T23:29:52.49563017Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -327,7 +327,7 @@ entries:
           description: Updated version to 1.4.1.
     apiVersion: v2
     appVersion: 1.4.1
-    created: "2022-12-09T06:26:08.814890607Z"
+    created: "2023-01-09T23:29:52.507704451Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -355,7 +355,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2022-12-09T06:26:08.81178398Z"
+    created: "2023-01-09T23:29:52.504934833Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -383,7 +383,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2022-12-09T06:26:08.808622253Z"
+    created: "2023-01-09T23:29:52.500961806Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -412,13 +412,13 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2022-12-09T06:26:08.823045977Z"
+    created: "2023-01-09T23:29:52.513886393Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
       version: 1.2.0
     description: TeamSpeak Server
-    digest: a85020e846c97f5b6fc6c76d1eb4ec0ef716456022ad205ea948b15935fe3871
+    digest: ed38d9de5f5010ce71410c1e4255ae400971551686f869236560ad43419cfd94
     home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/teamspeak
     icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
     keywords:
@@ -440,7 +440,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2022-12-09T06:26:08.817951833Z"
+    created: "2023-01-09T23:29:52.51046107Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -469,7 +469,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2022-12-09T06:26:08.82908963Z"
+    created: "2023-01-09T23:29:52.520010534Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -501,7 +501,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2022-12-09T06:26:08.826043603Z"
+    created: "2023-01-09T23:29:52.517257515Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -527,4 +527,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2022-12-09T06:26:08.766180087Z"
+generated: "2023-01-09T23:29:52.465094366Z"
