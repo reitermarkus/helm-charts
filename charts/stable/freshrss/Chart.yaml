@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.20.2
 description: FreshRSS is a self-hosted RSS feed aggregator
 name: freshrss
-version: 6.6.2
+version: 6.6.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - freshrss
@@ -19,8 +19,8 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts/
-    version: 1.2.0
+    version: 1.2.1
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Updated to version 1.20.2.
+      description: Updated library chart.
