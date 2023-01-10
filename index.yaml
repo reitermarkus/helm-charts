@@ -4,10 +4,39 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 1.20.2
+    created: "2023-01-10T01:33:57.955772906Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 286ef4d3a41d68adaacee5afb79f94917604a50686a4941ae8ec1892a00510dc
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/freshrss
+    icon: https://avatars.githubusercontent.com/u/9414285
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: freshrss
+    sources:
+    - https://github.com/FreshRSS/FreshRSS
+    - https://hub.docker.com/r/linuxserver/freshrss
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/freshrss-6.6.3.tgz
+    version: 6.6.3
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Updated to version 1.20.2.
     apiVersion: v2
     appVersion: 1.20.2
-    created: "2023-01-10T00:27:49.338392168Z"
+    created: "2023-01-10T01:33:57.952566824Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -36,7 +65,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2023-01-10T00:27:49.335164982Z"
+    created: "2023-01-10T01:33:57.949385543Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -65,7 +94,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2023-01-10T00:27:49.332287995Z"
+    created: "2023-01-10T01:33:57.94648196Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -95,7 +124,38 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-01-10T00:27:49.345716135Z"
+    created: "2023-01-10T01:33:57.96525585Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: LanCache is a caching proxy server for game downloads
+    digest: 16003fed19da7433d5097a33807d93cbd37cdce0767bc5114ac74f3754e989a3
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/lancache
+    icon: https://avatars.githubusercontent.com/u/16938914
+    keywords:
+    - lancache
+    - steam
+    - proxy
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: lancache
+    sources:
+    - https://github.com/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/lancache-dns
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/lancache-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-01-10T01:33:57.962225768Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -126,7 +186,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-01-10T00:27:49.342630849Z"
+    created: "2023-01-10T01:33:57.959234685Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -158,7 +218,35 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2023-01-10T00:27:49.351529209Z"
+    created: "2023-01-10T01:33:57.975175593Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: openhab helm package
+    digest: 948707022ca7b89c028cdc688eba26ae0fbaebdc979d29a9266b764552e017a2
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/openhab
+    icon: https://www.openhab.org/openhab-logo-square.png
+    keywords:
+    - openhab
+    - home-automation
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: openhab
+    sources:
+    - https://hub.docker.com/r/openhab/openhab
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/openhab-1.6.2.tgz
+    version: 1.6.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 3.3.0
+    created: "2023-01-10T01:33:57.97224491Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -186,7 +274,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2023-01-10T00:27:49.348593122Z"
+    created: "2023-01-10T01:33:57.968100434Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -215,7 +303,35 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2023-01-10T00:27:49.358235679Z"
+    created: "2023-01-10T01:33:57.984623938Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: Dedicated server for 7 Days to Die
+    digest: 2be3d354d378c89027d2a912bb40e718da027afb7b6dd80ce423285885236886
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/sdtd
+    icon: https://7daystodie.com/wp-content/uploads/2016/04/7dtd_site_icon.png
+    keywords:
+    - sdtd
+    - 7d2d
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sdtd
+    sources:
+    - https://github.com/reitermarkus/7d2d
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/sdtd-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: main
+    created: "2023-01-10T01:33:57.981176658Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -243,7 +359,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2023-01-10T00:27:49.355352192Z"
+    created: "2023-01-10T01:33:57.978307475Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -272,7 +388,34 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2023-01-10T00:27:49.364011754Z"
+    created: "2023-01-10T01:33:57.993805584Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: TeamSpeak & Discord Bot
+    digest: f1d1156e45065c463213c207b42a0b5a8910ee789175d103448d699e2c9f0ff5
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/sinusbot
+    icon: https://pbs.twimg.com/profile_images/613423613711122432/fFJZiB_t_400x400.png
+    keywords:
+    - sinusbot
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sinusbot
+    sources:
+    - https://github.com/sinusbot/sinusbot-docker
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/sinusbot-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 1.0.0-beta.16-ba60e37
+    created: "2023-01-10T01:33:57.990953101Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -299,7 +442,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2023-01-10T00:27:49.361052267Z"
+    created: "2023-01-10T01:33:57.988132317Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -324,10 +467,38 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 1.4.1
+    created: "2023-01-10T01:33:58.006522711Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: strongSwan – the OpenSource IPsec-based VPN Solution
+    digest: 7d1d15aaf2b4aa956efe48588feab26d7694b71250352c2d2a028fb1520ad4ba
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/strongswan
+    icon: https://strongswan.org/images/strongswan_neu.png
+    keywords:
+    - strongswan
+    - vpn
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: strongswan
+    sources:
+    - https://github.com/reitermarkus/strongswan
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/strongswan-1.4.1.tgz
+    version: 1.4.1
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Updated version to 1.4.1.
     apiVersion: v2
     appVersion: 1.4.1
-    created: "2023-01-10T00:27:49.374504807Z"
+    created: "2023-01-10T01:33:58.003564628Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -355,7 +526,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2023-01-10T00:27:49.37150832Z"
+    created: "2023-01-10T01:33:58.000544045Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -383,7 +554,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2023-01-10T00:27:49.36697234Z"
+    created: "2023-01-10T01:33:57.997085365Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -412,7 +583,35 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2023-01-10T00:27:49.381481176Z"
+    created: "2023-01-10T01:33:58.017232848Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: TeamSpeak Server
+    digest: e7732f519ca6b4d63b1fa73402c9af0a96a899da22b3fce717823f54b5492e8a
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/teamspeak
+    icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
+    keywords:
+    - teamspeak
+    - voice-chat
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: teamspeak
+    sources:
+    - https://hub.docker.com/_/teamspeak
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/teamspeak-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 3.13.7
+    created: "2023-01-10T01:33:58.014137966Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -440,7 +639,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2023-01-10T00:27:49.377574693Z"
+    created: "2023-01-10T01:33:58.009483693Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -469,7 +668,39 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2023-01-10T00:27:49.387572048Z"
+    created: "2023-01-10T01:33:58.027109491Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 1.2.1
+    description: A minimal forward authentication service that provides OAuth/SSO
+      login and authentication for the traefik reverse proxy/load balancer
+    digest: c15efdd8c5cbad07c8e2eeee080eb51255db13c24e20979503907ed8f84221c2
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/traefik-forward-auth
+    keywords:
+    - traefik
+    - traefik-forward-auth
+    - oauth
+    - oauth2
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: traefik-forward-auth
+    sources:
+    - https://github.com/thomseddon/traefik-forward-auth
+    - https://hub.docker.com/r/thomseddon/traefik-forward-auth
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.2.tgz
+    version: 2.3.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 2.2.0
+    created: "2023-01-10T01:33:58.022879815Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -501,7 +732,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2023-01-10T00:27:49.384655061Z"
+    created: "2023-01-10T01:33:58.020071932Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -527,4 +758,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2023-01-10T00:27:49.329216309Z"
+generated: "2023-01-10T01:33:57.942630382Z"
