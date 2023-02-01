@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.4.1
 description: strongSwan – the OpenSource IPsec-based VPN Solution
 name: strongswan
-version: 1.4.1
+version: 1.5.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - strongswan
