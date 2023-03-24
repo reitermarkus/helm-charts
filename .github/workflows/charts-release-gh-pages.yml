@@ -32,14 +32,14 @@ jobs:
           private_key: ${{ secrets.GH_APP_KEY }}
 
       - name: Checkout charts branch
-        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3
         with:
           token: ${{ steps.get-app-token.outputs.token }}
           path: "src"
           fetch-depth: 0
 
       - name: Checkout gh-pages branch
-        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3
         with:
           token: ${{ steps.get-app-token.outputs.token }}
           path: "dest"
