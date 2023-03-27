@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 1.4.1
+appVersion: 1.5.0
 description: strongSwan – the OpenSource IPsec-based VPN Solution
 name: strongswan
-version: 1.5.0
+version: 1.5.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - strongswan
@@ -18,8 +18,10 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts/
-    version: 1.3.0
+    version: 1.3.2
 annotations:
   artifacthub.io/changes: |-
+    - kind: changed
+      description: Updated docker image.
     - kind: changed
       description: Updated library chart.
