@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 3.3.0
+appVersion: 3.4.4
 description: openhab helm package
 name: openhab
-version: 1.8.0
+version: 1.9.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - openhab
@@ -18,8 +18,10 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts/
-    version: 1.5.0
+    version: 1.5.1
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
       description: Updated library chart.
+    - kind: changed
+      description: Updated app version.
