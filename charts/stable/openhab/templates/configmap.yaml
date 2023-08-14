@@ -9,5 +9,7 @@ metadata:
     {{- include "bjw-s.common.lib.metadata.allLabels" . | nindent 4 }}
 data:
   enable-console-logging.sh: |
-    echo 'Enabling console logging.'
-    sed -i -E 's|(<AppenderRef ref="OSGI"/>).*|\1<AppenderRef ref="STDOUT"/>|' /openhab/userdata/etc/log4j2.xml
+    if [ -f /openhab/userdata/etc/log4j2.xml ]; then
+      echo 'Enabling console logging.'
+      sed -i -E 's|(<AppenderRef ref="OSGI"/>).*|\1<AppenderRef ref="STDOUT"/>|' /openhab/userdata/etc/log4j2.xml
+    fi
