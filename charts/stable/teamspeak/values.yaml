@@ -47,16 +47,6 @@ service:
         protocol: UDP
 
 probes:
-  readiness:
-    custom: true
-    spec:
-      exec:
-        command:
-          - sh
-          - -o
-          - pipefail
-          - -c
-          - echo quit | nc 127.0.0.1 10011 | grep -q TS3
   liveness:
     custom: true
     spec:
@@ -67,6 +57,20 @@ probes:
           - pipefail
           - -c
           - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+      periodSeconds: 5
+      failureThreshold: 10
+  readiness:
+    custom: true
+    spec:
+      exec:
+        command:
+          - sh
+          - -o
+          - pipefail
+          - -c
+          - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+      periodSeconds: 5
+      failureThreshold: 10
   startup:
     custom: true
     spec:
