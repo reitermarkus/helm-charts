@@ -10,7 +10,7 @@ image:
   repository: mumblevoip/mumble-server
   # -- image tag
   # @default -- chart.appVersion
-  tag: v1.4.230
+  tag: v1.4.287
   # -- image pull policy
   pullPolicy: IfNotPresent
 
