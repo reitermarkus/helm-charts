@@ -18,6 +18,7 @@ image:
 # @default -- See below
 env:
   TZ: UTC
+  MUMBLE_CONFIG_WELCOMETEXT: <br/>Welcome to this server, running the official Mumble Docker image on Kubernetes.<br/>Enjoy your stay!<br/>
   # MUMBLE_CONFIG_SERVER_PASSWORD:
   #   valueFrom:
   #     secretKeyRef:
