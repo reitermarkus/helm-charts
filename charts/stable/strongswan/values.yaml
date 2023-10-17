@@ -20,9 +20,9 @@ controllers:
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [strongswan documentation](https://github.com/reitermarkus/strongswan).
         # @default -- See below
-        env:
+        env: {}
           # -- Set the container timezone
-          TZ: UTC
+          # TZ: UTC
           # VPN_NAME: Example VPN # VPN display name.
           # WIFI_SSID: Example WiFi # Disable VPN when connected to this WiFi network.
           # VPN_DOMAIN: vpn.example.org # FQDN for accessing the VPN.
@@ -32,6 +32,16 @@ controllers:
           #       name: strongswan-credentials
           #       key: p12-password
           # WEBSERVER: 'true'
+        ports:
+          - name: http
+            containerPort: 8000
+            protocol: TCP
+          - name: isakmp
+            containerPort: 500
+            protocol: UDP
+          - name: ike
+            containerPort: 4500
+            protocol: UDP
         probes:
           liveness:
             enabled: true
@@ -68,16 +78,14 @@ service:
       http:
         enabled: false
         primary: false
-        port: 8000
+        port: http
       isakmp:
         enabled: true
-        port: 500
-        targetPort: 500
+        port: isakmp
         protocol: UDP
       ike:
         enabled: true
-        port: 4500
-        targetPort: 4500
+        port: ike
         protocol: UDP
 
 # -- Configure persistence settings for the chart under this key.

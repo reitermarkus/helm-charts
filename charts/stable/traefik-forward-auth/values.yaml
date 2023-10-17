@@ -56,6 +56,10 @@ controllers:
           # PROVIDERS_GENERIC_OAUTH_RESOURCE: '' # Optional resource indicator
           # PROVIDERS_GENERIC_OAUTH_SCOPE: '' # Scopes (default: profile, email)
           # PROVIDERS_GENERIC_OAUTH_TOKEN_STYLE: '' # How token is presented when querying the User URL
+        ports:
+          - name: http
+            containerPort: 4181
+            protocol: TCP
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -63,7 +67,7 @@ service:
   main:
     ports:
       http:
-        port: 4181
+        port: http
 
 middleware:
   # -- Enable a preconfigured middleware.

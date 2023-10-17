@@ -24,6 +24,16 @@ controllers:
           TZ: UTC
           # VERSION: alpha20.2
           # SERVER_NAME: My 7 Days to Die Server
+        ports:
+          - name: serverquery
+            containerPort: 26900
+            protocol: TCP
+          - name: serverlist
+            containerPort: 26900
+            protocol: UDP
+          - name: steam
+            containerPort: 26901
+            protocol: UDP
     pod:
       # -- Configure the Security Context for the Pod
       podSecurityContext: {}
@@ -43,14 +53,14 @@ service:
       serverquery:
         primary: true
         enabled: true
-        port: 26900
+        port: serverquery
       serverlist:
         enabled: true
-        port: 26900
+        port: serverlist
         protocol: UDP
       steam:
         enabled: true
-        port: 26901
+        port: steam
         protocol: UDP
 
 probes:

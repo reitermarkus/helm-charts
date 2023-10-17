@@ -32,6 +32,13 @@ controllers:
           #     secretKeyRef:
           #       name: mumble
           #       key: superuser_password
+        ports:
+          - name: control
+            containerPort: 64738
+            protocol: TCP
+          - name: voice
+            containerPort: 64738
+            protocol: UDP
     pod:
       # -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
       nodeSelector:
@@ -48,10 +55,10 @@ service:
       control:
         enabled: true
         primary: true
-        port: 64738
+        port: control
       voice:
         enabled: true
-        port: 64738
+        port: voice
         protocol: UDP
 
 # -- Configure persistence settings for the chart under this key.

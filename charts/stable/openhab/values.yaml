@@ -26,6 +26,13 @@ controllers:
           # USER_ID: 1000
           # GROUP_ID: 1000
           # CRYPTO_POLICY: unlimited
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+          - name: https
+            containerPort: 8443
+            protocol: TCP
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -34,10 +41,10 @@ service:
     ports:
       http:
         enabled: true
-        port: 8080
+        port: http
       https:
         enabled: true
-        port: 8443
+        port: https
 
 # -- Configure persistence settings for the chart under this key. Choose either
 # -- a single volume for all data or separate volumes for each sub-directory.
