@@ -10,13 +10,11 @@ global:
 
 persistence:
   init:
-    enabled: true
-    mountPath: /etc/cont-init.d/enable-console-logging.sh
-    subPath: enable-console-logging.sh
-    type: custom
-    volumeSpec:
-      configMap:
-        name: {{ printf "%v-init" (include "bjw-s.common.lib.chart.names.fullname" .) }}
+    type: configMap
+    name: {{ printf "%v-init" (include "bjw-s.common.lib.chart.names.fullname" .) }}
+    globalMounts:
+      - path: /etc/cont-init.d/enable-console-logging.sh
+        subPath: enable-console-logging.sh
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "openhab.hardcodedValues" . | fromYaml) -}}
 

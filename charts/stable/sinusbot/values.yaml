@@ -46,19 +46,10 @@ service:
 # -- a single volume for all data or separate volumes for each sub-directory.
 # @default -- See values.yaml
 persistence:
-  # -- single volume
   sinusbot:
     enabled: false
-    subPath:
-      - mountPath: /opt/sinusbot/data
-        path: data
-      - mountPath: /opt/sinusbot/scripts
-        path: scripts
-
-  # -- separate volumes
-  data:
-    enabled: false
-    mountPath: /opt/sinusbot/data
-  scripts:
-    enabled: false
-    mountPath: /opt/sinusbot/scripts
+    globalMounts:
+      - path: /opt/sinusbot/data
+        subPath: data
+      - path: /opt/sinusbot/scripts
+        subPath: scripts

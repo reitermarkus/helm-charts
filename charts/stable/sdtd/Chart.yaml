@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: main
 description: Dedicated server for 7 Days to Die
 name: sdtd
-version: 2.0.2
+version: 2.0.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - sdtd
@@ -21,5 +21,5 @@ dependencies:
     version: 2.0.3
 annotations:
   artifacthub.io/changes: |-
-    - kind: changed
-      description: Updated library chart.
+    - kind: fixed
+      description: Fix persistence paths.

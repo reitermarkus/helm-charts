@@ -96,14 +96,18 @@ persistence:
   # -- Single configuration directory.
   config:
     enabled: false
-    mountPath: /etc/ipsec.d
+    globalMounts:
+      - path: /etc/ipsec.d
   # -- Individual certificate directories.
   cacerts:
     enabled: false
-    mountPath: /etc/ipsec.d/cacerts
+    globalMounts:
+      - path: /etc/ipsec.d/cacerts
   certs:
     enabled: false
-    mountPath: /etc/ipsec.d/certs
+    globalMounts:
+      - path: /etc/ipsec.d/certs
   private:
     enabled: false
-    mountPath: /etc/ipsec.d/private
+    globalMounts:
+      - path: /etc/ipsec.d/private

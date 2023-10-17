@@ -156,7 +156,9 @@ service:
 persistence:
   data:
     enabled: false
-    mountPath: /data/cache
+    globalMounts:
+      - path: /data/cache
   logs:
     enabled: false
-    mountPath: /data/logs
+    globalMounts:
+      - path: /data/logs
