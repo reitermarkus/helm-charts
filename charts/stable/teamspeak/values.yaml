@@ -130,7 +130,8 @@ service:
 persistence:
   data:
     enabled: false
-    mountPath: /var/ts3server
+    globalMounts:
+      - path: /var/ts3server
 
 metrics:
   # -- Enable and configure ts3exporter sidecar and Prometheus serviceMonitor.
