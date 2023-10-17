@@ -29,10 +29,8 @@ controllers:
         ports:
           - name: http
             containerPort: 8080
-            protocol: TCP
           - name: https
             containerPort: 8443
-            protocol: TCP
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
