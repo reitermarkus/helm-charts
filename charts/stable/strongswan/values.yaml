@@ -35,7 +35,6 @@ controllers:
         ports:
           - name: http
             containerPort: 8000
-            protocol: TCP
           - name: isakmp
             containerPort: 500
             protocol: UDP
@@ -78,14 +77,17 @@ service:
       http:
         enabled: false
         primary: false
-        port: http
+        port: 8000
+        targetPort: http
       isakmp:
         enabled: true
-        port: isakmp
+        port: 500
+        targetPort: isakmp
         protocol: UDP
       ike:
         enabled: true
-        port: ike
+        port: 4500
+        targetPort: ike
         protocol: UDP
 
 # -- Configure persistence settings for the chart under this key.

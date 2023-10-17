@@ -28,7 +28,6 @@ controllers:
         ports:
           - name: http
             containerPort: 8087
-            protocol: TCP
     pod:
       # -- The official SinusBot image is only available for x86_64.
       nodeSelector:
@@ -40,7 +39,8 @@ service:
   main:
     ports:
       http:
-        port: http
+        port: 8087
+        targetPort: http
 
 # -- Configure persistence settings for the chart under this key. Choose either
 # -- a single volume for all data or separate volumes for each sub-directory.

@@ -41,10 +41,12 @@ service:
     ports:
       http:
         enabled: true
-        port: http
+        port: 8080
+        targetPort: http
       https:
         enabled: true
-        port: https
+        port: 8443
+        targetPort: https
 
 # -- Configure persistence settings for the chart under this key. Choose either
 # -- a single volume for all data or separate volumes for each sub-directory.

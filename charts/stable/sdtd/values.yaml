@@ -27,7 +27,6 @@ controllers:
         ports:
           - name: serverquery
             containerPort: 26900
-            protocol: TCP
           - name: serverlist
             containerPort: 26900
             protocol: UDP
@@ -53,14 +52,17 @@ service:
       serverquery:
         primary: true
         enabled: true
-        port: serverquery
+        port: 26900
+        targetPort: serverquery
       serverlist:
         enabled: true
-        port: serverlist
+        port: 26900
+        targetPort: serverlist
         protocol: UDP
       steam:
         enabled: true
-        port: steam
+        port: 26901
+        targetPort: steam
         protocol: UDP
 
 probes:

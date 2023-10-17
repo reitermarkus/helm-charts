@@ -59,7 +59,6 @@ controllers:
         ports:
           - name: http
             containerPort: 4181
-            protocol: TCP
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -67,7 +66,8 @@ service:
   main:
     ports:
       http:
-        port: http
+        port: 4181
+        targetPort: http
 
 middleware:
   # -- Enable a preconfigured middleware.

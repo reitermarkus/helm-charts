@@ -30,6 +30,11 @@ controllers:
           # CACHE_MEM_SIZE:
           # CACHE_DISK_SIZE:
           # CACHE_MAX_AGE:
+        ports:
+          - name: http
+            containerPort: 80
+          - name: https
+            containerPort: 443
         probes:
           readiness:
             custom: true
@@ -132,15 +137,18 @@ service:
     ports:
       http:
         port: 80
+        targetPort: http
       https:
         enabled: true
         port: 443
+        targetPort: https
   dns:
     controller: dns
     ports:
       dns:
         enabled: true
         port: 53
+        targetPort: dns
         protocol: UDP
 
 # -- Configure persistence settings for the chart under this key.

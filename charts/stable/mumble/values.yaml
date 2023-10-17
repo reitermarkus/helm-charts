@@ -35,7 +35,6 @@ controllers:
         ports:
           - name: control
             containerPort: 64738
-            protocol: TCP
           - name: voice
             containerPort: 64738
             protocol: UDP
@@ -55,10 +54,12 @@ service:
       control:
         enabled: true
         primary: true
-        port: control
+        port: 64738
+        targetPort: control
       voice:
         enabled: true
-        port: voice
+        port: 64738
+        targetPort: voice
         protocol: UDP
 
 # -- Configure persistence settings for the chart under this key.

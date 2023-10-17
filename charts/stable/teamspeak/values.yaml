@@ -32,10 +32,8 @@ controllers:
         ports:
           - name: serverquery
             containerPort: 10011
-            protocol: TCP
           - name: filetransfer
             containerPort: 30033
-            protocol: TCP
           - name: voice
             containerPort: 9987
             protocol: UDP
@@ -92,7 +90,6 @@ controllers:
         ports:
           - name: metrics
             containerPort: 9189
-            protocol: TCP
     pod:
       # -- The TeamSpeak server binary is only available for x86_64.
       nodeSelector:
@@ -108,22 +105,25 @@ service:
         primary: false
       serverquery:
         enabled: true
-        port: serverquery
+        port: 10011
+        targetPort: serverquery
       filetransfer:
         enabled: true
-        port: filetransfer
+        port: 30033
+        targetPort: filetransfer
       voice:
         enabled: true
         primary: true
-        port: voice
+        port: 9987
+        targetPort: voice
         protocol: UDP
   metrics:
     controller: main
     ports:
       metrics:
         enabled: true
-        port: metrics
-        protocol: TCP
+        port: 9189
+        targetPort: metrics
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml

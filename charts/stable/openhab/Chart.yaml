@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 3.4.4
 description: openhab helm package
 name: openhab
-version: 2.0.1
+version: 2.0.2
 kubeVersion: ">=1.16.0-0"
 keywords:
   - openhab

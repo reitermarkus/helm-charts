@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.21.0
 description: FreshRSS is a self-hosted RSS feed aggregator
 name: freshrss
-version: 7.0.1
+version: 7.0.2
 kubeVersion: ">=1.16.0-0"
 keywords:
   - freshrss
