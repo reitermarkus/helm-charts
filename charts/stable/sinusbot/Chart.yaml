@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.0.2
 description: TeamSpeak & Discord Bot
 name: sinusbot
-version: 2.0.2
+version: 2.0.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - sinusbot
@@ -20,5 +20,5 @@ dependencies:
     version: 2.0.3
 annotations:
   artifacthub.io/changes: |-
-    - kind: changed
-      description: Updated library chart.
+    - kind: fixed
+      description: Fix persistence paths.

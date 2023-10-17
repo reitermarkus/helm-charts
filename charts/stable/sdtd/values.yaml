@@ -77,7 +77,5 @@ probes:
 persistence:
   data:
     enabled: false
-    mountPath: /data
   server:
     enabled: false
-    mountPath: /server

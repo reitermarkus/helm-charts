@@ -50,24 +50,12 @@ service:
 # -- a single volume for all data or separate volumes for each sub-directory.
 # @default -- See values.yaml
 persistence:
-  # -- single volume
   data:
     enabled: false
-    subPath:
-      - mountPath: /openhab/addons
-        path: addons
-      - mountPath: /openhab/conf
-        path: conf
-      - mountPath: /openhab/userdata
-        path: userdata
-
-  # -- separate volumes
-  addons:
-    enabled: false
-    mountPath: /openhab/addons
-  conf:
-    enabled: false
-    mountPath: /openhab/conf
-  userdata:
-    enabled: false
-    mountPath: /openhab/userdata
+    globalMounts:
+      - path: /openhab/addons
+        subPath: addons
+      - path: /openhab/conf
+        subPath: conf
+      - path: /openhab/userdata
+        subPath: userdata

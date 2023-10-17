@@ -67,4 +67,3 @@ service:
 persistence:
   data:
     enabled: false
-    mountPath: /data
