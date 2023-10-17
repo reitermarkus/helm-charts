@@ -23,7 +23,7 @@ on:
         default: '[]'
 
 env:
-  HELM_VERSION: 3.12.3
+  HELM_VERSION: 3.13.1
 
 jobs:
   lint-chart:

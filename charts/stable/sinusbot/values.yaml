@@ -5,23 +5,30 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: sinusbot/docker
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-
-# -- environment variables. See more environment variables in the [${CHARTNAME} documentation](https://${CHARTNAME}.org/docs).
-# @default -- See below
-env:
-  # -- Specify the user ID the application will run as
-  UID: "1001"
-  # -- Specify the group ID the application will run as
-  GID: "1001"
-  # OVERRIDE_PASSWORD:
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: sinusbot/docker
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        # -- environment variables. See more environment variables in the [${CHARTNAME} documentation](https://${CHARTNAME}.org/docs).
+        # @default -- See below
+        env:
+          # -- Specify the user ID the application will run as
+          UID: "1001"
+          # -- Specify the group ID the application will run as
+          GID: "1001"
+          # OVERRIDE_PASSWORD:
+    pod:
+      # -- The official SinusBot image is only available for x86_64.
+      nodeSelector:
+        kubernetes.io/arch: amd64
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -30,12 +37,6 @@ service:
     ports:
       http:
         port: 8087
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
 
 # -- Configure persistence settings for the chart under this key. Choose either
 # -- a single volume for all data or separate volumes for each sub-directory.
@@ -57,7 +58,3 @@ persistence:
   scripts:
     enabled: false
     mountPath: /opt/sinusbot/scripts
-
-# -- The official SinusBot image is only available for x86_64.
-nodeSelector:
-  kubernetes.io/arch: amd64

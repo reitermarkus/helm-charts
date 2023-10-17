@@ -1,5 +1,9 @@
-env:
-  VPN_NAME: Example VPN
-  WIFI_SSID: Example WiFi
-  VPN_DOMAIN: vpn.example.org
-  VPN_P12_PASSWORD: password
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          VPN_NAME: Example VPN
+          WIFI_SSID: Example WiFi
+          VPN_DOMAIN: vpn.example.org
+          VPN_P12_PASSWORD: password

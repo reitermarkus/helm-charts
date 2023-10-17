@@ -18,13 +18,17 @@ global:
   nameOverride: "{{ .Release.Name }}"
 {{ end }}
 
-{{- if not .Values.env.MUMBLE_SUPERUSER_PASSWORD }}
-env:
-  MUMBLE_SUPERUSER_PASSWORD:
-    valueFrom:
-      secretKeyRef:
-        name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
-        key: superuser_password
+{{- if not .Values.controllers.main.containers.main.env.MUMBLE_SUPERUSER_PASSWORD }}
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          MUMBLE_SUPERUSER_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+                key: superuser_password
 {{- end }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "mumble.harcodedValues" . | fromYaml) -}}

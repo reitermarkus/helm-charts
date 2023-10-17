@@ -5,26 +5,87 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: teamspeak
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
+controllers:
+  main:
+    containers:
+      main:
 
-# -- environment variables. See more environment variables in the [teamspeak image documentation](https://hub.docker.com/_/teamspeak).
-# @default -- See below
-env:
-  TZ: UTC
-  # TS3SERVER_LICENSE: accept
-  # TS3SERVER_SERVERADMIN_PASSWORD:
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: teamspeak
-  #       key: serveradmin_password
+        image:
+          # -- image repository
+          repository: teamspeak
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
+          # -- image pull policy
+          pullPolicy: IfNotPresent
 
+        # -- environment variables. See more environment variables in the [teamspeak image documentation](https://hub.docker.com/_/teamspeak).
+        # @default -- See below
+        env: {}
+          # TZ: UTC
+          # TS3SERVER_LICENSE: accept
+          # TS3SERVER_SERVERADMIN_PASSWORD:
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: teamspeak
+          #       key: serveradmin_password
+        probes:
+          liveness:
+            custom: true
+            spec:
+              exec:
+                command:
+                  - sh
+                  - -o
+                  - pipefail
+                  - -c
+                  - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+              periodSeconds: 5
+              failureThreshold: 10
+          readiness:
+            custom: true
+            spec:
+              exec:
+                command:
+                  - sh
+                  - -o
+                  - pipefail
+                  - -c
+                  - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+              periodSeconds: 5
+              failureThreshold: 10
+          startup:
+            custom: true
+            spec:
+              exec:
+                command:
+                  - sh
+                  - -o
+                  - pipefail
+                  - -c
+                  - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+      exporter:
+        enabled: false
+        image:
+          # -- image repository
+          repository: quay.io/ricardbejarano/ts3exporter
+          # -- image tag
+          tag: 0.0.7
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        args:
+          - -listen
+          - :9189
+          - -remote
+          - localhost:10011
+          - -enablechannelmetrics
+        ports:
+          - name: metrics
+            containerPort: 9189
+    pod:
+      # -- The TeamSpeak server binary is only available for x86_64.
+      nodeSelector:
+        kubernetes.io/arch: amd64
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -45,42 +106,13 @@ service:
         primary: true
         port: 9987
         protocol: UDP
-
-probes:
-  liveness:
-    custom: true
-    spec:
-      exec:
-        command:
-          - sh
-          - -o
-          - pipefail
-          - -c
-          - echo quit | nc 127.0.0.1 10011 | grep -q TS3
-      periodSeconds: 5
-      failureThreshold: 10
-  readiness:
-    custom: true
-    spec:
-      exec:
-        command:
-          - sh
-          - -o
-          - pipefail
-          - -c
-          - echo quit | nc 127.0.0.1 10011 | grep -q TS3
-      periodSeconds: 5
-      failureThreshold: 10
-  startup:
-    custom: true
-    spec:
-      exec:
-        command:
-          - sh
-          - -o
-          - pipefail
-          - -c
-          - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+  metrics:
+    controller: main
+    ports:
+      metrics:
+        enabled: true
+        protocol: TCP
+        port: 9189
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
@@ -114,22 +146,3 @@ metrics:
       #   for: 5m
       #   labels:
       #     severity: critical
-  exporter:
-    image:
-      # -- image repository
-      repository: quay.io/ricardbejarano/ts3exporter
-      # -- image tag
-      tag: 0.0.7
-      # -- image pull policy
-      pullPolicy: IfNotPresent
-    env:
-      # -- metrics port
-      port: 9189
-      # -- TeamSpeak query endpoint
-      remote: localhost:10011
-      # -- Set to true to enable gathering of channel metrics
-      enableChannelMetrics: false
-
-# -- The TeamSpeak server binary is only available for x86_64.
-nodeSelector:
-  kubernetes.io/arch: amd64

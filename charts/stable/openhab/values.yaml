@@ -5,24 +5,27 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: openhab/openhab
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-
-# -- environment variables. See more environment variables in the [openhab image documentation](https://hub.docker.com/r/openhab/openhab).
-# @default -- See below
-env:
-  # -- Set the container timezone
-  # TZ: UTC
-  # EXTRA_JAVA_OPTS: -Duser.timezone=UTC
-  # USER_ID: 1000
-  # GROUP_ID: 1000
-  # CRYPTO_POLICY: unlimited
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: openhab/openhab
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        # -- environment variables. See more environment variables in the [openhab image documentation](https://hub.docker.com/r/openhab/openhab).
+        # @default -- See below
+        env: {}
+          # -- Set the container timezone
+          # TZ: UTC
+          # EXTRA_JAVA_OPTS: -Duser.timezone=UTC
+          # USER_ID: 1000
+          # GROUP_ID: 1000
+          # CRYPTO_POLICY: unlimited
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -35,12 +38,6 @@ service:
       https:
         enabled: true
         port: 8443
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
 
 # -- Configure persistence settings for the chart under this key. Choose either
 # -- a single volume for all data or separate volumes for each sub-directory.

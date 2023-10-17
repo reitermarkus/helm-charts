@@ -5,33 +5,59 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-controller:
-  # -- Number of pods to load balance between
-  replicas: 1
-  podManagementPolicy: Parallel
-
-image:
-  # -- image repository
-  repository: ghcr.io/reitermarkus/strongswan
-  # -- image tag
-  tag: v1.5.0
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-
-# -- environment variables. See more environment variables in the [strongswan documentation](https://github.com/reitermarkus/strongswan).
-# @default -- See below
-env:
-  # -- Set the container timezone
-  TZ: UTC
-  # VPN_NAME: Example VPN # VPN display name.
-  # WIFI_SSID: Example WiFi # Disable VPN when connected to this WiFi network.
-  # VPN_DOMAIN: vpn.example.org # FQDN for accessing the VPN.
-  # VPN_P12_PASSWORD:
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: strongswan-credentials
-  #       key: p12-password
-  # WEBSERVER: 'true'
+controllers:
+  main:
+    statefulset:
+      podManagementPolicy: Parallel
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: ghcr.io/reitermarkus/strongswan
+          # -- image tag
+          tag: v1.5.0
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        # -- environment variables. See more environment variables in the [strongswan documentation](https://github.com/reitermarkus/strongswan).
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # VPN_NAME: Example VPN # VPN display name.
+          # WIFI_SSID: Example WiFi # Disable VPN when connected to this WiFi network.
+          # VPN_DOMAIN: vpn.example.org # FQDN for accessing the VPN.
+          # VPN_P12_PASSWORD:
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: strongswan-credentials
+          #       key: p12-password
+          # WEBSERVER: 'true'
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [ipsec, status]
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [ipsec, status]
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command: [ipsec, status]
+        # -- Security contexts required for container.
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+    pod:
+      hostNetwork: true
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -53,38 +79,6 @@ service:
         port: 4500
         targetPort: 4500
         protocol: UDP
-
-# -- Security contexts required for container.
-# @default -- See values.yaml
-securityContext:
-  capabilities:
-    add:
-      - NET_ADMIN
-
-hostNetwork: true
-dnsPolicy: ClusterFirstWithHostNet
-
-# -- Configures the probes for the main Pod.
-# @default -- See values.yaml
-probes:
-  liveness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: [ipsec, status]
-  readiness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: [ipsec, status]
-  startup:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: [ipsec, status]
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml

@@ -5,23 +5,125 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: lancachenet/monolithic
-  # -- image tag
-  tag: latest
-  # -- image pull policy
-  pullPolicy: Always
+defaultPodOptions:
+  # -- The official LanCache image is only available for x86_64.
+  nodeSelector:
+    kubernetes.io/arch: amd64
 
-# -- environment variables. See more environment variables in the [LanCache Monolithic documentation](https://lancache.net/docs/containers/monolithic/variables/).
-# @default -- See below
-env:
-  # -- Set the container timezone
-  TZ: UTC
-  # UPSTREAM_DNS:
-  # CACHE_MEM_SIZE:
-  # CACHE_DISK_SIZE:
-  # CACHE_MAX_AGE:
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: lancachenet/monolithic
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+        # -- environment variables. See more environment variables in the [LanCache Monolithic documentation](https://lancache.net/docs/containers/monolithic/variables/).
+        # @default -- See below
+        env: {}
+          # -- Set the container timezone
+          # TZ: UTC
+          # UPSTREAM_DNS:
+          # CACHE_MEM_SIZE:
+          # CACHE_DISK_SIZE:
+          # CACHE_MAX_AGE:
+        probes:
+          readiness:
+            custom: true
+            spec:
+              httpGet:
+                path: /lancache-heartbeat
+                port: 80
+          liveness:
+            custom: true
+            spec:
+              httpGet:
+                path: /lancache-heartbeat
+                port: 80
+          startup:
+            custom: true
+            spec:
+              httpGet:
+                path: /lancache-heartbeat
+                port: 80
+    pod:
+      # -- LanCache uses custom upstream nameservers, overridable with the `UPSTREAM_DNS` variable.
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - 127.0.0.1
+
+  dns:
+    enabled: true
+    replicas: 1
+    containers:
+      dns:
+        primary: true
+        image:
+          # -- image repository
+          repository: lancachenet/lancache-dns
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+        env: {}
+          # LANCACHE_IP:
+        ports:
+          - name: dns
+            containerPort: 53
+            protocol: UDP
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - bash
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    # Check if LanCache DNS entries are set up.
+                    dig @127.0.0.1 "${LANCACHE_DNSDOMAIN}" SOA | grep localhost
+
+                    # Check if upstream DNS server is reachable.
+                    dig "${LANCACHE_DNSDOMAIN}" SOA
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - bash
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    # Check if LanCache DNS entries are set up.
+                    dig @127.0.0.1 "${LANCACHE_DNSDOMAIN}" SOA | grep localhost
+
+                    # Check if upstream DNS server is reachable.
+                    dig "${LANCACHE_DNSDOMAIN}" SOA
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - bash
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    # Check if LanCache DNS entries are set up.
+                    dig @127.0.0.1 "${LANCACHE_DNSDOMAIN}" SOA | grep localhost
+
+                    # Check if upstream DNS server is reachable.
+                    dig "${LANCACHE_DNSDOMAIN}" SOA
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -34,51 +136,12 @@ service:
         enabled: true
         port: 443
   dns:
-    enabled: false
+    controller: dns
     ports:
       dns:
+        enabled: true
         port: 53
-
-# -- LanCache uses custom upstream nameservers, overridable with the `UPSTREAM_DNS` variable.
-dnsPolicy: None
-dnsConfig:
-  nameservers:
-    - 127.0.0.1
-
-dns:
-  # -- Enable and configure LanCache DNS sidecar and service.
-  # @default -- See values.yaml
-  enabled: false
-  # -- environment variables. See more environment variables in the [LanCache DNS documentation](https://lancache.net/docs/containers/dns/variables/).
-  # Most variables are inherited from the top-level `env`. `LANCACHE_IP` is auto-generated from the `loadBalancerIP` of the `main` service if specified.
-  env: {}
-  image:
-    # -- image repository
-    repository: lancachenet/lancache-dns
-    # -- image tag
-    tag: latest
-    # -- image pull policy
-    pullPolicy: Always
-
-probes:
-  readiness:
-    custom: true
-    spec:
-      httpGet:
-        path: /lancache-heartbeat
-        port: 80
-  liveness:
-    custom: true
-    spec:
-      httpGet:
-        path: /lancache-heartbeat
-        port: 80
-  startup:
-    custom: true
-    spec:
-      httpGet:
-        path: /lancache-heartbeat
-        port: 80
+        protocol: UDP
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
@@ -89,7 +152,3 @@ persistence:
   logs:
     enabled: false
     mountPath: /data/logs
-
-# -- The official LanCache image is only available for x86_64.
-nodeSelector:
-  kubernetes.io/arch: amd64
