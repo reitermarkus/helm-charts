@@ -16,7 +16,6 @@ controllers:
           pullPolicy: IfNotPresent
           # -- image tag
           tag: 1.21.0
-
         # -- environment variables. See more environment variables in the [freshrss documentation](https://github.com/linuxserver/docker-freshrss#parameters).
         # @default -- See below
         env:
@@ -26,6 +25,10 @@ controllers:
           PUID: "1001"
           # -- Set the container group id
           PGID: "1001"
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -33,7 +36,7 @@ service:
   main:
     ports:
       http:
-        port: 80
+        port: http
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
