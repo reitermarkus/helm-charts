@@ -13,69 +13,49 @@
 
 {{- define "teamspeak.harcodedValues" -}}
 # Set the nameOverride based on the release name if no override has been set
-{{ if not .Values.global.nameOverride }}
+{{- if not .Values.global.nameOverride }}
 global:
   nameOverride: "{{ .Release.Name }}"
-{{ end }}
-
-{{- if not .Values.env.TS3SERVER_SERVERADMIN_PASSWORD }}
-env:
-  TS3SERVER_SERVERADMIN_PASSWORD:
-    valueFrom:
-      secretKeyRef:
-        name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
-        key: serveradmin_password
 {{- end }}
-{{- if .Values.metrics.enabled }}
-additionalContainers:
-  exporter:
-    name: exporter
-    image: "{{ .Values.metrics.exporter.image.repository }}:{{ .Values.metrics.exporter.image.tag }}"
-    imagePullPolicy: {{ .Values.metrics.exporter.image.pullPolicy }}
-    args:
-      - -listen
-      - :{{ .Values.metrics.exporter.env.port }}
-      - -remote
-      - {{ .Values.metrics.exporter.env.remote }}
-      {{- if .Values.metrics.exporter.env.enableChannelMetrics }}
-      - -enablechannelmetrics
-      {{- end }}
-    env:
-      - name: SERVERQUERY_PASSWORD
-        {{- $value := .Values.env.TS3SERVER_SERVERADMIN_PASSWORD }}
-        {{- if $value }}
-        {{- if kindIs "map" $value -}}
-          {{- if hasKey $value "value" }}
-            {{- $value = $value.value -}}
-          {{- else if hasKey $value "valueFrom" }}
-            {{- toYaml $value | nindent 8 }}
-          {{- else }}
-            {{- dict "valueFrom" $value | toYaml | nindent 8 }}
-          {{- end }}
-        {{- else }}
-          {{- if kindIs "string" $value }}
-            {{- $value = tpl $value $ }}
-          {{- end }}
-        value: {{ quote $value }}
-        {{- end }}
-        {{- else }}
-        valueFrom:
-          secretKeyRef:
-            name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
-            key: serveradmin_password
-        {{- end }}
-    ports:
-      - name: metrics
-        containerPort: {{ .Values.metrics.exporter.env.port }}
 
+{{- $mainEnv := .Values.controllers.main.containers.main.env }}
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          {{- if not $mainEnv.TS3SERVER_SERVERADMIN_PASSWORD }}
+          TS3SERVER_SERVERADMIN_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+                key: serveradmin_password
+          {{- end }}
+      {{- if .Values.metrics.enabled }}
+      exporter:
+        enabled: true
+        env:
+          {{- $value := $mainEnv.TS3SERVER_SERVERADMIN_PASSWORD -}}
+          {{- if $value -}}
+          {{- if kindIs "map" $value }}
+          SERVERQUERY_PASSWORD:
+            {{- toYaml $value | nindent 12 }}
+          {{- else }}
+          SERVERQUERY_PASSWORD: {{ quote $value }}
+          {{- end }}
+          {{- else }}
+          SERVERQUERY_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+                key: serveradmin_password
+          {{- end }}
+      {{- end }}
+
+{{- if .Values.metrics.enabled }}
 service:
   metrics:
     enabled: true
-    ports:
-      metrics:
-        enabled: true
-        protocol: TCP
-        port: {{ .Values.metrics.exporter.env.port }}
 {{- end }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "teamspeak.harcodedValues" . | fromYaml) -}}

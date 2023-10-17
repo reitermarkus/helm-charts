@@ -5,30 +5,37 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: mumblevoip/mumble-server
-  # -- image tag
-  # @default -- chart.appVersion
-  tag: v1.4.287
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-
-# -- environment variables. See more environment variables in the [mumble-server image documentation](https://github.com/mumble-voip/mumble-docker#configuration).
-# @default -- See below
-env:
-  TZ: UTC
-  MUMBLE_CONFIG_WELCOMETEXT: <br/>Welcome to this server, running the official Mumble Docker image on Kubernetes.<br/>Enjoy your stay!<br/>
-  # MUMBLE_CONFIG_SERVER_PASSWORD:
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: mumble
-  #       key: server_password
-  # MUMBLE_SUPERUSER_PASSWORD:
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: mumble
-  #       key: superuser_password
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: mumblevoip/mumble-server
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: v1.4.287
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        # -- environment variables. See more environment variables in the [mumble-server image documentation](https://github.com/mumble-voip/mumble-docker#configuration).
+        # @default -- See below
+        env:
+          TZ: UTC
+          MUMBLE_CONFIG_WELCOMETEXT: <br/>Welcome to this server, running the official Mumble Docker image on Kubernetes.<br/>Enjoy your stay!<br/>
+          # MUMBLE_CONFIG_SERVER_PASSWORD:
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: mumble
+          #       key: server_password
+          # MUMBLE_SUPERUSER_PASSWORD:
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: mumble
+          #       key: superuser_password
+    pod:
+      # -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
+      nodeSelector:
+        kubernetes.io/arch: amd64
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -53,7 +60,3 @@ persistence:
   data:
     enabled: false
     mountPath: /data
-
-# -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
-nodeSelector:
-  kubernetes.io/arch: amd64

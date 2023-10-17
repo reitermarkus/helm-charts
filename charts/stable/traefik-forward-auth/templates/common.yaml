@@ -18,13 +18,17 @@ global:
   nameOverride: "{{ .Release.Name }}"
 {{ end }}
 
-{{- if not .Values.env.SECRET }}
-env:
-  SECRET:
-    valueFrom:
-      secretKeyRef:
-        name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
-        key: secret
+{{- if not .Values.controllers.main.containers.main.env.SECRET }}
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          SECRET:
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+                key: secret
 {{- end }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "traefik-forward-auth.harcodedValues" . | fromYaml) -}}

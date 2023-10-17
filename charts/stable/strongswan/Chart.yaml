@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.5.0
 description: strongSwan – the OpenSource IPsec-based VPN Solution
 name: strongswan
-version: 1.6.1
+version: 2.0.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - strongswan
@@ -21,7 +21,5 @@ dependencies:
     version: 2.0.3
 annotations:
   artifacthub.io/changes: |-
-    - kind: changed
-      description: Updated docker image.
     - kind: changed
       description: Updated library chart.

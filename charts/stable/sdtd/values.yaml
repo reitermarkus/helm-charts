@@ -5,22 +5,32 @@
 # https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: ghcr.io/reitermarkus/7d2d
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-  # -- image pull policy
-  pullPolicy: Always
-
-# -- environment variables. See more environment variables in the [7d2d documentation](https://github.com/reitermarkus/7d2d).
-# @default -- See below
-env:
-  # -- Set the container timezone
-  TZ: UTC
-  # VERSION: alpha20.2
-  # SERVER_NAME: My 7 Days to Die Server
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: ghcr.io/reitermarkus/7d2d
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
+          # -- image pull policy
+          pullPolicy: Always
+        # -- environment variables. See more environment variables in the [7d2d documentation](https://github.com/reitermarkus/7d2d).
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # VERSION: alpha20.2
+          # SERVER_NAME: My 7 Days to Die Server
+    pod:
+      # -- Configure the Security Context for the Pod
+      podSecurityContext: {}
+        # fsGroup: 1000
+      # -- The server binary is only available for x86_64.
+      nodeSelector:
+        kubernetes.io/arch: amd64
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -43,10 +53,6 @@ service:
         port: 26901
         protocol: UDP
 
-# -- Configure the Security Context for the Pod
-podSecurityContext: {}
-  # fsGroup: 1000
-
 probes:
   startup:
     spec:
@@ -63,7 +69,3 @@ persistence:
   server:
     enabled: false
     mountPath: /server
-
-# -- The server binary is only available for x86_64.
-nodeSelector:
-  kubernetes.io/arch: amd64

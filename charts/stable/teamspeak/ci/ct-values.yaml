@@ -1,2 +1,6 @@
-env:
-  TS3SERVER_LICENSE: accept
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          TS3SERVER_LICENSE: accept
