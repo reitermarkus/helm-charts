@@ -14,6 +14,8 @@ INVENTREE_DB_PASSWORD:
       key: password
 INVENTREE_DB_HOST: "{{ .Release.Name }}-postgresql"
 INVENTREE_DB_PORT: 5432
+{{- else}}
+INVENTREE_DB_ENGINE: sqlite
 {{- end }}
 {{- if .Values.redis.enabled }}
 INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis-master"
