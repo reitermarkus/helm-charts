@@ -1,0 +1,59 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "inventree.sharedEnv" -}}
+{{- $mainEnv := .Values.controllers.main.containers.main.env }}
+{{- if .Values.postgresql.enabled }}
+INVENTREE_DB_ENGINE: postgresql
+INVENTREE_DB_USER: inventree
+INVENTREE_DB_NAME: inventree
+INVENTREE_DB_PASSWORD:
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Release.Name }}-postgresql
+      key: password
+INVENTREE_DB_HOST: "{{ .Release.Name }}-postgresql"
+INVENTREE_DB_PORT: 5432
+{{- end }}
+{{- if .Values.redis.enabled }}
+INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis-master"
+INVENTREE_CACHE_PORT: 6379
+{{- end }}
+{{ end }}
+
+{{- define "inventree.hardcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+
+controllers:
+  main:
+    initContainers:
+      update:
+        env:
+          {{ include "inventree.sharedEnv" . | nindent 10 }}
+    containers:
+      server:
+        env:
+          {{ include "inventree.sharedEnv" . | nindent 10 }}
+      worker:
+        env:
+          {{ include "inventree.sharedEnv" . | nindent 10 }}
+
+persistence:
+  nginx-conf:
+    type: configMap
+    name: {{ printf "%v-nginx" (include "bjw-s.common.lib.chart.names.fullname" .) }}
+    advancedMounts:
+      main:
+        main:
+          - path: /etc/nginx/conf.d/default.conf
+            subPath: nginx.conf
+            readOnly: true
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "inventree.hardcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}
