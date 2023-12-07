@@ -87,12 +87,6 @@ postgresql:
     enablePostgresUser: false
     username: inventree
     database: inventree
-  primary:
-    extendedConfiguration: |-
-      huge_pages = off
-    # FIXME: Enable once using Postgres > 16.
-    # initdb:
-    #   args: --set huge_pages=off
 
 redis:
   enabled: true
