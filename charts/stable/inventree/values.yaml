@@ -50,17 +50,21 @@ controllers:
         env:
           # -- Set the container timezone
           # TZ: UTC
-          # -- Set the container user id
+          # -- Enable plugin support
+          # INVENTREE_PLUGINS_ENABLED: 'true'
+          # -- Set the admin user name
           # INVENTREE_ADMIN_USER:
           #   valueFrom:
           #     secretKeyRef:
           #       name: inventree
           #       key: admin_user
+          # -- Set the admin password
           # INVENTREE_ADMIN_PASSWORD:
           #   valueFrom:
           #     secretKeyRef:
           #       name: inventree
           #       key: admin_password
+          # -- Set the admin email
           # INVENTREE_ADMIN_EMAIL:
           #   valueFrom:
           #     secretKeyRef:
@@ -82,7 +86,7 @@ controllers:
 postgresql:
   enabled: true
   image:
-    tag: 13.13.0
+    tag: 15.5.0
   auth:
     enablePostgresUser: false
     username: inventree

@@ -2,7 +2,7 @@
 {{- include "bjw-s.common.loader.init" . }}
 
 {{- define "inventree.sharedEnv" -}}
-{{- $mainEnv := .Values.controllers.main.containers.main.env }}
+INVENTREE_DEBUG: 'false'
 INVENTREE_DB_NAME: inventree
 {{- if .Values.postgresql.enabled }}
 INVENTREE_DB_ENGINE: postgresql
