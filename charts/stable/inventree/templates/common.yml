@@ -18,7 +18,7 @@ INVENTREE_DB_PORT: 5432
 INVENTREE_DB_ENGINE: sqlite
 {{- end }}
 {{- if .Values.redis.enabled }}
-INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis-master"
+INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis"
 INVENTREE_CACHE_PORT: 6379
 {{- end }}
 {{ end }}
