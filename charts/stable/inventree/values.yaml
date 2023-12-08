@@ -125,6 +125,8 @@ postgresql:
 
 redis:
   enabled: true
+  sentinel:
+    enabled: true
   auth:
     enabled: false
 
