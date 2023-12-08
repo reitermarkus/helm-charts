@@ -37,6 +37,16 @@ controllers:
         ports:
           - name: http
             containerPort: 80
+        probes:
+          liveness:
+            type: HTTP
+            path: /
+          readiness:
+            type: HTTP
+            path: /
+          startup:
+            type: HTTP
+            path: /
       server:
         image:
           # -- image repository
@@ -73,9 +83,9 @@ controllers:
         probes:
           liveness:
             enabled: true
-            custom: false
-            type: TCP
+            type: HTTP
             port: 8000
+            path: /
             spec:
               periodSeconds: 10
               timeoutSeconds: 1
@@ -83,9 +93,9 @@ controllers:
               initialDelaySeconds: 0
           readiness:
             enabled: true
-            custom: false
-            type: TCP
+            type: HTTP
             port: 8000
+            path: /
             spec:
               periodSeconds: 10
               timeoutSeconds: 1
@@ -93,9 +103,9 @@ controllers:
               initialDelaySeconds: 0
           startup:
             enabled: true
-            custom: false
-            type: TCP
+            type: HTTP
             port: 8000
+            path: /
             spec:
               periodSeconds: 10
               timeoutSeconds: 1
