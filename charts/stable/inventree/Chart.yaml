@@ -31,4 +31,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Don't update in init script.
+      description: Use NGINX template mechanism.
