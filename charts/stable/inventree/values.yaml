@@ -20,7 +20,6 @@ controllers:
           - sh
           - -c
           - |
-            echo "pg_dump version: $(pg_dump --version)" || exit 1
             cd /home/inventree || exit 1
             invoke update
         # FIXME: https://github.com/bjw-s/helm-charts/pull/244
@@ -37,16 +36,6 @@ controllers:
         ports:
           - name: http
             containerPort: 80
-        probes:
-          liveness:
-            type: HTTP
-            path: /
-          readiness:
-            type: HTTP
-            path: /
-          startup:
-            type: HTTP
-            path: /
       server:
         image:
           # -- image repository
