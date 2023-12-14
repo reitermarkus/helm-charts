@@ -21,7 +21,7 @@ controllers:
           - -c
           - |
             cd /home/inventree || exit 1
-            invoke update
+            invoke migrate
         # FIXME: https://github.com/bjw-s/helm-charts/pull/244
         workingDir: /home/inventree
     containers:
