@@ -43,17 +43,6 @@ controllers:
       worker:
         env:
           {{ include "inventree.sharedEnv" . | nindent 10 }}
-
-persistence:
-  nginx-conf:
-    type: configMap
-    name: {{ printf "%v-nginx" (include "bjw-s.common.lib.chart.names.fullname" .) }}
-    advancedMounts:
-      main:
-        main:
-          - path: /etc/nginx/conf.d/default.conf
-            subPath: nginx.conf
-            readOnly: true
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "inventree.hardcodedValues" . | fromYaml) -}}
 
