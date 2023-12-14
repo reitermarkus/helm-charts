@@ -36,16 +36,6 @@ controllers:
         ports:
           - name: http
             containerPort: 80
-        probes:
-          liveness:
-            type: HTTP
-            path: /
-          readiness:
-            type: HTTP
-            path: /
-          startup:
-            type: HTTP
-            path: /
       server:
         image:
           # -- image repository
