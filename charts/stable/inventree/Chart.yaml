@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 0.12.10
 description: InvenTree is a self-hosted inventory management system
 name: inventree
-version: 1.2.0
+version: 1.3.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - inventree
@@ -19,7 +19,7 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts/
-    version: 2.3.0
+    version: 2.4.0
   - name: postgresql
     repository: oci://registry-1.docker.io/bitnamicharts
     version: 13.2.24
@@ -31,4 +31,4 @@ dependencies:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Enable Redis Sentinel.
+      description: Don't update in init script.
