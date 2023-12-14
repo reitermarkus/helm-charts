@@ -17,12 +17,8 @@ controllers:
           # -- image tag
           tag: 0.12.10
         command:
-          - sh
-          - -c
-          - |
-            cd /home/inventree || exit 1
-            invoke update
-        # FIXME: https://github.com/bjw-s/helm-charts/pull/244
+          - invoke
+          - migrate
         workingDir: /home/inventree
     containers:
       main:
