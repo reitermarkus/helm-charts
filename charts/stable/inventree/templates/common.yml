@@ -51,8 +51,8 @@ persistence:
     advancedMounts:
       main:
         main:
-          - path: /etc/nginx/conf.d/default.conf
-            subPath: nginx.conf
+          - path: /etc/nginx/templates/default.conf.template
+            subPath: nginx.conf.template
             readOnly: true
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "inventree.hardcodedValues" . | fromYaml) -}}
