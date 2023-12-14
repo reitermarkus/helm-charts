@@ -20,7 +20,6 @@ controllers:
           - sh
           - -c
           - |
-            echo "pg_dump version: $(pg_dump --version)" || exit 1
             cd /home/inventree || exit 1
             invoke update
         # FIXME: https://github.com/bjw-s/helm-charts/pull/244
