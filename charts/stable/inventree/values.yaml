@@ -122,9 +122,14 @@ redis:
   enabled: true
   sentinel:
     enabled: true
+  master:    
+    persistence:
+      enabled: false
   replica:
     configuration: |-
       replica-read-only no
+    persistence:
+      enabled: false
   auth:
     enabled: false
 
