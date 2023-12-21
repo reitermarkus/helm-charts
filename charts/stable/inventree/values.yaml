@@ -15,7 +15,7 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
           # -- image tag
-          tag: 0.12.10
+          tag: 0.13.0
         command:
           - invoke
           - migrate
@@ -39,7 +39,7 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
           # -- image tag
-          tag: 0.12.10
+          tag: 0.13.0
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
         # @default -- See below
         env:
@@ -103,7 +103,7 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
           # -- image tag
-          tag: 0.12.10
+          tag: 0.13.0
         command:
           - invoke
           - worker
@@ -122,6 +122,19 @@ redis:
   enabled: true
   sentinel:
     enabled: true
+  commonConfiguration: |-
+    # Disable AOF persistence.
+    appendonly no
+    # Disable RDB persistence.
+    save ""
+  master:
+    persistence:
+      enabled: false
+  replica:
+    configuration: |-
+      replica-read-only no
+    persistence:
+      enabled: false
   auth:
     enabled: false
 
