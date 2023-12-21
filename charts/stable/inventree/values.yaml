@@ -127,7 +127,7 @@ redis:
     appendonly no
     # Disable RDB persistence.
     save ""
-  master:    
+  master:
     persistence:
       enabled: false
   replica:
