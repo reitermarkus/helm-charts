@@ -122,6 +122,11 @@ redis:
   enabled: true
   sentinel:
     enabled: true
+  commonConfiguration: |-
+    # Disable AOF persistence.
+    appendonly no
+    # Disable RDB persistence.
+    save ""
   master:    
     persistence:
       enabled: false
