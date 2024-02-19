@@ -28,7 +28,7 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
           # -- image tag
-          tag: 1.25.3
+          tag: 1.25.4
         ports:
           - name: http
             containerPort: 80
