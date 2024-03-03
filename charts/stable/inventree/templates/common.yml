@@ -33,7 +33,7 @@ global:
 controllers:
   main:
     initContainers:
-      update:
+      migrate:
         env:
           {{ include "inventree.sharedEnv" . | nindent 10 }}
     containers:
