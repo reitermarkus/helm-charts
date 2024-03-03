@@ -8,19 +8,17 @@
 controllers:
   main:
     initContainers:
-      update:
+      migrate:
         image:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
           - invoke
           - migrate
-        workingDir: /home/inventree
     containers:
       main:
         image:
@@ -38,8 +36,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
@@ -103,14 +100,12 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
           - invoke
           - worker
-
 
 postgresql:
   enabled: true
@@ -236,7 +231,7 @@ persistence:
     enabled: false
     advancedMounts:
       main:
-        update:
+        migrate:
           - path: /home/inventree/data
         main:
           - path: /var/www
