@@ -22,7 +22,7 @@ env:
 jobs:
   release-charts:
     name: Release charts
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Get GitHub API token
         id: get-app-token
@@ -35,15 +35,15 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           token: ${{ steps.get-app-token.outputs.token }}
-          path: "src"
+          path: src
           fetch-depth: 0
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           token: ${{ steps.get-app-token.outputs.token }}
-          path: "dest"
-          ref: "gh-pages"
+          path: dest
+          ref: gh-pages
           fetch-depth: 0
 
       - name: Install Kubernetes tools
@@ -51,13 +51,13 @@ jobs:
         with:
           setup-tools: |
             helmv3
-          helm: "${{ env.HELM_VERSION }}"
+          helm: ${{ env.HELM_VERSION }}
 
       - name: Package Helm Charts
         shell: bash
         env:
-          SRC_DIR: "src/charts"
-          DEST_DIR: "dest"
+          SRC_DIR: src/charts
+          DEST_DIR: dest
         run: |
           CHARTS=( $(yq --null-input e '${{ inputs.charts }}[]' ) )
 
