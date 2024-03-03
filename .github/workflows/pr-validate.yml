@@ -35,8 +35,6 @@ jobs:
       checkoutCommit: ${{ github.sha }}
       chartsToLint: ${{ needs.pr-metadata.outputs.chartsToLint }}
       isRenovatePR: ${{ needs.pr-metadata.outputs.isRenovatePR }}
-      overrideDeps: |-
-        []
 
   charts-test:
     uses: ./.github/workflows/charts-test.yml
@@ -46,5 +44,3 @@ jobs:
       checkoutCommit: ${{ github.sha }}
       chartsToTest: |-
         ${{ needs.pr-metadata.outputs.chartsToInstall }}
-      overrideDeps: |-
-        []

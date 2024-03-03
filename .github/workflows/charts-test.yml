@@ -11,12 +11,6 @@ on:
           A JSON encoded array of charts to lint
         type: string
         required: true
-      overrideDeps:
-        description: >
-          A JSON encoded array of dependencies to override before testing
-        type: string
-        required: false
-        default: '[]'
 
 env:
   HELM_VERSION: 3.13.2
@@ -65,13 +59,6 @@ jobs:
       - name: Remove node taints
         run: |
           kubectl taint --all=true nodes node.cloudprovider.kubernetes.io/uninitialized- || true
-
-      - name: Override chart dependencies
-        uses: ./.github/actions/override-chart-deps
-        if: ${{ inputs.overrideDeps != '[]' }}
-        with:
-          chart: ${{ matrix.chart }}
-          overrides: ${{ inputs.overrideDeps }}
 
       - name: Run chart-testing (install)
         run: ct install --config .ci/ct/ct.yml --charts "charts/${{ matrix.chart }}"
