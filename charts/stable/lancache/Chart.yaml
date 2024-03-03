@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: latest
 description: LanCache is a caching proxy server for game downloads
 name: lancache
-version: 2.0.2
+version: 2.1.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - lancache
@@ -21,8 +21,8 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts/
-    version: 2.0.3
+    version: 2.6.0
 annotations:
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: Fix persistence paths.
+    - kind: changed
+      description: Updated library chart.

@@ -13,8 +13,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/reitermarkus/7d2d
           # -- image tag
-          # @default -- chart.appVersion
-          tag:
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: Always
         # -- environment variables. See more environment variables in the [7d2d documentation](https://github.com/reitermarkus/7d2d).
