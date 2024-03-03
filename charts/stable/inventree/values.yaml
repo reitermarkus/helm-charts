@@ -37,8 +37,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
@@ -102,8 +101,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          # @default -- chart.appVersion
-          tag:
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
