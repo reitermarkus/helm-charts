@@ -8,7 +8,7 @@
 controllers:
   main:
     initContainers:
-      update:
+      migrate:
         image:
           # -- image repository
           repository: inventree/inventree
@@ -231,7 +231,7 @@ persistence:
     enabled: false
     advancedMounts:
       main:
-        update:
+        migrate:
           - path: /home/inventree/data
         main:
           - path: /var/www
