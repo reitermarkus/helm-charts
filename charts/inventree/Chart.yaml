@@ -29,9 +29,3 @@ dependencies:
     repository: oci://registry-1.docker.io/bitnamicharts
     version: 18.17.0
     condition: redis.enabled
-annotations:
-  artifacthub.io/changes: |-
-    - kind: changed
-      description: Update dependencies.
-    - kind: changed
-      description: Update library chart.
