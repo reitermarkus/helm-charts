@@ -4,12 +4,43 @@ entries:
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
+          description: Updated app version.
+        - kind: changed
+          description: Updated library chart.
+    apiVersion: v2
+    appVersion: 1.23.1
+    created: "2024-03-03T14:15:58.663001752Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 7a8f2bf3639e814ad899629cfa8727c00c94af3e4b27b2ec9112b0f94c4ae4db
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/freshrss
+    icon: https://avatars.githubusercontent.com/u/9414285
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: freshrss
+    sources:
+    - https://github.com/FreshRSS/FreshRSS
+    - https://hub.docker.com/r/linuxserver/freshrss
+    urls:
+    - https://reitermarkus.github.io/helm-charts/stable/freshrss-7.3.0.tgz
+    version: 7.3.0
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Updated library chart.
         - kind: changed
           description: Updated app version.
     apiVersion: v2
     appVersion: 1.22.1
-    created: "2024-02-19T16:22:17.762178857Z"
+    created: "2024-03-03T14:15:58.660766249Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -40,7 +71,7 @@ entries:
           description: Updated app version.
     apiVersion: v2
     appVersion: 1.22.1
-    created: "2024-02-19T16:22:17.759416194Z"
+    created: "2024-03-03T14:15:58.65871466Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -69,7 +100,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.757340531Z"
+    created: "2024-03-03T14:15:58.656678029Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -98,7 +129,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.755402765Z"
+    created: "2024-03-03T14:15:58.653927532Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -127,7 +158,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.75332074Z"
+    created: "2024-03-03T14:15:58.652006468Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -156,7 +187,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.750572229Z"
+    created: "2024-03-03T14:15:58.650026713Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -185,7 +216,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.748650834Z"
+    created: "2024-03-03T14:15:58.647508908Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -216,7 +247,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.746653848Z"
+    created: "2024-03-03T14:15:58.645451198Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -247,7 +278,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-02-19T16:22:17.744072587Z"
+    created: "2024-03-03T14:15:58.643415258Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -276,7 +307,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.2
-    created: "2024-02-19T16:22:17.741835593Z"
+    created: "2024-03-03T14:15:58.641462514Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -305,7 +336,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.2
-    created: "2024-02-19T16:22:17.739885144Z"
+    created: "2024-03-03T14:15:58.638564338Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -334,7 +365,7 @@ entries:
           description: Updated to version 1.20.2.
     apiVersion: v2
     appVersion: 1.20.2
-    created: "2024-02-19T16:22:17.737893127Z"
+    created: "2024-03-03T14:15:58.636490928Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -363,7 +394,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2024-02-19T16:22:17.735171398Z"
+    created: "2024-03-03T14:15:58.634480005Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -392,7 +423,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.20.1
-    created: "2024-02-19T16:22:17.733166577Z"
+    created: "2024-03-03T14:15:58.632196763Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -422,7 +453,7 @@ entries:
           description: Update app version.
     apiVersion: v2
     appVersion: 0.13.0
-    created: "2024-02-19T16:22:17.89370041Z"
+    created: "2024-03-03T14:15:58.792108395Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -459,7 +490,7 @@ entries:
           description: Update app version.
     apiVersion: v2
     appVersion: 0.13.0
-    created: "2024-02-19T16:22:17.880625637Z"
+    created: "2024-03-03T14:15:58.781375403Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -496,7 +527,7 @@ entries:
           description: Use NGINX template mechanism.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.87020078Z"
+    created: "2024-03-03T14:15:58.770867001Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -533,7 +564,7 @@ entries:
           description: Don't update in init script.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.859228432Z"
+    created: "2024-03-03T14:15:58.76004268Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -570,7 +601,7 @@ entries:
           description: Enable Redis Sentinel.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.848670298Z"
+    created: "2024-03-03T14:15:58.748276093Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -607,7 +638,7 @@ entries:
           description: Enable Redis Sentinel.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.838274625Z"
+    created: "2024-03-03T14:15:58.737445284Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -644,7 +675,7 @@ entries:
           description: Enable Redis Sentinel.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.827873512Z"
+    created: "2024-03-03T14:15:58.726899709Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -681,7 +712,7 @@ entries:
           description: Enable Redis Sentinel.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.817277756Z"
+    created: "2024-03-03T14:15:58.716334499Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -718,7 +749,7 @@ entries:
           description: Improve documentation.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.806776778Z"
+    created: "2024-03-03T14:15:58.705813208Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -755,7 +786,7 @@ entries:
           description: Always set database name.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.796109207Z"
+    created: "2024-03-03T14:15:58.695344073Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -792,7 +823,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.785025861Z"
+    created: "2024-03-03T14:15:58.684962756Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -829,7 +860,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 0.12.10
-    created: "2024-02-19T16:22:17.772911366Z"
+    created: "2024-03-03T14:15:58.674010952Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -867,7 +898,7 @@ entries:
           description: Fix persistence paths.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.916200651Z"
+    created: "2024-03-03T14:15:58.819078756Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -898,7 +929,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.913153718Z"
+    created: "2024-03-03T14:15:58.816822085Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -929,7 +960,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.911013665Z"
+    created: "2024-03-03T14:15:58.814641155Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -960,7 +991,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.908813219Z"
+    created: "2024-03-03T14:15:58.81048754Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -991,7 +1022,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.905963807Z"
+    created: "2024-03-03T14:15:58.806195681Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1022,7 +1053,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.903493508Z"
+    created: "2024-03-03T14:15:58.802139092Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1053,7 +1084,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.900921468Z"
+    created: "2024-03-03T14:15:58.798164313Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1084,7 +1115,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.898811251Z"
+    created: "2024-03-03T14:15:58.796123575Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1115,7 +1146,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-02-19T16:22:17.895967801Z"
+    created: "2024-03-03T14:15:58.794090011Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1147,7 +1178,7 @@ entries:
           description: Fix persistence paths.
     apiVersion: v2
     appVersion: 1.4.287
-    created: "2024-02-19T16:22:17.930930641Z"
+    created: "2024-03-03T14:15:58.837982065Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1175,7 +1206,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.4.287
-    created: "2024-02-19T16:22:17.928932893Z"
+    created: "2024-03-03T14:15:58.834273647Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1203,7 +1234,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.4.287
-    created: "2024-02-19T16:22:17.926957548Z"
+    created: "2024-03-03T14:15:58.830485578Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1231,7 +1262,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.4.287
-    created: "2024-02-19T16:22:17.924915006Z"
+    created: "2024-03-03T14:15:58.827911954Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1259,7 +1290,7 @@ entries:
           description: Remove auto-generated server password.
     apiVersion: v2
     appVersion: 1.4.287
-    created: "2024-02-19T16:22:17.922185188Z"
+    created: "2024-03-03T14:15:58.825884661Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1287,7 +1318,7 @@ entries:
           description: Update Mumble version.
     apiVersion: v2
     appVersion: 1.4.287
-    created: "2024-02-19T16:22:17.920224439Z"
+    created: "2024-03-03T14:15:58.823921077Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1315,7 +1346,7 @@ entries:
           description: Create chart.
     apiVersion: v2
     appVersion: 1.4.230
-    created: "2024-02-19T16:22:17.918194341Z"
+    created: "2024-03-03T14:15:58.82135291Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1344,7 +1375,7 @@ entries:
           description: Fix persistence paths.
     apiVersion: v2
     appVersion: 3.4.4
-    created: "2024-02-19T16:22:17.955102281Z"
+    created: "2024-03-03T14:15:58.87381304Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1372,7 +1403,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.4.4
-    created: "2024-02-19T16:22:17.953082612Z"
+    created: "2024-03-03T14:15:58.869204905Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1400,7 +1431,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.4.4
-    created: "2024-02-19T16:22:17.95107738Z"
+    created: "2024-03-03T14:15:58.865389737Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1428,7 +1459,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.4.4
-    created: "2024-02-19T16:22:17.94828658Z"
+    created: "2024-03-03T14:15:58.861596672Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1456,7 +1487,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.4.4
-    created: "2024-02-19T16:22:17.946274366Z"
+    created: "2024-03-03T14:15:58.85803014Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1486,7 +1517,7 @@ entries:
           description: Updated app version.
     apiVersion: v2
     appVersion: 3.4.4
-    created: "2024-02-19T16:22:17.944285424Z"
+    created: "2024-03-03T14:15:58.854504611Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1514,7 +1545,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2024-02-19T16:22:17.942206525Z"
+    created: "2024-03-03T14:15:58.852561416Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1542,7 +1573,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2024-02-19T16:22:17.939507516Z"
+    created: "2024-03-03T14:15:58.850573517Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1570,7 +1601,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2024-02-19T16:22:17.937507033Z"
+    created: "2024-03-03T14:15:58.848604183Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1598,7 +1629,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2024-02-19T16:22:17.935540002Z"
+    created: "2024-03-03T14:15:58.845814457Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1626,7 +1657,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.3.0
-    created: "2024-02-19T16:22:17.933529991Z"
+    created: "2024-03-03T14:15:58.841754793Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1655,7 +1686,7 @@ entries:
           description: Fix persistence paths.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.976932043Z"
+    created: "2024-03-03T14:15:58.902869507Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1683,7 +1714,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.974328406Z"
+    created: "2024-03-03T14:15:58.900869906Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1711,7 +1742,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.972311583Z"
+    created: "2024-03-03T14:15:58.897204375Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1739,7 +1770,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.97028398Z"
+    created: "2024-03-03T14:15:58.893314508Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1767,7 +1798,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.96831208Z"
+    created: "2024-03-03T14:15:58.889545377Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1795,7 +1826,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.965709698Z"
+    created: "2024-03-03T14:15:58.885722805Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1823,7 +1854,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.963710147Z"
+    created: "2024-03-03T14:15:58.881790324Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1851,7 +1882,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.961719463Z"
+    created: "2024-03-03T14:15:58.879849443Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1879,7 +1910,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.959750859Z"
+    created: "2024-03-03T14:15:58.877839182Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1907,7 +1938,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: main
-    created: "2024-02-19T16:22:17.957017044Z"
+    created: "2024-03-03T14:15:58.875840914Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1936,7 +1967,7 @@ entries:
           description: Fix persistence paths.
     apiVersion: v2
     appVersion: 1.0.2
-    created: "2024-02-19T16:22:17.996164497Z"
+    created: "2024-03-03T14:15:58.929567114Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1963,7 +1994,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.2
-    created: "2024-02-19T16:22:17.994164825Z"
+    created: "2024-03-03T14:15:58.927623698Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -1990,7 +2021,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.2
-    created: "2024-02-19T16:22:17.991996615Z"
+    created: "2024-03-03T14:15:58.925606304Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2019,7 +2050,7 @@ entries:
           description: Update app version.
     apiVersion: v2
     appVersion: 1.0.2
-    created: "2024-02-19T16:22:17.989474038Z"
+    created: "2024-03-03T14:15:58.921111599Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2046,7 +2077,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2024-02-19T16:22:17.987501918Z"
+    created: "2024-03-03T14:15:58.917294769Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2073,7 +2104,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2024-02-19T16:22:17.985487479Z"
+    created: "2024-03-03T14:15:58.913424528Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2100,7 +2131,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2024-02-19T16:22:17.982906881Z"
+    created: "2024-03-03T14:15:58.909832248Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2127,7 +2158,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2024-02-19T16:22:17.980920465Z"
+    created: "2024-03-03T14:15:58.906706745Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2154,7 +2185,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.0.0-beta.16-ba60e37
-    created: "2024-02-19T16:22:17.978915373Z"
+    created: "2024-03-03T14:15:58.904799087Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2182,7 +2213,7 @@ entries:
           description: Fix persistence paths.
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2024-02-19T16:22:18.024164063Z"
+    created: "2024-03-03T14:15:58.956081048Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2210,7 +2241,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2024-02-19T16:22:18.022042865Z"
+    created: "2024-03-03T14:15:58.952028791Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2238,7 +2269,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2024-02-19T16:22:18.019411465Z"
+    created: "2024-03-03T14:15:58.949974127Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2268,7 +2299,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2024-02-19T16:22:18.017290657Z"
+    created: "2024-03-03T14:15:58.947924042Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2298,7 +2329,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2024-02-19T16:22:18.015222528Z"
+    created: "2024-03-03T14:15:58.945836026Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2328,7 +2359,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2024-02-19T16:22:18.013059833Z"
+    created: "2024-03-03T14:15:58.943571089Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2356,7 +2387,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.4.1
-    created: "2024-02-19T16:22:18.010306995Z"
+    created: "2024-03-03T14:15:58.94074868Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2384,7 +2415,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 1.4.1
-    created: "2024-02-19T16:22:18.008232354Z"
+    created: "2024-03-03T14:15:58.938667065Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2412,7 +2443,7 @@ entries:
           description: Updated version to 1.4.1.
     apiVersion: v2
     appVersion: 1.4.1
-    created: "2024-02-19T16:22:18.005186951Z"
+    created: "2024-03-03T14:15:58.93663822Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2440,7 +2471,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2024-02-19T16:22:18.000999338Z"
+    created: "2024-03-03T14:15:58.93455895Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2468,7 +2499,7 @@ entries:
           description: Updated version to 1.2.0.
     apiVersion: v2
     appVersion: 1.3.0
-    created: "2024-02-19T16:22:17.998198492Z"
+    created: "2024-03-03T14:15:58.931549763Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2497,7 +2528,7 @@ entries:
           description: Updated ReadMe.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.052078019Z"
+    created: "2024-03-03T14:15:58.997182407Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2525,7 +2556,7 @@ entries:
           description: Updated ReadMe.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.049861142Z"
+    created: "2024-03-03T14:15:58.99293441Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2553,7 +2584,7 @@ entries:
           description: Updated ReadMe.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.047597799Z"
+    created: "2024-03-03T14:15:58.988847525Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2581,7 +2612,7 @@ entries:
           description: Updated ReadMe.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.044723192Z"
+    created: "2024-03-03T14:15:58.984747405Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2609,7 +2640,7 @@ entries:
           description: Updated ReadMe.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.042516053Z"
+    created: "2024-03-03T14:15:58.980485589Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2637,7 +2668,7 @@ entries:
           description: Increase failure threshold.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.040359289Z"
+    created: "2024-03-03T14:15:58.977933124Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2665,7 +2696,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.037777569Z"
+    created: "2024-03-03T14:15:58.975812517Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2693,7 +2724,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.035417415Z"
+    created: "2024-03-03T14:15:58.973689566Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2721,7 +2752,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.033264658Z"
+    created: "2024-03-03T14:15:58.971569269Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2749,7 +2780,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.031153709Z"
+    created: "2024-03-03T14:15:58.967855183Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2777,7 +2808,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.028671745Z"
+    created: "2024-03-03T14:15:58.963788436Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2805,7 +2836,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 3.13.7
-    created: "2024-02-19T16:22:18.026191076Z"
+    created: "2024-03-03T14:15:58.959990912Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2834,7 +2865,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.071471758Z"
+    created: "2024-03-03T14:15:59.024014819Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2866,7 +2897,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.069460104Z"
+    created: "2024-03-03T14:15:59.020499357Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2898,7 +2929,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.067484357Z"
+    created: "2024-03-03T14:15:59.016838158Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2930,7 +2961,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.065445282Z"
+    created: "2024-03-03T14:15:59.013022941Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2962,7 +2993,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.062699469Z"
+    created: "2024-03-03T14:15:59.008956761Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -2994,7 +3025,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.060713623Z"
+    created: "2024-03-03T14:15:59.006415928Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -3026,7 +3057,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.058704273Z"
+    created: "2024-03-03T14:15:59.00448703Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -3058,7 +3089,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.056718798Z"
+    created: "2024-03-03T14:15:59.002495965Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -3090,7 +3121,7 @@ entries:
           description: Updated library chart.
     apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-02-19T16:22:18.054009132Z"
+    created: "2024-03-03T14:15:59.000429349Z"
     dependencies:
     - name: common
       repository: https://bjw-s.github.io/helm-charts/
@@ -3116,4 +3147,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2024-02-19T16:22:17.730947967Z"
+generated: "2024-03-03T14:15:58.62904303Z"
