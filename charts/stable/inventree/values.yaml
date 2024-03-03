@@ -112,7 +112,8 @@ controllers:
 postgresql:
   enabled: true
   image:
-    tag: 15.5.0
+    # https://github.com/inventree/InvenTree/blob/0.14.0/docker-compose.yml#L23
+    tag: 13.14
   auth:
     enablePostgresUser: false
     username: inventree
