@@ -1,0 +1,119 @@
+name: test
+
+on:
+  pull_request:
+
+env:
+  HELM_VERSION: 3.13.2
+
+jobs:
+  find-changed:
+    name: Find changed charts
+    runs-on: ubuntu-latest
+    outputs:
+      changed-charts: ${{ steps.list-changed.outputs.changed-charts }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Run chart-testing (list-changed)
+        id: list-changed
+        run: |
+          {
+            echo 'changed-charts<<JSON'
+            ct list-changed --target-branch "${TARGET_BRANCH}" | jq --raw-input '[inputs]'
+            echo 'JSON'
+          } >> "${GITHUB_OUTPUT}"
+        env:
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+
+  install:
+    name: install (${{ matrix.chart }})
+    needs: [find-changed]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+        k8s_version:
+          - v1.27.10
+          - v1.28.5
+          - v1.29.1
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.checkoutCommit }}
+
+      - name: Install Kubernetes tools
+        uses: yokawasa/action-setup-kube-tools@dc0754a9a47b40f22f9bd52ffb082bbe6d142b22 # v0.11.0
+        with:
+          setup-tools: |
+            helmv3
+            kubectl
+          helm: ${{ env.HELM_VERSION }}
+          kubectl: ${{ matrix.k8s_version }}
+
+      - uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5
+        with:
+          python-version: '3.10'
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Create k3d cluster
+        uses: nolar/setup-k3d-k3s@v1
+        with:
+          version: ${{ matrix.k8s_version }}
+
+      - name: Remove node taints
+        run: |
+          kubectl taint --all=true nodes node.cloudprovider.kubernetes.io/uninitialized- || true
+
+      - name: Run chart-testing (install)
+        if:  contains(fromJson('["charts/sdtd"]'), matrix.chart) # Too big for CI.
+        run: ct install --config ./ci/ct/ct.yml --charts '${{ matrix.chart }}'
+
+  unit-test:
+    name: unit-test (${{ matrix.chart }})
+    needs: [find-changed]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.checkoutCommit }}
+
+      - name: Install Kubernetes tools
+        uses: yokawasa/action-setup-kube-tools@dc0754a9a47b40f22f9bd52ffb082bbe6d142b22 # v0.11.0
+        with:
+          setup-tools: |
+            helmv3
+          helm: "${{ env.HELM_VERSION }}"
+
+      - name: Run tests
+        run: |
+          helm plugin install https://github.com/vbehar/helm3-unittest --version v1.0.16
+          helm dep update '${{ matrix.chart }}'
+          helm unittest -f "tests/**/*_test.yaml" '${{ matrix.chart }}'
+
+  conclusion:
+    name: conclusion
+    needs: [find-changed, install, unit-test]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Result
+        run: |
+          ${{ fromJSON(needs.find-changed.outputs.changed-charts) == fromJSON('[]') || (needs.install.result == 'success' && needs.unit-test.result == 'success') }}

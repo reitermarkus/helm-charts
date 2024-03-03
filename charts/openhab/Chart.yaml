@@ -1,0 +1,22 @@
+---
+apiVersion: v2
+appVersion: 3.4.5
+description: openhab helm package
+name: openhab
+version: 2.1.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - openhab
+  - home-automation
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/openhab
+icon: https://www.openhab.org/openhab-logo-square.png
+sources:
+  - https://www.openhab.org
+  - https://hub.docker.com/r/openhab/openhab
+maintainers:
+  - name: reitermarkus
+    email: me@reitermark.us
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts/
+    version: 2.6.0

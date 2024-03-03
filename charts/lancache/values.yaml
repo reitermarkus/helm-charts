@@ -1,0 +1,164 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from a common library chart. You can check the default values/options here:
+# https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+defaultPodOptions:
+  # -- The official LanCache image is only available for x86_64.
+  nodeSelector:
+    kubernetes.io/arch: amd64
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: lancachenet/monolithic
+          # -- image tag
+          tag: '{{ .Chart.AppVersion }}'
+          # -- image pull policy
+          pullPolicy: Always
+        # -- environment variables. See more environment variables in the [LanCache Monolithic documentation](https://lancache.net/docs/containers/monolithic/variables/).
+        # @default -- See below
+        env: {}
+          # -- Set the container timezone
+          # TZ: UTC
+          # UPSTREAM_DNS:
+          # CACHE_MEM_SIZE:
+          # CACHE_DISK_SIZE:
+          # CACHE_MAX_AGE:
+        ports:
+          - name: http
+            containerPort: 80
+          - name: https
+            containerPort: 443
+        probes:
+          readiness:
+            custom: true
+            spec:
+              httpGet:
+                path: /lancache-heartbeat
+                port: 80
+          liveness:
+            custom: true
+            spec:
+              httpGet:
+                path: /lancache-heartbeat
+                port: 80
+          startup:
+            custom: true
+            spec:
+              httpGet:
+                path: /lancache-heartbeat
+                port: 80
+    pod:
+      # -- LanCache uses custom upstream nameservers, overridable with the `UPSTREAM_DNS` variable.
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - 127.0.0.1
+
+  dns:
+    enabled: true
+    replicas: 1
+    containers:
+      dns:
+        primary: true
+        image:
+          # -- image repository
+          repository: lancachenet/lancache-dns
+          # -- image tag
+          tag: '{{ .Chart.AppVersion }}'
+          # -- image pull policy
+          pullPolicy: Always
+        env: {}
+          # LANCACHE_IP:
+        ports:
+          - name: dns
+            containerPort: 53
+            protocol: UDP
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - bash
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    # Check if LanCache DNS entries are set up.
+                    dig @127.0.0.1 "${LANCACHE_DNSDOMAIN}" SOA | grep localhost
+
+                    # Check if upstream DNS server is reachable.
+                    dig "${LANCACHE_DNSDOMAIN}" SOA
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - bash
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    # Check if LanCache DNS entries are set up.
+                    dig @127.0.0.1 "${LANCACHE_DNSDOMAIN}" SOA | grep localhost
+
+                    # Check if upstream DNS server is reachable.
+                    dig "${LANCACHE_DNSDOMAIN}" SOA
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              exec:
+                command:
+                  - bash
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    # Check if LanCache DNS entries are set up.
+                    dig @127.0.0.1 "${LANCACHE_DNSDOMAIN}" SOA | grep localhost
+
+                    # Check if upstream DNS server is reachable.
+                    dig "${LANCACHE_DNSDOMAIN}" SOA
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  main:
+    ports:
+      http:
+        port: 80
+        targetPort: http
+      https:
+        enabled: true
+        port: 443
+        targetPort: https
+  dns:
+    controller: dns
+    ports:
+      dns:
+        enabled: true
+        port: 53
+        targetPort: dns
+        protocol: UDP
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  data:
+    enabled: false
+    globalMounts:
+      - path: /data/cache
+  logs:
+    enabled: false
+    globalMounts:
+      - path: /data/logs

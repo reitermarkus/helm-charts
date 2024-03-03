@@ -1,0 +1,77 @@
+name: lint
+
+on:
+  pull_request:
+
+env:
+  HELM_VERSION: 3.13.1
+
+jobs:
+  find-changed:
+    name: Find changed charts
+    runs-on: ubuntu-latest
+    outputs:
+      changed-charts: ${{ steps.list-changed.outputs.changed-charts }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Run chart-testing (list-changed)
+        id: list-changed
+        run: |
+          {
+            echo 'changed-charts<<JSON'
+            ct list-changed --target-branch "${TARGET_BRANCH}" | jq --raw-input '[inputs]'
+            echo 'JSON'
+          } >> "${GITHUB_OUTPUT}"
+        env:
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+
+  lint:
+    name: lint (${{ matrix.chart }})
+    needs: [find-changed]
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.checkoutCommit }}
+
+      - name: Verify chart version
+        uses: bjw-s/helm-charts-actions/verify-chart-version@main
+        id: verify-chart-version
+        with:
+          chart: ${{ matrix.chart }}
+
+      - name: Install Kubernetes tools
+        uses: yokawasa/action-setup-kube-tools@dc0754a9a47b40f22f9bd52ffb082bbe6d142b22 # v0.11.0
+        with:
+          setup-tools: |
+            helmv3
+          helm: ${{ env.HELM_VERSION }}
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Run chart-testing (lint)
+        run: ct lint --config ./ci/ct/ct.yml --charts '${{ matrix.chart }}'
+
+  conclusion:
+    name: conclusion
+    needs: [find-changed, lint]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Result
+        run: |
+          ${{ fromJSON(needs.find-changed.outputs.changed-charts) == fromJSON('[]') || needs.lint.result == 'success' }}

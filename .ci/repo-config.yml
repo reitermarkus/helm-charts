@@ -1,4 +1,0 @@
-excluded-charts-lint: []
-
-excluded-charts-install:
-  - stable/sdtd # Too big for CI.
