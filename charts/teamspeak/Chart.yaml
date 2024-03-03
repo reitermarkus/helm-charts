@@ -8,7 +8,7 @@ kubeVersion: ">=1.20.0-0"
 keywords:
   - teamspeak
   - voice-chat
-home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/teamspeak
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/teamspeak
 icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
 sources:
   - https://hub.docker.com/_/teamspeak

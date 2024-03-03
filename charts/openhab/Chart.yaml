@@ -8,7 +8,7 @@ kubeVersion: ">=1.16.0-0"
 keywords:
   - openhab
   - home-automation
-home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/openhab
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/openhab
 icon: https://www.openhab.org/openhab-logo-square.png
 sources:
   - https://www.openhab.org

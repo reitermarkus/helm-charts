@@ -8,7 +8,7 @@ kubeVersion: ">=1.16.0-0"
 keywords:
   - inventree
   - inventory
-home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/inventree
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/inventree
 icon: https://inventree.org/assets/logo.png
 sources:
   - https://inventree.org

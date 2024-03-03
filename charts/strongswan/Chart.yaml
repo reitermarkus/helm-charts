@@ -8,7 +8,7 @@ kubeVersion: ">=1.16.0-0"
 keywords:
   - strongswan
   - vpn
-home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/strongswan
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/strongswan
 icon: https://strongswan.org/images/strongswan_neu.png
 sources:
   - https://github.com/reitermarkus/strongswan

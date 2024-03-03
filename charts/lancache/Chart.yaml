@@ -9,7 +9,7 @@ keywords:
   - lancache
   - steam
   - proxy
-home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/lancache
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/lancache
 icon: https://avatars.githubusercontent.com/u/16938914
 sources:
   - https://github.com/lancachenet/monolithic
