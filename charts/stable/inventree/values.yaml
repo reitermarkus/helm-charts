@@ -19,7 +19,6 @@ controllers:
         command:
           - invoke
           - migrate
-        workingDir: /home/inventree
     containers:
       main:
         image:
@@ -107,7 +106,6 @@ controllers:
         command:
           - invoke
           - worker
-        workingDir: /home/inventree
 
 postgresql:
   enabled: true
