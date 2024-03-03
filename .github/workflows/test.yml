@@ -51,11 +51,6 @@ jobs:
       - name: Set up Helm
         uses: azure/setup-helm@v4.1.0
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: ${{ matrix.k8s_version }}
-
       - uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5
         with:
           python-version: '3.10'
@@ -63,14 +58,10 @@ jobs:
       - name: Set up chart-testing
         uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
 
-      - name: Create k3d cluster
-        uses: nolar/setup-k3d-k3s@v1
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.9.0
         with:
-          version: ${{ matrix.k8s_version }}
-
-      - name: Remove node taints
-        run: |
-          kubectl taint --all=true nodes node.cloudprovider.kubernetes.io/uninitialized- || true
+          kubectl_version: ${{ matrix.k8s_version }}
 
       - name: Run chart-testing (install)
         if: ${{ !contains(fromJson('["charts/sdtd"]'), matrix.chart) }} # Too big for CI.
