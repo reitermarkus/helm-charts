@@ -80,4 +80,4 @@ jobs:
         uses: bjw-s/helm-charts-actions/collect-charts@main
         id: changed-charts
         with:
-          repoConfigFile: ./.ci/repo-config.yml
+          repoConfigFile: ./ci/repo-config.yml

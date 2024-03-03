@@ -1,5 +1,5 @@
-chart-yaml-schema: .ci/ct/chart_schema.yml
-lint-conf: .ci/ct/lintconf.yml
+chart-yaml-schema: ./ci/ct/chart_schema.yml
+lint-conf: ./ci/ct/lintconf.yml
 
 remote: origin
 target-branch: main
@@ -7,9 +7,7 @@ target-branch: main
 helm-extra-args: --timeout 600s
 
 chart-dirs:
-  - charts/library
-  - charts/apps
-  - charts/other
+  - charts/stable
 
 chart-repos:
   - bitnami=https://charts.bitnami.com/bitnami

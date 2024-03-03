@@ -37,7 +37,7 @@ jobs:
         uses: bjw-s/helm-charts-actions/collect-charts@main
         id: collect-charts
         with:
-          repoConfigFile: ./.ci/repo-config.yml
+          repoConfigFile: ./ci/repo-config.yml
           overrideCharts: "[${{ inputs.charts }}]"
 
   release-application-charts:
