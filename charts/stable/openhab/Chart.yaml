@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 3.4.5
 description: openhab helm package
 name: openhab
-version: 2.0.4
+version: 2.1.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - openhab
@@ -22,5 +22,7 @@ dependencies:
     version: 2.0.3
 annotations:
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: Fix persistence paths.
+    - kind: changes
+      description: Updated app version.
+    - kind: changes
+      description: Updated library chart.
