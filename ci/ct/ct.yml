@@ -1,9 +1,6 @@
 chart-yaml-schema: ./ci/ct/chart_schema.yml
 lint-conf: ./ci/ct/lintconf.yml
 
-remote: origin
-target-branch: main
-
 helm-extra-args: --timeout 600s
 
 chart-repos:

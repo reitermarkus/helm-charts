@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
 appVersion: 3.4.5
-description: openhab helm package
+description: openHAB - a vendor and technology agnostic open source automation software for your home
 name: openhab
 version: 2.1.0
 kubeVersion: ">=1.16.0-0"
