@@ -12,8 +12,8 @@ controllers:
         image:
           # -- image repository
           repository: linuxserver/freshrss
-          # @default -- chart.appVersion
-          tag:
+          # -- image tag
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [freshrss documentation](https://github.com/linuxserver/docker-freshrss#parameters).
@@ -22,9 +22,9 @@ controllers:
           # -- Set the container timezone
           TZ: UTC
           # -- Set the container user id
-          PUID: "1001"
+          PUID: '1001'
           # -- Set the container group id
-          PGID: "1001"
+          PGID: '1001'
         ports:
           - name: http
             containerPort: 80
