@@ -962,6 +962,33 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/inventree-1.0.0.tgz
     version: 1.0.0
   lancache:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2024-03-04T00:32:40.238283451Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: LanCache is a caching proxy server for game downloads
+    digest: 9ac58c3e7968e5b23d367736e733dd26b9c3d118e6d11160929499c3b611a58a
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/lancache
+    icon: https://avatars.githubusercontent.com/u/16938914
+    keywords:
+    - lancache
+    - steam
+    - proxy
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: lancache
+    sources:
+    - https://github.com/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/lancache-dns
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/lancache-2.1.0/lancache-2.1.0.tgz
+    version: 2.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: fixed
@@ -1242,6 +1269,31 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/lancache-1.1.0.tgz
     version: 1.1.0
   mumble:
+  - apiVersion: v2
+    appVersion: 1.4.287
+    created: "2024-03-04T00:32:40.321066122Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: Mumble Server
+    digest: 6daafef347b7bb82f13ecb6b74cb8755afa62199978dfebb83b743339a152c71
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/mumble
+    icon: https://www.mumble.info/css/mumble.svg
+    keywords:
+    - mumble
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: mumble
+    sources:
+    - https://github.com/mumble-voip/mumble-docker
+    - https://hub.docker.com/r/mumblevoip/mumble-server
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/mumble-2.1.0/mumble-2.1.0.tgz
+    version: 2.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: fixed
@@ -1783,6 +1835,31 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/openhab-1.6.0.tgz
     version: 1.6.0
   sdtd:
+  - apiVersion: v2
+    appVersion: main
+    created: "2024-03-04T00:32:40.521595415Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: Dedicated server for 7 Days to Die
+    digest: 701f9ba783104e113291ac6655304f5c6cecafbea7aaaf211c96357beaee79e4
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/sdtd
+    icon: https://7daystodie.com/wp-content/uploads/2016/04/7dtd_site_icon.png
+    keywords:
+    - sdtd
+    - 7d2d
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sdtd
+    sources:
+    - https://github.com/reitermarkus/7d2d
+    - https://ghcr.io/reitermarkus/7d2d
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/sdtd-2.1.0/sdtd-2.1.0.tgz
+    version: 2.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: fixed
@@ -2065,6 +2142,30 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/sdtd-1.1.0.tgz
     version: 1.1.0
   sinusbot:
+  - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2024-03-04T00:32:40.625620446Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: TeamSpeak & Discord Bot
+    digest: 572f63a7e166c0fa5ab7e6c655073da7534ec1bb5f2c7fb1dc6c499cacb5550c
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/sinusbot
+    icon: https://pbs.twimg.com/profile_images/613423613711122432/fFJZiB_t_400x400.png
+    keywords:
+    - sinusbot
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sinusbot
+    sources:
+    - https://github.com/sinusbot/sinusbot-docker
+    - https://hub.docker.com/r/sinusbot/docker
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/sinusbot-2.1.0/sinusbot-2.1.0.tgz
+    version: 2.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: fixed
@@ -2312,6 +2413,31 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/sinusbot-1.1.0.tgz
     version: 1.1.0
   strongswan:
+  - apiVersion: v2
+    appVersion: 1.5.0
+    created: "2024-03-04T00:32:40.729068367Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: strongSwan – the OpenSource IPsec-based VPN Solution
+    digest: 5929ffc20d6e0af82e559b51b4a3b062cd575da18000ec376b0df1d1a8fecdcb
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/strongswan
+    icon: https://strongswan.org/images/strongswan_neu.png
+    keywords:
+    - strongswan
+    - vpn
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: strongswan
+    sources:
+    - https://github.com/reitermarkus/strongswan
+    - https://ghcr.io/reitermarkus/strongswan
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/strongswan-2.1.0/strongswan-2.1.0.tgz
+    version: 2.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: fixed
@@ -2628,6 +2754,30 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/strongswan-1.3.0.tgz
     version: 1.3.0
   teamspeak:
+  - apiVersion: v2
+    appVersion: 3.13.7
+    created: "2024-03-04T00:32:40.835801623Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: TeamSpeak Server
+    digest: 060030adba543d2334b8f93d2d8ba7f975487f471126beb989cd967038b37534
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/teamspeak
+    icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
+    keywords:
+    - teamspeak
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: teamspeak
+    sources:
+    - https://hub.docker.com/_/teamspeak
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/teamspeak-2.1.0/teamspeak-2.1.0.tgz
+    version: 2.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -2965,6 +3115,34 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/teamspeak-1.1.0.tgz
     version: 1.1.0
   traefik-forward-auth:
+  - apiVersion: v2
+    appVersion: 2.2.0
+    created: "2024-03-04T00:32:40.946552252Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: A minimal forward authentication service that provides OAuth/SSO
+      login and authentication for the traefik reverse proxy/load balancer
+    digest: a5890228817f019113c9715ca63ad1775007cac4e06423f6ea24690dcb627c97
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/traefik-forward-auth
+    keywords:
+    - traefik
+    - traefik-forward-auth
+    - oauth
+    - oauth2
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: traefik-forward-auth
+    sources:
+    - https://github.com/thomseddon/traefik-forward-auth
+    - https://hub.docker.com/r/thomseddon/traefik-forward-auth
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/traefik-forward-auth-3.1.0/traefik-forward-auth-3.1.0.tgz
+    version: 3.1.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: changed
@@ -3253,4 +3431,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2024-03-03T19:58:02.077103461Z"
+generated: "2024-03-04T00:32:40.946844266Z"
