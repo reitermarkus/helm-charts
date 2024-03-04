@@ -33,9 +33,9 @@ jobs:
         run: |
           {
             echo 'changed-charts<<JSON'
-            ct list-changed --target-branch "${TARGET_BRANCH}" | jq --raw-input '[inputs | { name: ltrimstr("charts/"), path: . }]'
+            ct list-changed --target-branch "${TARGET_BRANCH}" | jq --null-input --raw-input '[inputs | { name: ltrimstr("charts/"), path: . }]'
             echo 'JSON'
-          } >> "${GITHUB_OUTPUT}"
+          } | tee "${GITHUB_OUTPUT}"
         env:
           TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
 
