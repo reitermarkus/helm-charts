@@ -47,7 +47,7 @@ jobs:
         chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
       fail-fast: false
     runs-on: ubuntu-latest
-    if: fromJSON(needs.find-changed.outputs.changed-charts) != fromJSON('[]')
+    if: toJSON(fromJSON(needs.find-changed.outputs.changed-charts)) != '[]'
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -71,7 +71,7 @@ jobs:
     name: install (${{ matrix.chart.name }}) (k8s ${{ matrix.k8s_version }})
     needs: [find-changed]
     runs-on: ubuntu-latest
-    if: fromJSON(needs.find-changed.outputs.changed-charts) != fromJSON('[]')
+    if: toJSON(fromJSON(needs.find-changed.outputs.changed-charts)) != '[]'
     strategy:
       matrix:
         chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
@@ -107,7 +107,7 @@ jobs:
     name: unit-test (${{ matrix.chart.name }})
     needs: [find-changed]
     runs-on: ubuntu-latest
-    if: fromJSON(needs.find-changed.outputs.changed-charts) != fromJSON('[]')
+    if: toJSON(fromJSON(needs.find-changed.outputs.changed-charts)) != '[]'
     strategy:
       matrix:
         chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
@@ -132,4 +132,7 @@ jobs:
     if: always()
     steps:
       - name: Result
-        run: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+        run: |
+          echo '${{ toJSON(needs) }}'
+
+          ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
