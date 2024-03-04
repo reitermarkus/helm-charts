@@ -1,11 +1,10 @@
-name: test
+name: CI
 
 on:
   pull_request:
 
 jobs:
   pre-commit:
-    name: Run pre-commit checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,7 +16,6 @@ jobs:
           extra_args: --config .github/pre-commit/config.yml
 
   find-changed:
-    name: Find changed charts
     runs-on: ubuntu-latest
     outputs:
       changed-charts: ${{ steps.list-changed.outputs.changed-charts }}
@@ -52,9 +50,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-        with:
-          fetch-depth: 0
-          ref: ${{ inputs.checkoutCommit }}
 
       - name: Verify chart version
         uses: bjw-s/helm-charts-actions/verify-chart-version@main
@@ -86,9 +81,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-        with:
-          fetch-depth: 0
-          ref: ${{ inputs.checkoutCommit }}
 
       - name: Set up Helm
         uses: azure/setup-helm@v4.1.0
