@@ -67,7 +67,7 @@ jobs:
         run: ct lint --config ./ci/ct/ct.yml --charts '${{ matrix.chart }}'
 
   install:
-    name: install (${{ matrix.chart }})
+    name: install (${{ matrix.chart }}) (k8s ${{ matrix.k8s_version }})
     needs: [find-changed]
     runs-on: ubuntu-latest
     strategy:
