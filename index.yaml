@@ -1560,6 +1560,32 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/mumble-1.0.0.tgz
     version: 1.0.0
   openhab:
+  - apiVersion: v2
+    appVersion: 4.1.1
+    created: "2024-03-04T15:35:38.501209137Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 2.6.0
+    description: openHAB - a vendor and technology agnostic open source automation
+      software for your home
+    digest: 6da05ce03b847791add9f7f5e7a739dda6c7ffe3aa8850ffbc457406a8e4ff43
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/openhab
+    icon: https://www.openhab.org/openhab-logo-square.png
+    keywords:
+    - openhab
+    - home-automation
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: openhab
+    sources:
+    - https://www.openhab.org
+    - https://hub.docker.com/r/openhab/openhab
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/openhab-3.0.0/openhab-3.0.0.tgz
+    version: 3.0.0
   - annotations:
       artifacthub.io/changes: |-
         - kind: changes
@@ -3499,4 +3525,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2024-03-04T01:57:45.621428325Z"
+generated: "2024-03-04T15:35:38.501443803Z"
