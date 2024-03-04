@@ -1,0 +1,24 @@
+---
+apiVersion: v2
+appVersion: latest
+description: LanCache is a caching proxy server for game downloads
+name: lancache
+version: 2.1.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - lancache
+  - steam
+  - proxy
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/lancache
+icon: https://avatars.githubusercontent.com/u/16938914
+sources:
+  - https://github.com/lancachenet/monolithic
+  - https://hub.docker.com/r/lancachenet/monolithic
+  - https://hub.docker.com/r/lancachenet/lancache-dns
+maintainers:
+  - name: reitermarkus
+    email: me@reitermark.us
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts/
+    version: 2.6.0

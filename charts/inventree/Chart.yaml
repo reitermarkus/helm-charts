@@ -1,0 +1,31 @@
+---
+apiVersion: v2
+appVersion: 0.13.0
+description: InvenTree is a self-hosted inventory management system
+name: inventree
+version: 2.2.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - inventree
+  - inventory
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/inventree
+icon: https://inventree.org/assets/logo.png
+sources:
+  - https://inventree.org
+  - https://github.com/inventree/inventree
+  - https://hub.docker.com/r/inventree/inventree
+maintainers:
+  - name: reitermarkus
+    email: me@reitermark.us
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts/
+    version: 2.6.0
+  - name: postgresql
+    repository: oci://registry-1.docker.io/bitnamicharts
+    version: 13.4.6
+    condition: postgresql.enabled
+  - name: redis
+    repository: oci://registry-1.docker.io/bitnamicharts
+    version: 18.17.0
+    condition: redis.enabled

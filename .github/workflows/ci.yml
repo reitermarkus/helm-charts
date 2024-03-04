@@ -1,0 +1,136 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+      - name: Run against changes
+        uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
+        with:
+          extra_args: --config .github/pre-commit/config.yml
+
+  find-changed:
+    runs-on: ubuntu-latest
+    outputs:
+      changed-charts: ${{ steps.list-changed.outputs.changed-charts }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Run chart-testing (list-changed)
+        id: list-changed
+        run: |
+          {
+            echo 'changed-charts<<JSON'
+            ct list-changed --target-branch "${TARGET_BRANCH}" | jq --raw-input '[inputs | { name: ltrimstr("charts/"), path: . }]'
+            echo 'JSON'
+          } >> "${GITHUB_OUTPUT}"
+        env:
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+
+  lint:
+    name: lint (${{ matrix.chart.name }})
+    needs: [find-changed]
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+      - name: Verify chart version
+        uses: bjw-s/helm-charts-actions/verify-chart-version@main
+        id: verify-chart-version
+        with:
+          chart: ${{ matrix.chart.path }}
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.1.0
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Run chart-testing (lint)
+        run: ct lint --config ./ci/ct/ct.yml --charts '${{ matrix.chart.path }}'
+
+  install:
+    name: install (${{ matrix.chart.name }}) (k8s ${{ matrix.k8s_version }})
+    needs: [find-changed]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+        k8s_version:
+          - v1.27.10
+          - v1.28.5
+          - v1.29.1
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.1.0
+
+      - uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5
+        with:
+          python-version: '3.10'
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.9.0
+        with:
+          kubectl_version: ${{ matrix.k8s_version }}
+
+      - name: Run chart-testing (install)
+        if: ${{ !contains(fromJson('["charts/sdtd"]'), matrix.chart.path) }} # Too big for CI.
+        run: ct install --config ./ci/ct/ct.yml --charts '${{ matrix.chart.path }}'
+
+  unit-test:
+    name: unit-test (${{ matrix.chart.name }})
+    needs: [find-changed]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.checkoutCommit }}
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.1.0
+
+      - name: Run tests
+        run: |
+          helm plugin install https://github.com/vbehar/helm3-unittest --version v1.0.16
+          helm dep update '${{ matrix.chart.path }}'
+          helm unittest -f "tests/**/*_test.yaml" '${{ matrix.chart.path }}'
+
+  conclusion:
+    name: conclusion
+    needs: [pre-commit, find-changed, lint, install, unit-test]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Result
+        run: |
+          ${{ needs.pre-commit.result == 'success' && (fromJSON(needs.find-changed.outputs.changed-charts) == fromJSON('[]') || (needs.lint.result == 'success' && needs.install.result == 'success' && needs.unit-test.result == 'success')) }}
