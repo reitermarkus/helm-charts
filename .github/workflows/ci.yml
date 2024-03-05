@@ -143,10 +143,18 @@ jobs:
         chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
       fail-fast: false
     steps:
+      - name: Generate GitHub API token
+        id: generate-token
+        uses: getsentry/action-github-app-token@d4b5da6c5e37703f8c3b3e43abb5705b46e159cc # v3
+        with:
+          app_id: ${{ secrets.GH_APP_ID }}
+          private_key: ${{ secrets.GH_APP_KEY }}
+
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           fetch-depth: 0
+          token: ${{ steps.generate-token.outputs.token }}
 
       - name: Bump chart version
         id: bump-chart-version
@@ -155,25 +163,11 @@ jobs:
           TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
           CHART: ${{ matrix.chart.path }}
 
-      - name: Generate GitHub API token
+      - name: Update pull request
         if: steps.bump-chart-version.outputs.new-version
-        id: generate-token
-        uses: getsentry/action-github-app-token@d4b5da6c5e37703f8c3b3e43abb5705b46e159cc # v3
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          app_id: ${{ secrets.GH_APP_ID }}
-          private_key: ${{ secrets.GH_APP_KEY }}
-
-      - name: Create pull request
-        if: steps.bump-chart-version.outputs.new-version
-        id: create-pull-request
-        uses: peter-evans/create-pull-request@a4f52f8033a6168103c2538976c07b467e8163bc # v6
-        with:
-          token: ${{ steps.generate-token.outputs.token }}
-          title: ${{ github.event.pull_request.title }}
-          body: ${{ github.event.pull_request.body }}
-          commit-message: Bump ${{ matrix.chart.name }} chart to version ${{ steps.bump-chart-version.outputs.new-version }}.
-          branch: ${{ github.event.pull_request.head.ref }}
-          base: ${{ github.event.pull_request.base.ref }}
+          commit_message: Bump ${{ matrix.chart.name }} chart to version ${{ steps.bump-chart-version.outputs.new-version }}.
 
   conclusion:
     name: conclusion
