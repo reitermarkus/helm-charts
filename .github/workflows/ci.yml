@@ -31,6 +31,8 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
+          set -euo pipefail
+
           {
             echo 'changed-charts<<JSON'
             ct list-changed --target-branch "${TARGET_BRANCH}" | jq --null-input --raw-input '[inputs | { name: ltrimstr("charts/"), path: . }]'
@@ -124,6 +126,54 @@ jobs:
           helm plugin install https://github.com/vbehar/helm3-unittest --version v1.0.16
           helm dep update '${{ matrix.chart.path }}'
           helm unittest -f "tests/**/*_test.yaml" '${{ matrix.chart.path }}'
+
+  bump-chart-version:
+    name: bump-chart-version (${{ matrix.chart.name }})
+    needs: [find-changed]
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.event.pull_request.base.ref }}-bump-chart-version
+    if: >
+      toJSON(fromJSON(needs.find-changed.outputs.changed-charts)) != '[]' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    strategy:
+      matrix:
+        chart: ${{ fromJSON(needs.find-changed.outputs.changed-charts) }}
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump chart version
+        id: bump-chart-version
+        run: ./.github/scripts/bump-chart-version.rb "origin/${TARGET_BRANCH}" "${CHART}"
+        env:
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+          CHART: ${{ matrix.chart.path }}
+
+      - name: Generate GitHub API token
+        if: steps.bump-chart-version.outputs.new-version
+        id: generate-token
+        uses: getsentry/action-github-app-token@d4b5da6c5e37703f8c3b3e43abb5705b46e159cc # v3
+        with:
+          app_id: ${{ secrets.GH_APP_ID }}
+          private_key: ${{ secrets.GH_APP_KEY }}
+
+      - name: Create pull request
+        if: steps.bump-chart-version.outputs.new-version
+        id: create-pull-request
+        uses: peter-evans/create-pull-request@a4f52f8033a6168103c2538976c07b467e8163bc # v6
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          title: ${{ github.event.pull_request.title }}
+          body: ${{ github.event.pull_request.body }}
+          commit-message: Bump ${{ matrix.chart.name }} chart to version ${{ steps.bump-chart-version.outputs.new-version }}.
+          branch: ${{ github.event.pull_request.head.ref }}
+          base: ${{ github.event.pull_request.base.ref }}
 
   conclusion:
     name: conclusion
