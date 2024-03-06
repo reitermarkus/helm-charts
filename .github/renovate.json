@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>reitermarkus/.github"],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Update Helm chart app versions",
       "fileMatch": ["(^|/)Chart\\.yaml$"],
       "matchStringsStrategy": "combination",
