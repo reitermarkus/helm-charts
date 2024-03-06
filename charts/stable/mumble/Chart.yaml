@@ -12,6 +12,7 @@ home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/mumble
 icon: https://www.mumble.info/css/mumble.svg
 sources:
   - https://github.com/mumble-voip/mumble-docker
+  - https://hub.docker.com/r/mumblevoip/mumble-server
 maintainers:
   - name: reitermarkus
     email: me@reitermark.us

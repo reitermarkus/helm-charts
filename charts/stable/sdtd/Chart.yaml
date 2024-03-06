@@ -12,6 +12,7 @@ home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/sdtd
 icon: https://7daystodie.com/wp-content/uploads/2016/04/7dtd_site_icon.png
 sources:
   - https://github.com/reitermarkus/7d2d
+  - https://ghcr.io/reitermarkus/7d2d
 maintainers:
   - name: reitermarkus
     email: me@reitermark.us

@@ -18,7 +18,6 @@ controllers:
           tag:
           # -- image pull policy
           pullPolicy: IfNotPresent
-
         # -- environment variables. See more environment variables in the [teamspeak image documentation](https://hub.docker.com/_/teamspeak).
         # @default -- See below
         env: {}

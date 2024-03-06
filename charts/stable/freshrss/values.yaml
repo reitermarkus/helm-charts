@@ -12,10 +12,10 @@ controllers:
         image:
           # -- image repository
           repository: linuxserver/freshrss
+          # @default -- chart.appVersion
+          tag:
           # -- image pull policy
           pullPolicy: IfNotPresent
-          # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
         # -- environment variables. See more environment variables in the [freshrss documentation](https://github.com/linuxserver/docker-freshrss#parameters).
         # @default -- See below
         env:

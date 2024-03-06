@@ -12,10 +12,11 @@ controllers:
         image:
           # -- image repository
           repository: inventree/inventree
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
           # -- image pull policy
           pullPolicy: IfNotPresent
-          # -- image tag
-          tag: 0.13.0
         command:
           - invoke
           - migrate
@@ -25,10 +26,10 @@ controllers:
         image:
           # -- image repository
           repository: nginx
-          # -- image pull policy
-          pullPolicy: IfNotPresent
           # -- image tag
           tag: 1.25.4
+          # -- image pull policy
+          pullPolicy: IfNotPresent
         ports:
           - name: http
             containerPort: 80
@@ -36,10 +37,11 @@ controllers:
         image:
           # -- image repository
           repository: inventree/inventree
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
           # -- image pull policy
           pullPolicy: IfNotPresent
-          # -- image tag
-          tag: 0.13.0
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
         # @default -- See below
         env:
@@ -100,10 +102,11 @@ controllers:
         image:
           # -- image repository
           repository: inventree/inventree
+          # -- image tag
+          # @default -- chart.appVersion
+          tag:
           # -- image pull policy
           pullPolicy: IfNotPresent
-          # -- image tag
-          tag: 0.13.0
         command:
           - invoke
           - worker

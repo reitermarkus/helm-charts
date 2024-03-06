@@ -15,7 +15,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/reitermarkus/strongswan
           # -- image tag
-          tag: v1.5.0
+          tag: "v{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [strongswan documentation](https://github.com/reitermarkus/strongswan).

@@ -11,6 +11,7 @@ home: https://github.com/reitermarkus/helm-charts/tree/main/charts/stable/sinusb
 icon: https://pbs.twimg.com/profile_images/613423613711122432/fFJZiB_t_400x400.png
 sources:
   - https://github.com/sinusbot/sinusbot-docker
+  - https://hub.docker.com/r/sinusbot/docker
 maintainers:
   - name: reitermarkus
     email: me@reitermark.us

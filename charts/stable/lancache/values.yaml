@@ -18,7 +18,8 @@ controllers:
           # -- image repository
           repository: lancachenet/monolithic
           # -- image tag
-          tag: latest
+          # @default -- chart.appVersion
+          tag:
           # -- image pull policy
           pullPolicy: Always
         # -- environment variables. See more environment variables in the [LanCache Monolithic documentation](https://lancache.net/docs/containers/monolithic/variables/).
@@ -71,7 +72,8 @@ controllers:
           # -- image repository
           repository: lancachenet/lancache-dns
           # -- image tag
-          tag: latest
+          # @default -- chart.appVersion
+          tag:
           # -- image pull policy
           pullPolicy: Always
         env: {}
