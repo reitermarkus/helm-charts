@@ -13,6 +13,7 @@ icon: https://inventree.org/assets/logo.png
 sources:
   - https://inventree.org
   - https://github.com/inventree/inventree
+  - https://hub.docker.com/r/inventree/inventree
 maintainers:
   - name: reitermarkus
     email: me@reitermark.us
