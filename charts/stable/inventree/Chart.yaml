@@ -1,5 +1,6 @@
 ---
 apiVersion: v2
+# renovate: image=inventree/inventree
 appVersion: 0.13.0
 description: InvenTree is a self-hosted inventory management system
 name: inventree

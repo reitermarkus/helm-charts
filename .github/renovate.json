@@ -15,6 +15,14 @@
         "^appVersion:\\s+[\"']?(?<currentValue>[^\\s\"']+)"
       ],
       "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["(^|/)Chart\\.yaml$"],
+      "matchStrings": [
+        "#\\s?renovate: image=(?<depName>.*?)\\s?appVersion:\\s?\\\"?(?<currentValue>[\\w+\\.\\-]*)"
+      ],
+      "datasourceTemplate": "docker"
     }
   ]
 }
