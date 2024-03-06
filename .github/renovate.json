@@ -1,4 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>reitermarkus/.github"]
+  "extends": ["github>reitermarkus/.github"],
+  "regexManagers": [
+    {
+      "description": "Update Helm chart app versions",
+      "fileMatch": ["(^|/)Chart\\.yaml$"],
+      "matchStringsStrategy": "combination",
+      "matchStrings": [
+        "#\\s*renovate:\\s*image=(?<depName>[^\\s]+)",
+        "https://hub.docker.com/r/(?<depName>[^\\/]+/[^\\/]+)",
+        "https://hub.docker.com/_/(?<depName>[^\\/]+)",
+        "^appVersion:\\s+[\\\"']?(?<currentValue>[^\\s\\\"']+)"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
 }
