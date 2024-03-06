@@ -8,9 +8,9 @@
       "matchStringsStrategy": "combination",
       "matchStrings": [
         "#\\s*renovate:\\s*image=(?<depName>[^\\s]+)",
-        "https://hub\\.docker\\.com/r/(?<depName>[^\\/]+/[^\\/]+)",
-        "https://hub\\.docker\\.com/_/(?<depName>[^\\/]+)",
-        "https://(?<depName>ghcr\\.io/[^\\/]+/[^\\/]+)",
+        "https:\\/\\/hub\\.docker\\.com\\/r\\/(?<depName>[^\\/]+\\/[^\\/]+)",
+        "https:\\/\\/hub\\.docker\\.com\\/_\\/(?<depName>[^\\/]+)",
+        "https:\\/\\/(?<depName>ghcr\\.io\\/[^\\/]+\\/[^\\/]+)",
         "^appVersion:\\s+[\\\"']?(?<currentValue>[^\\s\\\"']+)"
       ],
       "datasourceTemplate": "docker"
