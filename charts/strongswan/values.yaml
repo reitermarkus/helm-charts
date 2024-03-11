@@ -6,11 +6,11 @@
 #
 
 controllers:
-  main:
+  strongswan:
     statefulset:
       podManagementPolicy: Parallel
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: ghcr.io/reitermarkus/strongswan
@@ -71,7 +71,8 @@ controllers:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  strongswan:
+    controller: strongswan
     sessionAffinity: ClientIP
     ports:
       http:

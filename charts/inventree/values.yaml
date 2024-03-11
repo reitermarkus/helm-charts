@@ -6,21 +6,21 @@
 #
 
 controllers:
-  main:
+  inventree:
     initContainers:
       migrate:
         image:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
           - invoke
           - migrate
     containers:
-      main:
+      proxy:
         image:
           # -- image repository
           repository: nginx
@@ -31,12 +31,19 @@ controllers:
         ports:
           - name: http
             containerPort: 80
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
       server:
         image:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
@@ -100,7 +107,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
@@ -139,17 +146,12 @@ redis:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  web:
+    controller: inventree
     ports:
       http:
         port: 80
         targetPort: http
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
 
 configMaps:
   nginx-config:
@@ -222,18 +224,18 @@ persistence:
     type: configMap
     name: '{{- (include "bjw-s.common.lib.chart.names.fullname" $) -}}-nginx-config'
     advancedMounts:
-      main:
-        main:
+      inventree:
+        proxy:
           - path: /etc/nginx/templates/default.conf.template
             readOnly: true
             subPath: default.conf.template
   data:
     enabled: false
     advancedMounts:
-      main:
+      inventree:
         migrate:
           - path: /home/inventree/data
-        main:
+        proxy:
           - path: /var/www
         server:
           - path: /home/inventree/data

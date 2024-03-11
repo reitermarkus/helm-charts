@@ -6,9 +6,9 @@
 #
 
 controllers:
-  main:
+  mumble:
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: mumblevoip/mumble-server
@@ -37,6 +37,13 @@ controllers:
           - name: voice
             containerPort: 64738
             protocol: UDP
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
     pod:
       # -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
       nodeSelector:
@@ -45,7 +52,8 @@ controllers:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  mumble:
+    controller: mumble
     ports:
       http:
         enabled: false

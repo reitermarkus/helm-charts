@@ -6,9 +6,9 @@
 #
 
 controllers:
-  main:
+  traefik-forward-auth:
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: thomseddon/traefik-forward-auth
@@ -58,11 +58,19 @@ controllers:
         ports:
           - name: http
             containerPort: 4181
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  web:
+    controller: traefik-forward-auth
     ports:
       http:
         port: 4181

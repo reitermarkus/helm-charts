@@ -6,9 +6,9 @@
 #
 
 controllers:
-  main:
+  openhab:
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: openhab/openhab
@@ -30,11 +30,19 @@ controllers:
             containerPort: 8080
           - name: https
             containerPort: 8443
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  web:
+    controller: openhab
     ports:
       http:
         enabled: true

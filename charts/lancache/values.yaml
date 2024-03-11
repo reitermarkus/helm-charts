@@ -11,9 +11,9 @@ defaultPodOptions:
     kubernetes.io/arch: amd64
 
 controllers:
-  main:
+  lancache:
     containers:
-      main:
+      monolithic:
         image:
           # -- image repository
           repository: lancachenet/monolithic
@@ -61,7 +61,7 @@ controllers:
         nameservers:
           - 127.0.0.1
 
-  dns:
+  lancache-dns:
     enabled: true
     replicas: 1
     containers:
@@ -133,7 +133,8 @@ controllers:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  web:
+    controller: lancache
     ports:
       http:
         port: 80
@@ -143,7 +144,7 @@ service:
         port: 443
         targetPort: https
   dns:
-    controller: dns
+    controller: lancache-dns
     ports:
       dns:
         enabled: true

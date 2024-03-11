@@ -31,7 +31,7 @@ global:
 {{ end }}
 
 controllers:
-  main:
+  inventree:
     initContainers:
       migrate:
         env:

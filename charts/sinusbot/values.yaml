@@ -6,9 +6,9 @@
 #
 
 controllers:
-  main:
+  sinusbot:
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: sinusbot/docker
@@ -27,6 +27,13 @@ controllers:
         ports:
           - name: http
             containerPort: 8087
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
     pod:
       # -- The official SinusBot image is only available for x86_64.
       nodeSelector:
@@ -35,7 +42,8 @@ controllers:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  web:
+    controller: sinusbot
     ports:
       http:
         port: 8087

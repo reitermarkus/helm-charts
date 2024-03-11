@@ -6,9 +6,9 @@
 #
 
 controllers:
-  main:
+  sdtd:
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: ghcr.io/reitermarkus/7d2d
@@ -32,6 +32,18 @@ controllers:
           - name: steam
             containerPort: 26901
             protocol: UDP
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              # Initial installation and verifying updates can take a while.
+              failureThreshold: 120
+              initialDelaySeconds: 30
+
     pod:
       # -- Configure the Security Context for the Pod
       podSecurityContext: {}
@@ -43,7 +55,8 @@ controllers:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  sdtd:
+    controller: sdtd
     ports:
       http:
         enabled: false
@@ -63,13 +76,6 @@ service:
         port: 26901
         targetPort: steam
         protocol: UDP
-
-probes:
-  startup:
-    spec:
-      # Initial installation and verifying updates can take a while.
-      failureThreshold: 120
-      initialDelaySeconds: 30
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml

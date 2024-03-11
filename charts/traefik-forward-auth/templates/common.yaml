@@ -20,9 +20,9 @@ global:
 
 {{- if not .Values.controllers.main.containers.main.env.SECRET }}
 controllers:
-  main:
+  traefik-forward-auth:
     containers:
-      main:
+      server:
         env:
           SECRET:
             valueFrom:
