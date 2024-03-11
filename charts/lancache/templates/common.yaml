@@ -9,7 +9,7 @@ controllers:
       dns:
         env:
           {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
-          {{- $dnsEnv := .Values.controllers.lancache-dns.containers.dns.env -}}
+          {{- $dnsEnv := (index .Values.controllers "lancache-dns").containers.dns.env -}}
           {{- if $monolithicEnv.TZ }}
           TZ: {{ $monolithicEnv.TZ | quote }}
           {{- end }}
