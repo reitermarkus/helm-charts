@@ -1,6 +1,6 @@
 controllers:
-  main:
+  teamspeak:
     containers:
-      main:
+      server:
         env:
           TS3SERVER_LICENSE: accept
