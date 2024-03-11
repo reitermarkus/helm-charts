@@ -8,29 +8,29 @@ controllers:
     containers:
       dns:
         env:
-          {{- $mainEnv := .Values.controllers.main.containers.main.env -}}
-          {{- $dnsEnv := .Values.controllers.dns.containers.dns.env -}}
-          {{- if $mainEnv.TZ }}
-          TZ: {{ $mainEnv.TZ | quote }}
+          {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
+          {{- $dnsEnv := .Values.controllers.lancache-dns.containers.dns.env -}}
+          {{- if $monolithicEnv.TZ }}
+          TZ: {{ $monolithicEnv.TZ | quote }}
           {{- end }}
-          {{- if or (not $mainEnv.CACHE_MODE) (eq $mainEnv.CACHE_MODE "generic") }}
+          {{- if or (not $monolithicEnv.CACHE_MODE) (eq $monolithicEnv.CACHE_MODE "generic") }}
           USE_GENERIC_CACHE: 'true'
           {{- end }}
           {{- if not $dnsEnv.LANCACHE_IP -}}
-          {{- if .Values.service.main.loadBalancerIP -}}
-          LANCACHE_IP: {{ .Values.service.main.loadBalancerIP | quote }}
+          {{- if .Values.service.web.loadBalancerIP -}}
+          LANCACHE_IP: {{ .Values.service.web.loadBalancerIP | quote }}
           {{- else }}
           LANCACHE_IP: {{ printf "$(%v_SERVICE_HOST)" (include "bjw-s.common.lib.chart.names.fullname" . | upper | replace "-" "_" ) | quote }}
           {{- end }}
           {{- end }}
-          {{- if $mainEnv.UPSTREAM_DNS }}
-          UPSTREAM_DNS: {{ $mainEnv.UPSTREAM_DNS | quote }}
+          {{- if $monolithicEnv.UPSTREAM_DNS }}
+          UPSTREAM_DNS: {{ $monolithicEnv.UPSTREAM_DNS | quote }}
           {{- end }}
-          {{- if $mainEnv.CACHE_DOMAINS_REPO }}
-          CACHE_DOMAINS_REPO: {{ $mainEnv.CACHE_DOMAINS_REPO | quote }}
+          {{- if $monolithicEnv.CACHE_DOMAINS_REPO }}
+          CACHE_DOMAINS_REPO: {{ $monolithicEnv.CACHE_DOMAINS_REPO | quote }}
           {{- end }}
-          {{- if $mainEnv.CACHE_DOMAINS_BRANCH }}
-          CACHE_DOMAINS_BRANCH: {{ $mainEnv.CACHE_DOMAINS_BRANCH | quote }}
+          {{- if $monolithicEnv.CACHE_DOMAINS_BRANCH }}
+          CACHE_DOMAINS_BRANCH: {{ $monolithicEnv.CACHE_DOMAINS_BRANCH | quote }}
           {{- end }}
 
 service:

@@ -18,11 +18,11 @@ global:
   nameOverride: "{{ .Release.Name }}"
 {{- end }}
 
-{{- $mainEnv := .Values.controllers.main.containers.main.env }}
+{{- $mainEnv := .Values.controllers.teamspeak.containers.server.env }}
 controllers:
-  main:
+  teamspeak:
     containers:
-      main:
+      server:
         env:
           {{- if not $mainEnv.TS3SERVER_SERVERADMIN_PASSWORD }}
           TS3SERVER_SERVERADMIN_PASSWORD:

@@ -18,7 +18,7 @@ global:
   nameOverride: "{{ .Release.Name }}"
 {{ end }}
 
-{{- if not .Values.controllers.main.containers.main.env.MUMBLE_SUPERUSER_PASSWORD }}
+{{- if not .Values.controllers.mumble.containers.server.env.MUMBLE_SUPERUSER_PASSWORD }}
 controllers:
   mumble:
     containers:
