@@ -32,6 +32,10 @@ controllers:
           {{- if $monolithicEnv.CACHE_DOMAINS_BRANCH }}
           CACHE_DOMAINS_BRANCH: {{ $monolithicEnv.CACHE_DOMAINS_BRANCH | quote }}
           {{- end }}
+    pod:
+      {{- if and (not $dnsEnv.LANCACHE_IP) (not .Values.service.web.loadBalancerIP) }}
+      enableServiceLinks: true
+      {{- end }}
 
 service:
   dns:
