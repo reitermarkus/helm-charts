@@ -136,6 +136,7 @@ jobs:
     concurrency:
       group: ${{ github.event.pull_request.base.ref }}-bump-chart-version
     if: >
+      always() &&
       toJSON(fromJSON(needs.find-changed.outputs.changed-charts)) != '[]' &&
       github.event.pull_request.head.repo.full_name == github.repository
     strategy:
