@@ -6,9 +6,9 @@
 #
 
 controllers:
-  main:
+  freshrss:
     containers:
-      main:
+      server:
         image:
           # -- image repository
           repository: linuxserver/freshrss
@@ -28,21 +28,23 @@ controllers:
         ports:
           - name: http
             containerPort: 80
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  web:
+    controller: freshrss
     ports:
       http:
         port: 80
         targetPort: http
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml

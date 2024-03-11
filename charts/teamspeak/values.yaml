@@ -6,10 +6,9 @@
 #
 
 controllers:
-  main:
+  teamspeak:
     containers:
-      main:
-
+      server:
         image:
           # -- image repository
           repository: teamspeak
@@ -88,6 +87,13 @@ controllers:
         ports:
           - name: metrics
             containerPort: 9189
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
     pod:
       # -- The TeamSpeak server binary is only available for x86_64.
       nodeSelector:
@@ -96,7 +102,8 @@ controllers:
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
-  main:
+  teamspeak:
+    controller: teamspeak
     ports:
       http:
         enabled: false
@@ -116,7 +123,7 @@ service:
         targetPort: voice
         protocol: UDP
   metrics:
-    controller: main
+    controller: teamspeak
     ports:
       metrics:
         enabled: true

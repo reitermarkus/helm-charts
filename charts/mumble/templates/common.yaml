@@ -20,9 +20,9 @@ global:
 
 {{- if not .Values.controllers.main.containers.main.env.MUMBLE_SUPERUSER_PASSWORD }}
 controllers:
-  main:
+  mumble:
     containers:
-      main:
+      server:
         env:
           MUMBLE_SUPERUSER_PASSWORD:
             valueFrom:
