@@ -2,14 +2,15 @@
 {{- include "bjw-s.common.loader.init" . }}
 
 {{- define "lancache.harcodedValues" -}}
-{{ if .Values.controllers.dns.enabled }}
+{{- $dnsController := (index .Values.controllers "lancache-dns") -}}
+{{ if $dnsController.enabled }}
 controllers:
   lancache-dns:
     containers:
       dns:
         env:
           {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
-          {{- $dnsEnv := (index .Values.controllers "lancache-dns").containers.dns.env -}}
+          {{- $dnsEnv := $dnsController.containers.dns.env -}}
           {{- if $monolithicEnv.TZ }}
           TZ: {{ $monolithicEnv.TZ | quote }}
           {{- end }}
