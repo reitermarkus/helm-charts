@@ -1,7 +1,7 @@
 controllers:
-  main:
+  traefik-forward-auth:
     containers:
-      main:
+      server:
         env:
           PROVIDERS_GOOGLE_CLIENT_ID: fakeclientid
           PROVIDERS_GOOGLE_CLIENT_SECRET: fakeclientsecret

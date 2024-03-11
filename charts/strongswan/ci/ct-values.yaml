@@ -1,7 +1,7 @@
 controllers:
-  main:
+  strongswan:
     containers:
-      main:
+      server:
         env:
           VPN_NAME: Example VPN
           WIFI_SSID: Example WiFi
