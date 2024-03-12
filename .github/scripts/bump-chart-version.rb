@@ -37,6 +37,8 @@ def split_version(version)
 end
 
 def change_level(version_before, version_after)
+  return if version_before == version_after
+
   major_before, minor_before, patch_before = split_version(version_before)
   major_after, minor_after, patch_after = split_version(version_after)
 
@@ -52,7 +54,7 @@ def dependency_change_levels(before, after)
 
   dependency_names = (dependencies_before.keys + dependencies_after.keys).uniq
 
-  dependency_names.map do |dep_name|
+  dependency_names.map { |dep_name|
     dep_before = dependencies_before[dep_name]
     dep_after = dependencies_after[dep_name]
 
@@ -62,15 +64,14 @@ def dependency_change_levels(before, after)
       # Dependency added/removed.
       :minor
     end
-  end
+  }.compact
 end
 
 app_version_before = before.fetch('appVersion')
 app_version_after = after.fetch('appVersion')
 
-
 change_level = [
-  change_level(app_version_before, app_version_after),
+  *change_level(app_version_before, app_version_after),
   *dependency_change_levels(before, after)
 ].max_by { { major: 3, minor: 2, patch: 1 }.fetch(_1) }
 
@@ -85,7 +86,7 @@ def increment_version(version, change_level)
   when :minor
     minor += 1
     patch = 0
-  when :patch
+  when :patch, nil
     patch += 1
   end
 
