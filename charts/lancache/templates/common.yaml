@@ -3,6 +3,8 @@
 
 {{- define "lancache.harcodedValues" -}}
 {{- $dnsController := (index .Values.controllers "lancache-dns") -}}
+{{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
+{{- $dnsEnv := $dnsController.containers.dns.env -}}
 {{ if $dnsController.enabled }}
 controllers:
   lancache:
@@ -14,8 +16,6 @@ controllers:
     containers:
       dns:
         env:
-          {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
-          {{- $dnsEnv := $dnsController.containers.dns.env -}}
           {{- if $monolithicEnv.TZ }}
           TZ: {{ $monolithicEnv.TZ | quote }}
           {{- end }}
