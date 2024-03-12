@@ -26,7 +26,7 @@ controllers:
           {{- if .Values.service.web.loadBalancerIP -}}
           LANCACHE_IP: {{ .Values.service.web.loadBalancerIP | quote }}
           {{- else }}
-          LANCACHE_IP: {{ printf "$(%v_SERVICE_HOST)" (include "bjw-s.common.lib.chart.names.fullname" . | upper | replace "-" "_" ) | quote }}
+          LANCACHE_IP: {{ printf "$(%v_WEB_SERVICE_HOST)" (include "bjw-s.common.lib.chart.names.fullname" . | upper | replace "-" "_" ) | quote }}
           {{- end }}
           {{- end }}
           {{- if $monolithicEnv.UPSTREAM_DNS }}
