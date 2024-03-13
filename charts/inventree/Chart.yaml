@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 0.14.2
 description: InvenTree is a self-hosted inventory management system
 name: inventree
-version: 2.7.3
+version: 2.7.4
 kubeVersion: ">=1.16.0-0"
 keywords:
   - inventree
