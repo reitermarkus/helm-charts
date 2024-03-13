@@ -103,6 +103,7 @@ controllers:
 # @default -- See values.yaml
 service:
   teamspeak:
+    primary: true
     controller: teamspeak
     ports:
       http:
