@@ -14,7 +14,7 @@
         "https://(?<depName>ghcr\\.io/[^\\s/]+/[^\\s/]+)",
         "appVersion:\\s+[\"']?(?<currentValue>[^\\s\"']+)"
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
     },
     {
       customType: "regex",
@@ -23,8 +23,8 @@
       matchStrings: [
         "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/.*",
       ],
-      datasourceTemplate: "helmv3",
+      datasourceTemplate: "helm",
       versioningTemplate: "semver",
     },
-  ]
+  ],
 }
