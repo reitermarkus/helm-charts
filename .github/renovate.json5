@@ -19,7 +19,7 @@
     {
       customType: "regex",
       description: "Update common chart schema",
-      fileMatch: ["\\.ya?ml$"],
+      fileMatch: ["\\.schema\\.json$"],
       matchStrings: [
         "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/",
       ],
