@@ -21,7 +21,7 @@
       description: "Update common chart schema",
       fileMatch: ["\\.schema\\.json$"],
       matchStrings: [
-        "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/",
+        "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/.*",
       ],
       datasourceTemplate: "helmv3",
       versioningTemplate: "semver",
