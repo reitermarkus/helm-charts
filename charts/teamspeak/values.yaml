@@ -109,9 +109,6 @@ service:
     primary: true
     controller: teamspeak
     ports:
-      http:
-        enabled: false
-        primary: false
       serverquery:
         enabled: true
         port: 10011
@@ -139,6 +136,7 @@ service:
 persistence:
   data:
     enabled: false
+    type: emptyDir
     globalMounts:
       - path: /var/ts3server
 
