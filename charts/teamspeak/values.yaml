@@ -93,16 +93,16 @@ controllers:
         probes:
           liveness:
             enabled: true
-            tcpSocket:
-              port: 9189
+            type: HTTP
+            port: metrics
           readiness:
             enabled: true
-            tcpSocket:
-              port: 9189
+            type: HTTP
+            port: metrics
           startup:
             enabled: true
-            tcpSocket:
-              port: 9189
+            type: HTTP
+            port: metrics
     pod:
       # -- The TeamSpeak server binary is only available for x86_64.
       nodeSelector:
