@@ -30,10 +30,19 @@ controllers:
         probes:
           liveness:
             enabled: true
+            type: HTTP
+            path: /
+            port: http
           readiness:
             enabled: true
+            type: HTTP
+            path: /
+            port: http
           startup:
             enabled: true
+            type: HTTP
+            path: /
+            port: http
     pod:
       # -- The official SinusBot image is only available for x86_64.
       nodeSelector:
@@ -43,9 +52,11 @@ controllers:
 # @default -- See values.yaml
 service:
   web:
+    primary: true
     controller: sinusbot
     ports:
       http:
+        primary: true
         port: 8087
         targetPort: http
 

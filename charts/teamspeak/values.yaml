@@ -116,24 +116,20 @@ service:
     controller: teamspeak
     ports:
       serverquery:
-        enabled: true
         port: 10011
         targetPort: serverquery
       filetransfer:
-        enabled: true
         port: 30033
         targetPort: filetransfer
       voice:
-        enabled: true
-        primary: true
         port: 9987
         targetPort: voice
         protocol: UDP
   metrics:
+    enabled: false
     controller: teamspeak
     ports:
       metrics:
-        enabled: true
         port: 9189
         targetPort: metrics
 

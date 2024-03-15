@@ -35,10 +35,13 @@ controllers:
         probes:
           liveness:
             enabled: true
+            port: serverquery
           readiness:
             enabled: true
+            port: serverquery
           startup:
             enabled: true
+            port: serverquery
             spec:
               # Initial installation and verifying updates can take a while.
               failureThreshold: 120
@@ -56,23 +59,18 @@ controllers:
 # @default -- See values.yaml
 service:
   sdtd:
+    primary: true
     controller: sdtd
     ports:
-      http:
-        enabled: false
-        primary: false
       serverquery:
         primary: true
-        enabled: true
         port: 26900
         targetPort: serverquery
       serverlist:
-        enabled: true
         port: 26900
         targetPort: serverlist
         protocol: UDP
       steam:
-        enabled: true
         port: 26901
         targetPort: steam
         protocol: UDP
