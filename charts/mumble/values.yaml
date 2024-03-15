@@ -73,4 +73,4 @@ service:
 # @default -- See values.yaml
 persistence:
   data:
-    enabled: false
+    type: emptyDir

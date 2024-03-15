@@ -50,4 +50,4 @@ service:
 # @default -- See values.yaml
 persistence:
   config:
-    enabled: false
+    type: emptyDir

@@ -58,7 +58,7 @@ service:
 # @default -- See values.yaml
 persistence:
   data:
-    enabled: false
+    type: emptyDir
     globalMounts:
       - path: /openhab/addons
         subPath: addons
