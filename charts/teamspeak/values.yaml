@@ -94,14 +94,17 @@ controllers:
           liveness:
             enabled: true
             type: HTTP
+            path: /metrics
             port: metrics
           readiness:
             enabled: true
             type: HTTP
+            path: /metrics
             port: metrics
           startup:
             enabled: true
             type: HTTP
+            path: /metrics
             port: metrics
     pod:
       # -- The TeamSpeak server binary is only available for x86_64.
