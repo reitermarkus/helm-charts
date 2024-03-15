@@ -11,7 +11,7 @@ global:
 {{- $dnsController := (index .Values.controllers "lancache-dns") -}}
 {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
 {{- $dnsEnv := $dnsController.containers.dns.env -}}
-{{ if ($dnsController.enabled | default true) }}
+{{ if ne $dnsController.enabled false }}
 controllers:
   lancache:
     pod:
@@ -56,7 +56,7 @@ controllers:
 
 service:
   dns:
-    enabled: {{ .Values.service.dns.enabled | default true }}
+    enabled: {{ and (ne $dnsController.enabled false) (ne .Values.service.dns.enabled false) }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "lancache.harcodedValues" . | fromYaml) -}}
 

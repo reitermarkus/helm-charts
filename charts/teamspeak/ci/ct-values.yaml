@@ -4,3 +4,10 @@ controllers:
       server:
         env:
           TS3SERVER_LICENSE: accept
+
+metrics:
+  enabled: true
+  prometheusRule:
+    enabled: false
+  serviceMonitor:
+    enabled: false
