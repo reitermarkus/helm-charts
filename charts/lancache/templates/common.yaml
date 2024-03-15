@@ -2,6 +2,12 @@
 {{- include "bjw-s.common.loader.init" . }}
 
 {{- define "lancache.harcodedValues" -}}
+# Set the nameOverride based on the release name if no override has been set
+{{ if not .Values.global.nameOverride }}
+global:
+  nameOverride: "{{ .Release.Name }}"
+{{ end }}
+
 {{- $dnsController := (index .Values.controllers "lancache-dns") -}}
 {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
 {{- $dnsEnv := $dnsController.containers.dns.env -}}
@@ -11,7 +17,7 @@ controllers:
     pod:
       {{- if and (not $dnsEnv.LANCACHE_IP) (not .Values.service.web.loadBalancerIP) }}
       enableServiceLinks: true
-      {{- end }}      
+      {{- end }}
   lancache-dns:
     containers:
       dns:

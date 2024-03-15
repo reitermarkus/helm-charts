@@ -48,7 +48,7 @@ controllers:
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
         # @default -- See below
-        env:
+        env: {}
           # -- Set the container timezone
           # TZ: UTC
           # -- Enable plugin support
