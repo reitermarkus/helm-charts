@@ -137,6 +137,7 @@ service:
         port: 443
         targetPort: https
   dns:
+    primary: true
     controller: lancache-dns
     ports:
       dns:
