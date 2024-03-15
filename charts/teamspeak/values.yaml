@@ -46,8 +46,9 @@ controllers:
                   - pipefail
                   - -c
                   - echo quit | nc 127.0.0.1 10011 | grep -q TS3
-              periodSeconds: 5
-              failureThreshold: 10
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
           readiness:
             enabled: true
             custom: true
@@ -59,8 +60,9 @@ controllers:
                   - pipefail
                   - -c
                   - echo quit | nc 127.0.0.1 10011 | grep -q TS3
-              periodSeconds: 5
-              failureThreshold: 10
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
           startup:
             enabled: true
             custom: true
@@ -72,6 +74,10 @@ controllers:
                   - pipefail
                   - -c
                   - echo quit | nc 127.0.0.1 10011 | grep -q TS3
+              initialDelaySeconds: 10
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
       exporter:
         enabled: false
         image:
