@@ -7,6 +7,13 @@
 global:
   nameOverride: "{{ .Release.Name }}"
 {{ end }}
+
+{{ if (eq .Values.controllers.strongswan.type "statefulset") }}
+controllers:
+  strongswan:
+    statefulset:
+      podManagementPolicy: Parallel
+{{ end }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "strongswan.hardcodedValues" . | fromYaml) -}}
 
