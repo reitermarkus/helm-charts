@@ -46,7 +46,7 @@ controllers:
 
     pod:
       # -- Configure the Security Context for the Pod
-      podSecurityContext: {}
+      securityContext: {}
         # fsGroup: 1000
       # -- The server binary is only available for x86_64.
       nodeSelector:

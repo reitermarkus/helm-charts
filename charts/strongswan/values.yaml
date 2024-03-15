@@ -78,16 +78,13 @@ service:
     ports:
       http:
         enabled: false
-        primary: false
         port: 8000
         targetPort: http
       isakmp:
-        enabled: true
         port: 500
         targetPort: isakmp
         protocol: UDP
       ike:
-        enabled: true
         port: 4500
         targetPort: ike
         protocol: UDP

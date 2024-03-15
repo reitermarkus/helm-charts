@@ -55,9 +55,6 @@ service:
   mumble:
     controller: mumble
     ports:
-      http:
-        enabled: false
-        primary: false
       control:
         enabled: true
         primary: true
