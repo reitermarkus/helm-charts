@@ -7,7 +7,10 @@
 global:
   nameOverride: "{{ .Release.Name }}"
 {{ end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "lancache.harcodedValues" . | fromYaml) -}}
 
+{{- define "lancache.harcodedValues2" -}}
 {{- $dnsController := (index .Values.controllers "lancache-dns") -}}
 {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
 {{- $dnsEnv := $dnsController.containers.dns.env -}}
@@ -58,7 +61,7 @@ service:
   dns:
     enabled: {{ and (ne $dnsController.enabled false) (ne .Values.service.dns.enabled false) }}
 {{- end -}}
-{{- $_ := mergeOverwrite .Values (include "lancache.harcodedValues" . | fromYaml) -}}
+{{- $_ := mergeOverwrite .Values (include "lancache.harcodedValues2" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}
