@@ -1,5 +1,6 @@
 controllers:
   strongswan:
+    type: statefulset
     containers:
       server:
         env:

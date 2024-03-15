@@ -7,8 +7,6 @@
 
 controllers:
   strongswan:
-    statefulset:
-      podManagementPolicy: Parallel
     containers:
       server:
         image:
