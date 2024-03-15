@@ -17,7 +17,10 @@
 global:
   nameOverride: "{{ .Release.Name }}"
 {{- end }}
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "teamspeak.harcodedValues" . | fromYaml) -}}
 
+{{- define "teamspeak.harcodedValues2" -}}
 {{- $mainEnv := .Values.controllers.teamspeak.containers.server.env }}
 controllers:
   teamspeak:
@@ -56,7 +59,7 @@ service:
   metrics:
     enabled: {{ ne .Values.metrics.enabled false }}
 {{- end -}}
-{{- $_ := mergeOverwrite .Values (include "teamspeak.harcodedValues" . | fromYaml) -}}
+{{- $_ := mergeOverwrite .Values (include "teamspeak.harcodedValues2" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}
