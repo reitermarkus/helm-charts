@@ -103,9 +103,16 @@ controllers:
             port: metrics
           startup:
             enabled: true
-            type: HTTP
-            path: /metrics
-            port: metrics
+            custom: true
+            spec:
+              httpGet:
+                path: /metrics
+                port: metrics
+                scheme: HTTP
+              initialDelaySeconds: 10
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
     pod:
       # -- The TeamSpeak server binary is only available for x86_64.
       nodeSelector:
