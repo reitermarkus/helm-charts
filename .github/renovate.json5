@@ -25,6 +25,7 @@
       ],
       datasourceTemplate: "helmv3",
       versioningTemplate: "semver",
+      registryUrlTemplate: "https://bjw-s.github.io/helm-charts",
     },
   ]
 }
