@@ -16,11 +16,6 @@ global:
 {{- $dnsEnv := $dnsController.containers.dns.env -}}
 {{ if ne $dnsController.enabled false }}
 controllers:
-  lancache:
-    pod:
-      {{- if and (not $dnsEnv.LANCACHE_IP) (not .Values.service.web.loadBalancerIP) }}
-      enableServiceLinks: true
-      {{- end }}
   lancache-dns:
     containers:
       dns:
