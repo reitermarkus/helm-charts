@@ -6,7 +6,8 @@ controllers:
           TS3SERVER_LICENSE: accept
 
 metrics:
-  enabled: true
+  # FIXME: Startup probe is failing.
+  # enabled: true
   prometheusRule:
     enabled: false
   serviceMonitor:
