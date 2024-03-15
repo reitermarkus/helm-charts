@@ -54,7 +54,7 @@ service:
 # @default -- See values.yaml
 persistence:
   sinusbot:
-    enabled: false
+    type: emptyDir
     globalMounts:
       - path: /opt/sinusbot/data
         subPath: data

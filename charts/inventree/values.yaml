@@ -220,7 +220,6 @@ configMaps:
 # @default -- See values.yaml
 persistence:
   nginx-config:
-    enabled: true
     type: configMap
     name: '{{- (include "bjw-s.common.lib.chart.names.fullname" $) -}}-nginx-config'
     advancedMounts:
@@ -230,7 +229,7 @@ persistence:
             readOnly: true
             subPath: default.conf.template
   data:
-    enabled: false
+    type: emptyDir
     advancedMounts:
       inventree:
         migrate:
