@@ -11,13 +11,8 @@ global:
 {{- $dnsController := (index .Values.controllers "lancache-dns") -}}
 {{- $monolithicEnv := .Values.controllers.lancache.containers.monolithic.env -}}
 {{- $dnsEnv := $dnsController.containers.dns.env -}}
-{{ if $dnsController.enabled }}
+{{ if ($dnsController.enabled | default true) }}
 controllers:
-  lancache:
-    pod:
-      {{- if and (not $dnsEnv.LANCACHE_IP) (not .Values.service.web.loadBalancerIP) }}
-      enableServiceLinks: true
-      {{- end }}
   lancache-dns:
     containers:
       dns:
@@ -48,11 +43,15 @@ controllers:
       {{- if and (not $dnsEnv.LANCACHE_IP) (not .Values.service.web.loadBalancerIP) }}
       enableServiceLinks: true
       {{- end }}
+{{ else }}
+controllers:
+  lancache-dns:
+    enabled: false
+{{ end }}
 
 service:
   dns:
-    enabled: true
-{{ end }}
+    enabled: {{ .Values.service.dns.enabled | default true }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "lancache.harcodedValues" . | fromYaml) -}}
 

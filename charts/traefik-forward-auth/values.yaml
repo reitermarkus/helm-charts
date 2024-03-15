@@ -61,15 +61,25 @@ controllers:
         probes:
           liveness:
             enabled: true
+            type: HTTP
+            path: /
+            port: http
           readiness:
             enabled: true
+            type: HTTP
+            path: /
+            port: http
           startup:
             enabled: true
+            type: HTTP
+            path: /
+            port: http
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
   web:
+    primary: true
     controller: traefik-forward-auth
     ports:
       http:

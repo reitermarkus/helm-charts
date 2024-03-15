@@ -37,23 +37,17 @@ controllers:
             containerPort: 443
         probes:
           readiness:
-            custom: true
-            spec:
-              httpGet:
-                path: /lancache-heartbeat
-                port: 80
+            type: HTTP
+            path: /lancache-heartbeat
+            port: http
           liveness:
-            custom: true
-            spec:
-              httpGet:
-                path: /lancache-heartbeat
-                port: 80
+            type: HTTP
+            path: /lancache-heartbeat
+            port: http
           startup:
-            custom: true
-            spec:
-              httpGet:
-                path: /lancache-heartbeat
-                port: 80
+            type: HTTP
+            path: /lancache-heartbeat
+            port: http
     pod:
       # -- LanCache uses custom upstream nameservers, overridable with the `UPSTREAM_DNS` variable.
       dnsPolicy: None
@@ -133,20 +127,19 @@ controllers:
 # @default -- See values.yaml
 service:
   web:
+    primary: true
     controller: lancache
     ports:
       http:
         port: 80
         targetPort: http
       https:
-        enabled: true
         port: 443
         targetPort: https
   dns:
     controller: lancache-dns
     ports:
       dns:
-        enabled: true
         port: 53
         targetPort: dns
         protocol: UDP

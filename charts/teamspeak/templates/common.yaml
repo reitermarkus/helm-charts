@@ -31,7 +31,7 @@ controllers:
                 name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
                 key: serveradmin_password
           {{- end }}
-      {{- if .Values.metrics.enabled }}
+      {{- if (.Values.metrics.enabled | default true) }}
       exporter:
         enabled: true
         env:
@@ -52,11 +52,9 @@ controllers:
           {{- end }}
       {{- end }}
 
-{{- if .Values.metrics.enabled }}
 service:
   metrics:
-    enabled: true
-{{- end }}
+    enabled: {{ .Values.metrics.enabled | default true }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "teamspeak.harcodedValues" . | fromYaml) -}}
 

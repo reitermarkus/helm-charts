@@ -40,10 +40,13 @@ controllers:
         probes:
           liveness:
             enabled: true
+            port: control
           readiness:
             enabled: true
+            port: control
           startup:
             enabled: true
+            port: control
     pod:
       # -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
       nodeSelector:
@@ -53,15 +56,14 @@ controllers:
 # @default -- See values.yaml
 service:
   mumble:
+    primary: true
     controller: mumble
     ports:
       control:
-        enabled: true
         primary: true
         port: 64738
         targetPort: control
       voice:
-        enabled: true
         port: 64738
         targetPort: voice
         protocol: UDP
