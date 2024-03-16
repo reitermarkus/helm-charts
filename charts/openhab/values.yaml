@@ -65,6 +65,12 @@ service:
 # -- a single volume for all data or separate volumes for each sub-directory.
 # @default -- See values.yaml
 persistence:
+  init:
+    type: configMap
+    name: '{{ printf "%v-init" (include "bjw-s.common.lib.chart.names.fullname" .) }}'
+    globalMounts:
+      - path: /etc/cont-init.d/enable-console-logging.sh
+        subPath: enable-console-logging.sh
   data:
     type: emptyDir
     globalMounts:
