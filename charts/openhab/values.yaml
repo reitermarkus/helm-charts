@@ -18,13 +18,11 @@ controllers:
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [openhab image documentation](https://hub.docker.com/r/openhab/openhab).
         # @default -- See below
-        env: {}
-          # -- Set the container timezone
-          # TZ: UTC
+        env:
           # EXTRA_JAVA_OPTS: -Duser.timezone=UTC
           # USER_ID: 1000
           # GROUP_ID: 1000
-          # CRYPTO_POLICY: unlimited
+          CRYPTO_POLICY: unlimited
         ports:
           - name: http
             containerPort: 8080
