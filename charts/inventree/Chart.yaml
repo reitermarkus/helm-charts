@@ -27,5 +27,5 @@ dependencies:
     condition: postgresql.enabled
   - name: redis
     repository: oci://registry-1.docker.io/bitnamicharts
-    version: 18.19.2
+    version: 18.19.3
     condition: redis.enabled
