@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 3.13.7
 description: TeamSpeak Server
 name: teamspeak
-version: 3.0.5
+version: 3.1.0
 kubeVersion: ">=1.20.0-0"
 keywords:
   - teamspeak
