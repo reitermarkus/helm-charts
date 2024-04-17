@@ -25,7 +25,7 @@ controllers:
           # -- image repository
           repository: nginx
           # -- image tag
-          tag: 1.25.4
+          tag: 1.25.5
           # -- image pull policy
           pullPolicy: IfNotPresent
         ports:
