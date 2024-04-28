@@ -35,7 +35,7 @@ jobs:
           private_key: ${{ secrets.GH_APP_KEY }}
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@13fe82a5149cf0b212e16453d25b3c59f2b4d3ef
+        uses: helm/chart-releaser-action@95930dc2bf5d353ff79972cb5c878a9a1289a79b
         with:
           skip_existing: 'true'
         env:
