@@ -18,7 +18,8 @@ controllers:
           pullPolicy: IfNotPresent
         command:
           - invoke
-          - migrate
+          - update
+          - --skip-backup
     containers:
       proxy:
         image:
