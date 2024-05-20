@@ -3,6 +3,7 @@
 
 {{- define "inventree.sharedEnv" -}}
 INVENTREE_DEBUG: 'false'
+INVENTREE_TRUSTED_ORIGINS: http://localhost,http://localhost:8000
 INVENTREE_DB_NAME: inventree
 {{- if .Values.postgresql.enabled }}
 INVENTREE_DB_ENGINE: postgresql
