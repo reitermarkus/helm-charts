@@ -50,10 +50,6 @@ controllers:
             spec:
               # Database migrations can take a while.
               failureThreshold: 30
-    pod:
-      # -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
-      nodeSelector:
-        kubernetes.io/arch: amd64
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
