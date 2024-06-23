@@ -47,6 +47,9 @@ controllers:
           startup:
             enabled: true
             port: control
+            spec:
+              # Database migrations can take a while.
+              failureThreshold: 30
     pod:
       # -- The Mumble docker image is only available for x86_64 (see https://github.com/mumble-voip/mumble-docker/issues/3).
       nodeSelector:
