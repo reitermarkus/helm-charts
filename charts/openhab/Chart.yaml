@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 4.2.0
 description: openHAB - a vendor and technology agnostic open source automation software for your home
 name: openhab
-version: 4.3.0
+version: 4.4.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - openhab
