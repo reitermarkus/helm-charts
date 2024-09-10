@@ -18,5 +18,5 @@ maintainers:
     email: me@reitermark.us
 dependencies:
   - name: common
-    repository: https://bernd-schorgers.github.io/helm-charts/
+    repository: https://bjw-s.github.io/helm-charts/
     version: 3.3.2
