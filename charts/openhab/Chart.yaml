@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-appVersion: 4.3.0
+appVersion: 4.3.1
 description: openHAB - a vendor and technology agnostic open source automation software for your home
 name: openhab
 version: 4.7.0
