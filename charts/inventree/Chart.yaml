@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 0.17.2
 description: InvenTree is a self-hosted inventory management system
 name: inventree
-version: 7.10.2
+version: 7.10.3
 kubeVersion: ">=1.16.0-0"
 keywords:
   - inventree
@@ -27,5 +27,5 @@ dependencies:
     condition: postgresql.enabled
   - name: redis
     repository: oci://registry-1.docker.io/bitnamicharts
-    version: 20.6.2
+    version: 20.6.3
     condition: redis.enabled
