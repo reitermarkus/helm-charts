@@ -224,7 +224,7 @@ configMaps:
 persistence:
   nginx-config:
     type: configMap
-    name: '{{- (include "bjw-s.common.lib.chart.names.fullname" $) -}}-nginx-config'
+    identifier: nginx-config
     advancedMounts:
       inventree:
         proxy:
