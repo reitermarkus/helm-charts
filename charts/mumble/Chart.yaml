@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.5.735
 description: Mumble Server
 name: mumble
-version: 3.7.1
+version: 3.8.0
 kubeVersion: ">=1.20.0-0"
 keywords:
   - mumble
