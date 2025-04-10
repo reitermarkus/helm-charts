@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
       - name: Verify chart version
-        uses: bjw-s/helm-charts-actions/verify-chart-version@2c2cffee4b36c3b2b17f8404fd565400c0a98104
+        uses: bjw-s/helm-charts-actions/verify-chart-version@cdb124f5ad4780b05c3fc7148d403fa434e400f0
         id: verify-chart-version
         with:
           chart: ${{ matrix.chart.path }}
