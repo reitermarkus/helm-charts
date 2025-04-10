@@ -17,10 +17,10 @@ spec:
   endpoints:
     {{- range .Values.metrics.serviceMonitor.targets }}
     - port: http
-      {{- with .Values.metrics.serviceMonitor.interval }}
+      {{- with .interval }}
       interval: {{ . }}
       {{- end }}
-      {{- with .Values.metrics.serviceMonitor.scrapeTimeout }}
+      {{- with .scrapeTimeout }}
       scrapeTimeout: {{ . }}
       {{- end }}
       path: /metrics
