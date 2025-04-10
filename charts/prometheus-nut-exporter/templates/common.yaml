@@ -10,12 +10,5 @@ global:
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "prometheus-nut-exporter.harcodedValues" . | fromYaml) -}}
 
-{{- define "prometheus-nut-exporter.harcodedValues2" -}}
-service:
-  metrics:
-    enabled: {{ ne .Values.metrics.enabled false }}
-{{- end -}}
-{{- $_ := mergeOverwrite .Values (include "prometheus-nut-exporter.harcodedValues2" . | fromYaml) -}}
-
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.generate" . }}
