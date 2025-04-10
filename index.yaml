@@ -8951,6 +8951,30 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/openhab-1.6.0.tgz
     version: 1.6.0
+  prometheus-nut-exporter:
+  - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2025-04-10T17:32:28.84713421Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts/
+      version: 3.7.3
+    description: Prometheus NUT Exporter
+    digest: c148bce03d17d1f3b72c2a9db11001afd76d9f40b95aa6d0fc8f06124fda4050
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/prometheus-nut-exporter
+    keywords:
+    - nut
+    - ups
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: prometheus-nut-exporter
+    sources:
+    - https://github.com/HON95/prometheus-nut-exporter
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/prometheus-nut-exporter-0.1.0/prometheus-nut-exporter-0.1.0.tgz
+    version: 0.1.0
   sdtd:
   - apiVersion: v2
     appVersion: main
@@ -12724,4 +12748,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-04-10T17:26:54.701279009Z"
+generated: "2025-04-10T17:32:28.847777076Z"
