@@ -19,9 +19,9 @@ before = if status.success?
   YAML.safe_load(out)
 else
   # Ignore charts that did not exist before.
-  raise err unless err.include?('does not exist')
+  return if err.include?('exists on disk, but not in')
 
-  {}
+  raise err
 end
 
 after_content = File.read(chart_yaml_path)
