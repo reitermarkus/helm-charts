@@ -1,0 +1,86 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from a common library chart. You can check the default values/options here:
+# https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+controllers:
+  prometheus-nut-exporter:
+    containers:
+      server:
+        image:
+          # -- image repository
+          repository: hon95/prometheus-nut-exporter
+          # -- image tag
+          tag: '{{ .Chart.AppVersion }}'
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        # -- environment variables. See more environment variables in the [prometheus-nut-exporter documentation](https://github.com/HON95/prometheus-nut-exporter/blob/master/README.md).
+        # @default -- See below
+        env:
+          # TZ: UTC
+          HTTP_PATH: /metrics
+          RUST_LOG: info
+        ports:
+          - name: http
+            containerPort: 9995
+        probes:
+          liveness:
+            enabled: true
+            type: HTTP
+            path: /
+            port: http
+          readiness:
+            enabled: true
+            type: HTTP
+            path: /
+            port: http
+          startup:
+            enabled: true
+            type: HTTP
+            path: /
+            port: http
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  web:
+    controller: prometheus-nut-exporter
+    ports:
+      http:
+        port: 80
+        targetPort: http
+
+metrics:
+  # -- Enable and configure the Prometheus serviceMonitor.
+  # @default -- See values.yaml
+  enabled: false
+  serviceMonitor:
+    enabled: true
+    interval: 1m
+    scrapeTimeout: 30s
+    labels: {}
+    # Specify the list of NUT servers that should be monitored
+    targets: []
+      # - hostname: nut-server
+      #   port: 3493
+      #   interval: 30s
+      #   scrapeTimeout: 10s
+  # -- Enable and configure Prometheus Rules for the chart under this key.
+  # @default -- See values.yaml
+  prometheusRule:
+    enabled: true
+    labels: {}
+    # -- Configure additionial rules for the chart under this key.
+    # @default -- See prometheusrules.yaml
+    rules: []
+      # - alert: UpsStatusUnknown
+      #   annotations:
+      #     description: UPS {{ "{{ $labels.ups }}" }} is reporting a status of unknown.
+      #     summary: UPS status unknown.
+      #   expr: |
+      #     nut_status == 0
+      #   for: 10s
+      #   labels:
+      #     severity: critical
