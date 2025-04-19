@@ -163,7 +163,7 @@ jobs:
 
       - name: Update pull request
         if: steps.bump-chart-version.outputs.new-version
-        uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
+        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
         with:
           commit_message: Bump ${{ matrix.chart.name }} chart to version ${{ steps.bump-chart-version.outputs.new-version }}.
 
