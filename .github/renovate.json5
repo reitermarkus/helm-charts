@@ -21,11 +21,11 @@
       description: "Update common chart schema",
       fileMatch: ["\\.schema\\.json$"],
       matchStrings: [
-        "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/.*",
+        "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s-labs\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/.*",
       ],
       datasourceTemplate: "helm",
       versioningTemplate: "semver",
-      registryUrlTemplate: "https://bjw-s.github.io/helm-charts",
+      registryUrlTemplate: "https://bjw-s-labs.github.io/helm-charts",
     },
   ],
 }
