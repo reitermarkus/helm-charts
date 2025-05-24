@@ -12,3 +12,7 @@ metrics:
     enabled: false
   serviceMonitor:
     enabled: false
+
+persistence:
+  data:
+    enabled: true

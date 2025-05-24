@@ -10,5 +10,9 @@ controllers:
           VPN_P12_PASSWORD: password
 
 persistence:
-  config:
+  cacerts:
+    enabled: true
+  certs:
+    enabled: true
+  private:
     enabled: true

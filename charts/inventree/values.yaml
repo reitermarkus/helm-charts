@@ -158,6 +158,7 @@ service:
 
 configMaps:
   nginx-config:
+    suffix: nginx-config
     data:
       default.conf.template: |-
         server {
