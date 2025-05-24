@@ -1,0 +1,3 @@
+persistence:
+  sinusbot:
+    enabled: true
