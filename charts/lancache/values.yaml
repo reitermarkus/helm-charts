@@ -12,6 +12,7 @@ defaultPodOptions:
 
 controllers:
   lancache:
+    forceRename: '{{ printf "%v" (include "bjw-s.common.lib.chart.names.fullname" .) }}'
     containers:
       monolithic:
         image:
@@ -56,6 +57,7 @@ controllers:
           - 127.0.0.1
 
   lancache-dns:
+    forceRename: '{{ printf "%v-dns" (include "bjw-s.common.lib.chart.names.fullname" .) }}'
     enabled: true
     replicas: 1
     containers:
@@ -127,6 +129,7 @@ controllers:
 # @default -- See values.yaml
 service:
   web:
+    forceRename: '{{ printf "%v" (include "bjw-s.common.lib.chart.names.fullname" .) }}'
     primary: true
     controller: lancache
     ports:
@@ -137,6 +140,7 @@ service:
         port: 443
         targetPort: https
   dns:
+    suffix: dns
     controller: lancache-dns
     ports:
       dns:
