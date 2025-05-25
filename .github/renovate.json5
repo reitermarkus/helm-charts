@@ -1,31 +1,37 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>reitermarkus/.github"],
-  "customManagers": [
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'github>reitermarkus/.github',
+  ],
+  customManagers: [
     {
-      "customType": "regex",
-      "description": "Update Helm chart app versions",
-      "fileMatch": ["(^|/)Chart\\.yaml$"],
-      "matchStringsStrategy": "combination",
-      "matchStrings": [
-        "#\\s*renovate:\\s*image=(?<depName>[^\\s]+)",
-        "https://hub\\.docker\\.com/r/(?<depName>[^\\s/]+/[^\\s/]+)",
-        "https://hub\\.docker\\.com/_/(?<depName>[^\\s/]+)",
-        "https://(?<depName>ghcr\\.io/[^\\s/]+/[^\\s/]+)",
-        "appVersion:\\s+[\"']?(?<currentValue>[^\\s\"']+)"
+      customType: 'regex',
+      description: 'Update Helm chart app versions',
+      managerFilePatterns: [
+        '/(^|/)Chart\\.yaml$/',
       ],
-      "datasourceTemplate": "docker",
+      matchStringsStrategy: 'combination',
+      matchStrings: [
+        '#\\s*renovate:\\s*image=(?<depName>[^\\s]+)',
+        'https://hub\\.docker\\.com/r/(?<depName>[^\\s/]+/[^\\s/]+)',
+        'https://hub\\.docker\\.com/_/(?<depName>[^\\s/]+)',
+        'https://(?<depName>ghcr\\.io/[^\\s/]+/[^\\s/]+)',
+        'appVersion:\\s+["\']?(?<currentValue>[^\\s"\']+)',
+      ],
+      datasourceTemplate: 'docker',
     },
     {
-      customType: "regex",
-      description: "Update common chart schema",
-      fileMatch: ["\\.schema\\.json$"],
-      matchStrings: [
-        "https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s-labs\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/.*",
+      customType: 'regex',
+      description: 'Update common chart schema',
+      managerFilePatterns: [
+        '/\\.schema\\.json$/',
       ],
-      datasourceTemplate: "helm",
-      versioningTemplate: "semver",
-      registryUrlTemplate: "https://bjw-s-labs.github.io/helm-charts",
+      matchStrings: [
+        'https:\\/\\/raw\\.githubusercontent\\.com\\/bjw-s-labs\\/helm-charts\\/(?<depName>common)-(?<currentValue>[^\\s\\/]+)\\/.*',
+      ],
+      datasourceTemplate: 'helm',
+      versioningTemplate: 'semver',
+      registryUrlTemplate: 'https://bjw-s-labs.github.io/helm-charts',
     },
   ],
 }
