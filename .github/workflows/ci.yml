@@ -54,11 +54,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - name: Verify chart version
-        uses: bjw-s-labs/helm-charts-actions/verify-chart-version@2c2cffee4b36c3b2b17f8404fd565400c0a98104
-        id: verify-chart-version
+      - name: Checkout base branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
-          chart: ${{ matrix.chart.path }}
+          ref: '${{ github.event.pull_request.base.ref }}'
+          path: base
+
+      - name: Get chart details for PR
+        id: chart-details-pr
+        uses: bjw-s-labs/helm-charts-actions/get-chart-details@901809d6280a614da2e1fa9e0b3c41e494f33cf0
+        with:
+          path: ${{ matrix.chart.path }}
+          validateChartYaml: true
+          requireChangelog: false
+
+      - name: Get chart details for base branch
+        id: chart-details-base
+        uses: bjw-s-labs/helm-charts-actions/get-chart-details@901809d6280a614da2e1fa9e0b3c41e494f33cf0
+        with:
+          path: base/${{ matrix.chart.path }}
+          allowChartToNotExist: true
+          validateChartYaml: false
+          requireChangelog: false
+
+      - name: Check version update
+        if: ${{ steps.chart-details-pr.outputs.version == steps.chart-details-base.outputs.version }}
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            core.setFailed("Chart version has not been updated for ${{ matrix.chart.name }}.")
 
       - name: Set up Helm
         uses: azure/setup-helm@b9e51907a09c216f16ebe8536097933489208112 # v4.3.0
