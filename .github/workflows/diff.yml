@@ -37,7 +37,6 @@ jobs:
       - name: Helm Release Differ
         id: differ
         run: |
-          sudo gem install deep_merge
           .github/scripts/helm_chart_differ.rb charts base .
         env:
           GITHUB_TOKEN: ${{ github.token }}
