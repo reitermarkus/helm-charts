@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.0.2
 description: TeamSpeak & Discord Bot
 name: sinusbot
-version: 4.0.0
+version: 4.1.0
 kubeVersion: ">=1.16.0-0"
 keywords:
   - sinusbot
@@ -18,4 +18,4 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts/
-    version: 4.0.1
+    version: 4.1.0
