@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 0.17.13
 description: InvenTree is a self-hosted inventory management system
 name: inventree
-version: 9.2.0
+version: 9.2.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - inventree
@@ -20,7 +20,7 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts/
-    version: 4.1.0
+    version: 4.1.1
   - name: postgresql
     repository: oci://registry-1.docker.io/bitnamicharts
     version: 16.7.11
