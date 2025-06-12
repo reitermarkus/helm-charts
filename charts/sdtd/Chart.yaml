@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: main
 description: Dedicated server for 7 Days to Die
 name: sdtd
-version: 4.1.0
+version: 4.1.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - sdtd
