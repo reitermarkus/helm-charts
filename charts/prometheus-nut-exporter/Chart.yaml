@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.2.1
 description: Prometheus NUT Exporter
 name: prometheus-nut-exporter
-version: 1.1.0
+version: 1.1.1
 kubeVersion: ">=1.32.0-0"
 keywords:
   - nut
