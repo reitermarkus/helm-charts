@@ -1253,6 +1253,40 @@ entries:
   inventree:
   - apiVersion: v2
     appVersion: 0.17.14
+    created: "2025-07-04T07:22:26.388975716Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.1.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.7.15
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 21.2.6
+    description: InvenTree is a self-hosted inventory management system
+    digest: b8273ac630f8d4d7e84dd37d517dbd8c578fcb2f3dd966af1c5715855bb9ff4a
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/inventree
+    icon: https://inventree.org/assets/logo.png
+    keywords:
+    - inventree
+    - inventory
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: inventree
+    sources:
+    - https://inventree.org
+    - https://github.com/inventree/inventree
+    - https://hub.docker.com/r/inventree/inventree
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/inventree-9.2.8/inventree-9.2.8.tgz
+    version: 9.2.8
+  - apiVersion: v2
+    appVersion: 0.17.14
     created: "2025-06-26T22:57:16.958702406Z"
     dependencies:
     - name: common
@@ -14911,4 +14945,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-06-26T22:57:17.866539519Z"
+generated: "2025-07-04T07:22:26.389871765Z"
