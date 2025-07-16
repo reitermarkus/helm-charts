@@ -62,7 +62,7 @@ jobs:
 
       - name: Get chart details for PR
         id: chart-details-pr
-        uses: bjw-s-labs/helm-charts-actions/get-chart-details@c7d38161080391f065966ef58ef91af9cd320bcf
+        uses: bjw-s-labs/helm-charts-actions/get-chart-details@47dd0ac0131bdc692594410637dc4d1787d50cb0
         with:
           path: ${{ matrix.chart.path }}
           validateChartYaml: true
@@ -70,7 +70,7 @@ jobs:
 
       - name: Get chart details for base branch
         id: chart-details-base
-        uses: bjw-s-labs/helm-charts-actions/get-chart-details@c7d38161080391f065966ef58ef91af9cd320bcf
+        uses: bjw-s-labs/helm-charts-actions/get-chart-details@47dd0ac0131bdc692594410637dc4d1787d50cb0
         with:
           path: base/${{ matrix.chart.path }}
           allowChartToNotExist: true
