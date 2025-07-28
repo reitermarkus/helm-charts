@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 1.5.735
 description: Mumble Server
 name: mumble
-version: 4.1.1
+version: 4.2.0
 kubeVersion: ">=1.20.0-0"
 keywords:
   - mumble
@@ -19,4 +19,4 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts/
-    version: 4.1.2
+    version: 4.2.0
