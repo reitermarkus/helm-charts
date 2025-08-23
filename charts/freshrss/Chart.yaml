@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-appVersion: 1.26.3
+appVersion: 1.27.0
 description: FreshRSS is a self-hosted RSS feed aggregator
 name: freshrss
 version: 9.2.0
