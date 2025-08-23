@@ -126,25 +126,14 @@ postgresql:
     username: inventree
     database: inventree
 
-redis:
+redis-ha:
   enabled: true
-  sentinel:
-    enabled: true
-  commonConfiguration: |-
-    # Disable AOF persistence.
-    appendonly no
-    # Disable RDB persistence.
-    save ""
-  master:
-    persistence:
-      enabled: false
-  replica:
-    configuration: |-
-      replica-read-only no
-    persistence:
-      enabled: false
-  auth:
-    enabled: false
+  redis:
+    config:
+      # Disable AOF persistence.
+      appendonly: 'no'
+      # Disable RDB persistence.
+      save: '""'
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml

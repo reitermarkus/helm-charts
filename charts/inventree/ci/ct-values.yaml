@@ -1,3 +1,6 @@
 persistence:
   data:
     enabled: true
+
+redis-ha:
+  hardAntiAffinity: false
