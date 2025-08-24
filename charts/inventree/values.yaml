@@ -13,7 +13,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          tag: '{{ .Chart.AppVersion }}'
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
@@ -44,7 +44,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          tag: '{{ .Chart.AppVersion }}'
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
@@ -53,7 +53,7 @@ controllers:
           # -- Set the container timezone
           # TZ: UTC
           # -- Set the site URL
-          # INVENTREE_SITE_URL: 'inventree.localhost'
+          # INVENTREE_SITE_URL: 'http://inventree.localhost'
           # -- Enable plugin support
           # INVENTREE_PLUGINS_ENABLED: 'true'
           # -- Set the admin user name
@@ -110,7 +110,7 @@ controllers:
           # -- image repository
           repository: inventree/inventree
           # -- image tag
-          tag: '{{ .Chart.AppVersion }}'
+          tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
@@ -132,7 +132,7 @@ redis-ha:
   redis:
     config:
       # Disable AOF persistence.
-      appendonly: 'no'
+      appendonly: "no"
       # Disable RDB persistence.
       save: '""'
 
@@ -172,8 +172,8 @@ configMaps:
           }
         }
 
-        {$INVENTREE_SITE_URL:http://inventree.localhost} {
-        import log_common inventree
+        localhost:80 {
+          import log_common inventree
           encode gzip
 
           request_body {
@@ -201,13 +201,13 @@ configMaps:
 
             # Authentication is handled by the forward_auth directive
             # This is required to ensure that media files are only accessible to authenticated users
-            forward_auth {$INVENTREE_SERVER:"http://127.0.0.1:8000"} {
+            forward_auth localhost:8000 {
               uri /auth/
             }
           }
 
           # All other requests are proxied to the InvenTree server
-          reverse_proxy {$INVENTREE_SERVER:"http://127.0.0.1:8000"} {
+          reverse_proxy localhost:8000 {
             # If you are running behind another proxy, you may need to specify 'trusted_proxies'
             # Ref: https://caddyserver.com/docs/json/apps/http/servers/trusted_proxies/
             # trusted_proxies ...
