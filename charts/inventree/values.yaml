@@ -24,9 +24,9 @@ controllers:
       proxy:
         image:
           # -- image repository
-          repository: nginx
+          repository: caddy
           # -- image tag
-          tag: 1.29.1
+          tag: 2.10.0-alpine
           # -- image pull policy
           pullPolicy: IfNotPresent
         ports:
@@ -147,90 +147,100 @@ service:
         targetPort: http
 
 configMaps:
-  nginx-config:
-    suffix: nginx-config
+  caddy-config:
+    suffix: caddy-config
     data:
-      default.conf.template: |-
-        server {
-          listen 80;
+      Caddyfile: |-
+        # Logging configuration for Caddy
+        (log_common) {
+          log {
+            output file /var/log/caddy/{args[0]}.access.log
+          }
+        }
 
-          real_ip_header proxy_protocol;
+        # CORS headers control (used for static and media files)
+        (cors-headers) {
+          header Allow GET,HEAD,OPTIONS
+          header Access-Control-Allow-Origin *
+          header Access-Control-Allow-Methods GET,HEAD,OPTIONS
+          header Access-Control-Allow-Headers Authorization,Content-Type,User-Agent
 
-          location / {
-            proxy_set_header      Host              $http_host;
-            proxy_set_header      X-Forwarded-By    $server_addr:$server_port;
-            proxy_set_header      X-Forwarded-For   $remote_addr;
-            proxy_set_header      X-Forwarded-Proto $scheme;
-            proxy_set_header      X-Real-IP         $remote_addr;
-            proxy_set_header      CLIENT_IP         $remote_addr;
+          @cors_preflight{args[0]} method OPTIONS
 
-            proxy_pass_request_headers on;
+          handle @cors_preflight{args[0]} {
+            respond "" 204
+          }
+        }
 
-            proxy_redirect off;
+        {$INVENTREE_SITE_URL:http://inventree.localhost} {
+        import log_common inventree
+          encode gzip
 
-            client_max_body_size 100M;
-
-            proxy_buffering off;
-            proxy_request_buffering off;
-
-            proxy_pass http://127.0.0.1:8000;
+          request_body {
+            max_size 100MB
           }
 
-          # Redirect any requests for static files
-          location /static/ {
-            alias /var/www/static/;
-            autoindex on;
+          # Handle static request files
+            handle_path /static/* {
+            import cors-headers static
 
-            # Caching settings
-            expires 30d;
-            add_header Pragma public;
-            add_header Cache-Control "public";
+            root * /var/www/static
+            file_server
           }
 
-          # Redirect any requests for media files
-          location /media/ {
-            alias /var/www/media/;
+          # Handle media request files
+          handle_path /media/* {
+            import cors-headers media
 
-            # Media files require user authentication
-            auth_request /auth;
+            root * /var/www/media
+            file_server
 
-            # Content header to force download
-            add_header Content-disposition "attachment";
+            # Force download of media files (for security)
+            # Comment out this line if you do not want to force download
+            header Content-Disposition attachment
+
+            # Authentication is handled by the forward_auth directive
+            # This is required to ensure that media files are only accessible to authenticated users
+            forward_auth {$INVENTREE_SERVER:"http://127.0.0.1:8000"} {
+              uri /auth/
+            }
           }
 
-          # Use the 'user' API endpoint for auth
-          location /auth {
-            internal;
-
-            proxy_pass http://127.0.0.1:8000/auth/;
-
-            proxy_pass_request_body off;
-            proxy_set_header Content-Length "";
-            proxy_set_header X-Original-URI $request_uri;
+          # All other requests are proxied to the InvenTree server
+          reverse_proxy {$INVENTREE_SERVER:"http://127.0.0.1:8000"} {
+            # If you are running behind another proxy, you may need to specify 'trusted_proxies'
+            # Ref: https://caddyserver.com/docs/json/apps/http/servers/trusted_proxies/
+            # trusted_proxies ...
           }
         }
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
-  nginx-config:
+  caddy-config:
     type: configMap
-    identifier: nginx-config
+    identifier: caddy-config
     advancedMounts:
       inventree:
         proxy:
-          - path: /etc/nginx/templates/default.conf.template
+          - path: /etc/caddy/Caddyfile
             readOnly: true
-            subPath: default.conf.template
+            subPath: Caddyfile
   data:
     type: emptyDir
     advancedMounts:
       inventree:
         migrate:
           - path: /home/inventree/data
-        proxy:
-          - path: /var/www
         server:
           - path: /home/inventree/data
         worker:
           - path: /home/inventree/data
+        proxy:
+          - path: /var/www/static
+            subPath: static
+          - path: /var/www/media
+            subPath: media
+          - path: /var/log
+          - path: /data
+          - path: /config
