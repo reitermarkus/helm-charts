@@ -20,7 +20,7 @@ INVENTREE_DB_ENGINE: sqlite
 {{- end }}
 {{- if (index .Values "redis-ha" "enabled") }}
 INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis-ha"
-INVENTREE_CACHE_PORT: 26379
+INVENTREE_CACHE_PORT: 6379
 {{- end }}
 {{ end }}
 

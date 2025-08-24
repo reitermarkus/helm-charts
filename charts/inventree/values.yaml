@@ -128,6 +128,7 @@ postgresql:
 
 redis-ha:
   enabled: true
+  replicas: 1
   redis:
     config:
       # Disable AOF persistence.
