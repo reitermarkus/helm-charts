@@ -151,6 +151,13 @@ configMaps:
     suffix: caddy-config
     data:
       Caddyfile: |-
+        {
+          servers {
+            trusted_proxies static private_ranges
+            trusted_proxies_strict
+          }
+        }
+
         # Logging configuration for Caddy
         (log_common) {
           log {
@@ -181,7 +188,7 @@ configMaps:
           }
 
           # Handle static request files
-            handle_path /static/* {
+          handle_path /static/* {
             import cors-headers static
 
             root * /var/www/static
@@ -207,11 +214,7 @@ configMaps:
           }
 
           # All other requests are proxied to the InvenTree server
-          reverse_proxy localhost:8000 {
-            # If you are running behind another proxy, you may need to specify 'trusted_proxies'
-            # Ref: https://caddyserver.com/docs/json/apps/http/servers/trusted_proxies/
-            # trusted_proxies ...
-          }
+          reverse_proxy localhost:8000
         }
 
 # -- Configure persistence settings for the chart under this key.
