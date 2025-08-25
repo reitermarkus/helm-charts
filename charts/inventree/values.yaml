@@ -205,7 +205,16 @@ configMaps:
 
             # Force download of media files (for security).
             # Comment out this line if you do not want to force download.
-            header Content-Disposition attachment
+            handle {
+              header Content-Disposition attachment
+            }
+            # Don't force download of images.
+            @images {
+              path_regexp ^.*\.(jpe?g|j2k|png|bmp|tiff?|webp|gif)$
+            }
+            handle @images {
+              header Content-Disposition inline
+            }
 
             # Authentication is handled by the `forward_auth` directive.
             # This is required to ensure that media files are only accessible to authenticated users.
