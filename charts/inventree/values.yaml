@@ -6,8 +6,13 @@
 #
 
 controllers:
-  inventree:
-    initContainers:
+  migrate:
+    type: job
+    annotations:
+      # Initialize database after installation, migrate before upgrade.
+      "helm.sh/hook": pre-upgrade
+      "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    containers:
       migrate:
         image:
           # -- image repository
@@ -20,6 +25,7 @@ controllers:
           - invoke
           - update
           - --skip-backup
+  inventree:
     containers:
       proxy:
         image:
@@ -224,9 +230,10 @@ persistence:
   data:
     type: emptyDir
     advancedMounts:
-      inventree:
+      migrate:
         migrate:
           - path: /home/inventree/data
+      inventree:
         server:
           - path: /home/inventree/data
         worker:
