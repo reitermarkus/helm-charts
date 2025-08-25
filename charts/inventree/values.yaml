@@ -77,34 +77,16 @@ controllers:
         probes:
           liveness:
             enabled: true
-            type: HTTP
+            type: TCP
             port: 8000
-            path: /
-            spec:
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-              initialDelaySeconds: 0
           readiness:
             enabled: true
-            type: HTTP
+            type: TCP
             port: 8000
-            path: /
-            spec:
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-              initialDelaySeconds: 0
           startup:
             enabled: true
-            type: HTTP
+            type: TCP
             port: 8000
-            path: /
-            spec:
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-              initialDelaySeconds: 0
       worker:
         image:
           # -- image repository
