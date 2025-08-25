@@ -26,7 +26,7 @@ controllers:
           # -- image repository
           repository: caddy
           # -- image tag
-          tag: 2.10.0-alpine
+          tag: 2.10.2-alpine
           # -- image pull policy
           pullPolicy: IfNotPresent
         ports:
