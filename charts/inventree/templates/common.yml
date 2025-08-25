@@ -31,11 +31,12 @@ global:
 {{ end }}
 
 controllers:
-  inventree:
-    initContainers:
+  migrate:
+    containers:
       migrate:
         env:
           {{ include "inventree.sharedEnv" . | nindent 10 }}
+  inventree:
     containers:
       server:
         env:
