@@ -113,6 +113,8 @@ redis-ha:
   replicas: 1
   redis:
     config:
+      # Allow writes without replicas.
+      min-replicas-to-write: 0
       # Disable AOF persistence.
       appendonly: "no"
       # Disable RDB persistence.
