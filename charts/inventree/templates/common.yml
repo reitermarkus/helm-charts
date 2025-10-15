@@ -11,7 +11,7 @@ INVENTREE_DB_PASSWORD:
   valueFrom:
     secretKeyRef:
       name: {{ .Release.Name }}-postgres
-      key: password
+      key: postgres-password
 INVENTREE_DB_HOST: "{{ .Release.Name }}-postgres"
 INVENTREE_DB_PORT: 5432
 {{- else}}
