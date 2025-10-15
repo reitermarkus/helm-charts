@@ -99,10 +99,10 @@ controllers:
           - invoke
           - worker
 
-postgresql:
+postgres:
   enabled: true
   image:
-    tag: 15.5.0
+    tag: 17.6-alpine3.21
   auth:
     enablePostgresUser: false
     username: inventree
