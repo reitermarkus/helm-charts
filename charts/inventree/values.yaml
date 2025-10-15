@@ -99,11 +99,12 @@ controllers:
           - invoke
           - worker
 
-postgresql:
+postgres:
   enabled: true
   image:
-    repository: bitnamilegacy/postgresql
-    tag: 15.10.0
+    registry: docker.io
+    repository: postgres
+    tag: 15.5-alpine3.19
   auth:
     enablePostgresUser: false
     username: inventree
