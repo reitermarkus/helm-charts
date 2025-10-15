@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 3.13.7
 description: TeamSpeak Server
 name: teamspeak
-version: 4.3.0
+version: 4.4.0
 kubeVersion: ">=1.20.0-0"
 keywords:
   - teamspeak
@@ -18,4 +18,4 @@ maintainers:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts/
-    version: 4.3.0
+    version: 4.4.0
