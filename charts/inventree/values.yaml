@@ -102,6 +102,7 @@ controllers:
 postgresql:
   enabled: true
   image:
+    repository: bitnamilegacy/postgresql
     tag: 15.5.0
   auth:
     enablePostgresUser: false
