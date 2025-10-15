@@ -4,15 +4,15 @@
 {{- define "inventree.sharedEnv" -}}
 INVENTREE_TRUSTED_ORIGINS: http://localhost:8000
 INVENTREE_DB_NAME: inventree
-{{- if .Values.postgresql.enabled }}
+{{- if .Values.postgres.enabled }}
 INVENTREE_DB_ENGINE: postgresql
 INVENTREE_DB_USER: inventree
 INVENTREE_DB_PASSWORD:
   valueFrom:
     secretKeyRef:
-      name: {{ .Release.Name }}-postgresql
+      name: {{ .Release.Name }}-postgres
       key: password
-INVENTREE_DB_HOST: "{{ .Release.Name }}-postgresql"
+INVENTREE_DB_HOST: "{{ .Release.Name }}-postgres"
 INVENTREE_DB_PORT: 5432
 {{- else}}
 INVENTREE_DB_ENGINE: sqlite
