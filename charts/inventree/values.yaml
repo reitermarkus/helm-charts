@@ -102,7 +102,9 @@ controllers:
 postgres:
   enabled: true
   image:
-    tag: 17.6-alpine3.21
+    registry: docker.io
+    repository: postgres
+    tag: 15.5-alpine3.19
   auth:
     enablePostgresUser: false
     username: inventree
