@@ -99,15 +99,14 @@ controllers:
           - invoke
           - worker
 
-postgresql:
-  enabled: true
+cnpg:
+  enabled: false
   image:
-    repository: bitnamilegacy/postgresql
-    tag: 17.6.0
-  auth:
-    enablePostgresUser: false
-    username: inventree
-    database: inventree
+    repository: ghcr.io/cloudnative-pg/postgresql
+    tag: "17.6"
+  instances: 3
+  storage:
+    size: 1Gi
 
 redis-ha:
   enabled: true
