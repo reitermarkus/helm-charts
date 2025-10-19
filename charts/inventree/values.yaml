@@ -103,7 +103,7 @@ postgresql:
   enabled: true
   image:
     repository: bitnamilegacy/postgresql
-    tag: 15.10.0
+    tag: 17.6.0
   auth:
     enablePostgresUser: false
     username: inventree
