@@ -106,12 +106,11 @@ controllers:
 
 cnpg:
   enabled: false
-  image:
-    repository: ghcr.io/cloudnative-pg/postgresql
-    tag: "18.0"
-  instances: 3
-  storage:
-    size: 1Gi
+  clusterSpec:
+    imageName: ghcr.io/cloudnative-pg/postgresql:18.0
+    instances: 3
+    storage:
+      size: 1Gi
 
 redis-ha:
   enabled: true
