@@ -23,7 +23,7 @@ INVENTREE_DB_PASSWORD:
     secretKeyRef:
       name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres
       key: password
-INVENTREE_DB_HOST: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres
+INVENTREE_DB_HOST: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-rw
 INVENTREE_DB_PORT: 5432
 {{- else}}
 INVENTREE_DB_ENGINE: sqlite
