@@ -12,6 +12,7 @@
 {{- end -}}
 
 {{- define "inventree.sharedEnv" -}}
+INVENTREE_AUTO_UPDATE: 'True'
 INVENTREE_TRUSTED_ORIGINS: http://localhost:8000
 INVENTREE_DB_NAME: inventree
 {{- if .Values.cnpg.enabled }}
