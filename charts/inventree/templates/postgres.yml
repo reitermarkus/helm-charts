@@ -8,12 +8,7 @@ metadata:
   labels:
     {{- include "bjw-s.common.lib.metadata.allLabels" . | nindent 4 }}
 spec:
-  imageName: {{ .Values.cnpg.image.repository }}:{{ .Values.cnpg.image.tag }}
-
-  instances: {{ .Values.cnpg.instances }}
-
-  storage:
-    size: {{ .Values.cnpg.storage.size }}
+  {{- .Values.cnpg.clusterSpec | toYaml | nindent 2 }}
 
   managed:
     roles:
