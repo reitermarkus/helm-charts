@@ -87,6 +87,11 @@ controllers:
             enabled: true
             type: TCP
             port: 8000
+            spec:
+              initialDelaySeconds: 0
+              timeoutSeconds: 1
+              periodSeconds: 5
+              failureThreshold: 30
       worker:
         image:
           # -- image repository
