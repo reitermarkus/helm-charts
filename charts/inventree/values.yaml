@@ -108,7 +108,7 @@ cnpg:
   enabled: false
   image:
     repository: ghcr.io/cloudnative-pg/postgresql
-    tag: "17.6"
+    tag: "18.0"
   instances: 3
   storage:
     size: 1Gi
