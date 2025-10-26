@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-appVersion: 1.0.7
+appVersion: 1.0.8
 description: InvenTree is a self-hosted inventory management system
 name: inventree
 version: 14.0.1
