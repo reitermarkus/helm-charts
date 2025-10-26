@@ -11,7 +11,7 @@ controllers:
       migrate:
         image:
           # -- image repository
-          repository: inventree/inventree
+          repository: ghcr.io/inventree/inventree
           # -- image tag
           tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
@@ -42,7 +42,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: inventree/inventree
+          repository: ghcr.io/inventree/inventree
           # -- image tag
           tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
@@ -95,7 +95,7 @@ controllers:
       worker:
         image:
           # -- image repository
-          repository: inventree/inventree
+          repository: ghcr.io/inventree/inventree
           # -- image tag
           tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
