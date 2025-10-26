@@ -10271,6 +10271,31 @@ entries:
     version: 1.1.0
   mumble:
   - apiVersion: v2
+    appVersion: 1.5.857
+    created: "2025-10-26T21:59:08.130388356Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.4.0
+    description: Mumble Server
+    digest: 28ae83860b96ab0eda261e5c66ee47ad3ca8b8191e894de5a66e8639ef7a6388
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/mumble
+    icon: https://www.mumble.info/css/mumble.svg
+    keywords:
+    - mumble
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: mumble
+    sources:
+    - https://github.com/mumble-voip/mumble-docker
+    - https://hub.docker.com/r/mumblevoip/mumble-server
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/mumble-4.4.1/mumble-4.4.1.tgz
+    version: 4.4.1
+  - apiVersion: v2
     appVersion: 1.5.735
     created: "2025-10-15T14:51:07.110583481Z"
     dependencies:
@@ -17417,4 +17442,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-10-20T14:44:11.740606385Z"
+generated: "2025-10-26T21:59:08.131206497Z"
