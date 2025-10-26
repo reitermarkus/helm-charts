@@ -11,7 +11,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: mumblevoip/mumble-server
+          repository: docker.io/mumblevoip/mumble-server
           # -- image tag
           tag: "v{{ .Chart.AppVersion }}"
           # -- image pull policy
