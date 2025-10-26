@@ -24,7 +24,7 @@ controllers:
       proxy:
         image:
           # -- image repository
-          repository: caddy
+          repository: docker.io/library/caddy
           # -- image tag
           tag: 2.10.2-alpine
           # -- image pull policy
