@@ -11,7 +11,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: sinusbot/docker
+          repository: docker.io/sinusbot/docker
           # -- image tag
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
