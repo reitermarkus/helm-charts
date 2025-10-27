@@ -11,7 +11,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: hon95/prometheus-nut-exporter
+          repository: docker.io/hon95/prometheus-nut-exporter
           # -- image tag
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
