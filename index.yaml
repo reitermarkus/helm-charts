@@ -15815,6 +15815,30 @@ entries:
   teamspeak:
   - apiVersion: v2
     appVersion: 3.13.7
+    created: "2025-10-27T07:23:03.836629293Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.4.0
+    description: TeamSpeak Server
+    digest: 4c082aff929f66a8e409f2eaa197316c13aff3be8d65d96bbfe22b8640f22463
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/teamspeak
+    icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
+    keywords:
+    - teamspeak
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: teamspeak
+    sources:
+    - https://hub.docker.com/_/teamspeak
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/teamspeak-4.4.1/teamspeak-4.4.1.tgz
+    version: 4.4.1
+  - apiVersion: v2
+    appVersion: 3.13.7
     created: "2025-10-15T14:51:08.056376035Z"
     dependencies:
     - name: common
@@ -17502,4 +17526,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-10-26T22:32:42.802438424Z"
+generated: "2025-10-27T07:23:03.837511136Z"
