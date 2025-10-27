@@ -11,7 +11,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: teamspeak
+          repository: docker.io/library/teamspeak
           # -- image tag
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
