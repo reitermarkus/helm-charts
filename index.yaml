@@ -9350,6 +9350,33 @@ entries:
   lancache:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-10-27T07:26:21.25367021Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.4.0
+    description: LanCache is a caching proxy server for game downloads
+    digest: ae1d2bdb7bf951cb6d958c118b9fcd07f7eda2a4ec11dcfd9319b4a8cda13130
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/lancache
+    icon: https://avatars.githubusercontent.com/u/16938914
+    keywords:
+    - lancache
+    - steam
+    - proxy
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: lancache
+    sources:
+    - https://github.com/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/lancache-dns
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/lancache-4.4.1/lancache-4.4.1.tgz
+    version: 4.4.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-10-15T14:51:06.969929039Z"
     dependencies:
     - name: common
@@ -17526,4 +17553,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-10-27T07:23:03.837511136Z"
+generated: "2025-10-27T07:26:21.254557232Z"
