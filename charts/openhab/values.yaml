@@ -11,7 +11,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: openhab/openhab
+          repository: docker.io/openhab/openhab
           # -- image tag
           tag: "{{ .Chart.AppVersion }}"
           # -- image pull policy
