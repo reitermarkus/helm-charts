@@ -14079,6 +14079,30 @@ entries:
   sinusbot:
   - apiVersion: v2
     appVersion: 1.0.2
+    created: "2025-10-27T07:40:29.214528962Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.4.0
+    description: TeamSpeak & Discord Bot
+    digest: 1b2c23b81b3e58ae410e67e757c555216499b52b8052c3ae0b2e35dbb8bf7cb0
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/sinusbot
+    icon: https://pbs.twimg.com/profile_images/613423613711122432/fFJZiB_t_400x400.png
+    keywords:
+    - sinusbot
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sinusbot
+    sources:
+    - https://github.com/sinusbot/sinusbot-docker
+    - https://hub.docker.com/r/sinusbot/docker
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/sinusbot-4.4.1/sinusbot-4.4.1.tgz
+    version: 4.4.1
+  - apiVersion: v2
+    appVersion: 1.0.2
     created: "2025-10-15T14:51:07.763107962Z"
     dependencies:
     - name: common
@@ -17627,4 +17651,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-10-27T07:37:57.799658739Z"
+generated: "2025-10-27T07:40:29.215398097Z"
