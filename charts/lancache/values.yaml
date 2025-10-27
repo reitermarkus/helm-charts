@@ -17,7 +17,7 @@ controllers:
       monolithic:
         image:
           # -- image repository
-          repository: lancachenet/monolithic
+          repository: docker.io/lancachenet/monolithic
           # -- image tag
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
