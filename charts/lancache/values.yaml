@@ -64,7 +64,7 @@ controllers:
       dns:
         image:
           # -- image repository
-          repository: lancachenet/lancache-dns
+          repository: docker.io/lancachenet/lancache-dns
           # -- image tag
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
