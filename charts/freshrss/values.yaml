@@ -11,7 +11,7 @@ controllers:
       server:
         image:
           # -- image repository
-          repository: linuxserver/freshrss
+          repository: docker.io/linuxserver/freshrss
           # -- image tag
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
