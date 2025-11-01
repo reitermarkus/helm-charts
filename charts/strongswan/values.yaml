@@ -45,19 +45,19 @@ controllers:
             custom: true
             spec:
               exec:
-                command: [ipsec, status]
+                command: [swanctl, --stats]
           readiness:
             enabled: true
             custom: true
             spec:
               exec:
-                command: [ipsec, status]
+                command: [swanctl, --stats]
           startup:
             enabled: true
             custom: true
             spec:
               exec:
-                command: [ipsec, status]
+                command: [swanctl, --stats]
         # -- Security contexts required for container.
         securityContext:
           capabilities:
@@ -90,25 +90,18 @@ service:
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
-  # -- Single configuration directory.
-  config:
-    enabled: false
+  x509ca:
+    enabled: true
     type: emptyDir
     globalMounts:
-      - path: /etc/ipsec.d
-  # -- Individual certificate directories.
-  cacerts:
-    enabled: false
+      - path: /etc/swanctl/x509ca
+  x509:
+    enabled: true
     type: emptyDir
     globalMounts:
-      - path: /etc/ipsec.d/cacerts
-  certs:
-    enabled: false
-    type: emptyDir
-    globalMounts:
-      - path: /etc/ipsec.d/certs
+      - path: /etc/swanctl/x509
   private:
-    enabled: false
+    enabled: true
     type: emptyDir
     globalMounts:
-      - path: /etc/ipsec.d/private
+      - path: /etc/swanctl/private
