@@ -8,7 +8,3 @@ controllers:
           WIFI_SSID: Example WiFi
           VPN_DOMAIN: vpn.example.org
           VPN_P12_PASSWORD: password
-
-persistence:
-  config:
-    enabled: true
