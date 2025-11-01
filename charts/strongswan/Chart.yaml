@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-appVersion: 2.0.9
+appVersion: 2.0.11
 description: strongSwan – the OpenSource IPsec-based VPN Solution
 name: strongswan
 version: 5.0.0
