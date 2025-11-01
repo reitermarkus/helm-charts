@@ -15030,6 +15030,31 @@ entries:
     version: 1.1.0
   strongswan:
   - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2025-11-01T20:30:45.938506635Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.4.0
+    description: strongSwan – the OpenSource IPsec-based VPN Solution
+    digest: 64c2ab633d6eb729f3ab464656c769aca8cee5cb8f77e77bacd637ad1849069c
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/strongswan
+    icon: https://strongswan.org/images/strongswan_neu.png
+    keywords:
+    - strongswan
+    - vpn
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: strongswan
+    sources:
+    - https://github.com/reitermarkus/strongswan
+    - https://ghcr.io/reitermarkus/strongswan
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/strongswan-5.1.0/strongswan-5.1.0.tgz
+    version: 5.1.0
+  - apiVersion: v2
     appVersion: 2.0.12
     created: "2025-11-01T19:07:00.002243259Z"
     dependencies:
@@ -17758,4 +17783,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-11-01T19:07:00.003157729Z"
+generated: "2025-11-01T20:30:45.939365896Z"
