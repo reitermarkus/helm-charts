@@ -3,6 +3,31 @@ entries:
   freshrss:
   - apiVersion: v2
     appVersion: 1.27.1
+    created: "2025-12-04T22:08:34.712226915Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 4b3ffba3040b11dd527d809b7db66b1f4fb0ad97fa6fee096da887c50db714e6
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/freshrss
+    icon: https://avatars.githubusercontent.com/u/9414285
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: freshrss
+    sources:
+    - https://github.com/FreshRSS/FreshRSS
+    - https://hub.docker.com/r/linuxserver/freshrss
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/freshrss-9.6.0/freshrss-9.6.0.tgz
+    version: 9.6.0
+  - apiVersion: v2
+    appVersion: 1.27.1
     created: "2025-10-27T07:30:58.515280617Z"
     dependencies:
     - name: common
@@ -1401,6 +1426,36 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/freshrss-6.6.0.tgz
     version: 6.6.0
   inventree:
+  - apiVersion: v2
+    appVersion: 1.1.6
+    created: "2025-12-04T22:08:34.877818095Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.35.3
+    description: InvenTree is a self-hosted inventory management system
+    digest: e8547fa1c534333edff20cf177d5c68118c8417df6f12638fdbc58d6a4534e69
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/inventree
+    icon: https://inventree.org/assets/logo.png
+    keywords:
+    - inventree
+    - inventory
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: inventree
+    sources:
+    - https://inventree.org
+    - https://github.com/inventree/inventree
+    - https://hub.docker.com/r/inventree/inventree
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/inventree-14.2.0/inventree-14.2.0.tgz
+    version: 14.2.0
   - apiVersion: v2
     appVersion: 1.1.6
     created: "2025-11-28T09:16:11.568977463Z"
@@ -9495,6 +9550,33 @@ entries:
   lancache:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-12-04T22:08:35.02023293Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: LanCache is a caching proxy server for game downloads
+    digest: 1ebc2deac2ff96c0cb15b598bc259d9517f619c254c51ca9df9ca4e2d911511f
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/lancache
+    icon: https://avatars.githubusercontent.com/u/16938914
+    keywords:
+    - lancache
+    - steam
+    - proxy
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: lancache
+    sources:
+    - https://github.com/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/monolithic
+    - https://hub.docker.com/r/lancachenet/lancache-dns
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/lancache-4.5.0/lancache-4.5.0.tgz
+    version: 4.5.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-10-27T07:44:33.907541752Z"
     dependencies:
     - name: common
@@ -10531,6 +10613,31 @@ entries:
   mumble:
   - apiVersion: v2
     appVersion: 1.5.857
+    created: "2025-12-04T22:08:35.160417448Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: Mumble Server
+    digest: 0b66801e81f50a2e7e3a392ea00f1cf78142876c03e0df428b385078ad9e4836
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/mumble
+    icon: https://www.mumble.info/css/mumble.svg
+    keywords:
+    - mumble
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: mumble
+    sources:
+    - https://github.com/mumble-voip/mumble-docker
+    - https://hub.docker.com/r/mumblevoip/mumble-server
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/mumble-4.5.0/mumble-4.5.0.tgz
+    version: 4.5.0
+  - apiVersion: v2
+    appVersion: 1.5.857
     created: "2025-10-26T21:59:08.130388356Z"
     dependencies:
     - name: common
@@ -11502,6 +11609,32 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/mumble-1.0.0.tgz
     version: 1.0.0
   openhab:
+  - apiVersion: v2
+    appVersion: 5.0.3
+    created: "2025-12-04T22:08:35.289622747Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: openHAB - a vendor and technology agnostic open source automation
+      software for your home
+    digest: 0d495080732e41047ea8e50faa8657d9c10e1fd784cc932c5b9242a3175ba133
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/openhab
+    icon: https://www.openhab.org/openhab-logo-square.png
+    keywords:
+    - openhab
+    - home-automation
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: openhab
+    sources:
+    - https://www.openhab.org
+    - https://hub.docker.com/r/openhab/openhab
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/openhab-6.4.0/openhab-6.4.0.tgz
+    version: 6.4.0
   - apiVersion: v2
     appVersion: 5.0.3
     created: "2025-11-28T09:19:51.281282586Z"
@@ -13043,6 +13176,29 @@ entries:
   prometheus-nut-exporter:
   - apiVersion: v2
     appVersion: 1.2.1
+    created: "2025-12-04T22:08:35.407179278Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: Prometheus NUT Exporter
+    digest: 3e5846aa30a06a40ea82450f194927729dbbe43dbb7767abe069809f163b493f
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/prometheus-nut-exporter
+    keywords:
+    - nut
+    - ups
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: prometheus-nut-exporter
+    sources:
+    - https://github.com/HON95/prometheus-nut-exporter
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/prometheus-nut-exporter-1.5.0/prometheus-nut-exporter-1.5.0.tgz
+    version: 1.5.0
+  - apiVersion: v2
+    appVersion: 1.2.1
     created: "2025-10-27T07:37:57.79832416Z"
     dependencies:
     - name: common
@@ -13318,6 +13474,31 @@ entries:
     - https://github.com/reitermarkus/helm-charts/releases/download/prometheus-nut-exporter-0.1.0/prometheus-nut-exporter-0.1.0.tgz
     version: 0.1.0
   sdtd:
+  - apiVersion: v2
+    appVersion: main
+    created: "2025-12-04T22:08:35.539050535Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: Dedicated server for 7 Days to Die
+    digest: 96bd2446f34896e604560c9a9d5bce6a07d969ccf71ec3eaffa4e36a3a237e61
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/sdtd
+    icon: https://7daystodie.com/wp-content/uploads/2016/04/7dtd_site_icon.png
+    keywords:
+    - sdtd
+    - 7d2d
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sdtd
+    sources:
+    - https://github.com/reitermarkus/7d2d
+    - https://ghcr.io/reitermarkus/7d2d
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/sdtd-4.5.0/sdtd-4.5.0.tgz
+    version: 4.5.0
   - apiVersion: v2
     appVersion: main
     created: "2025-10-15T14:51:07.586079377Z"
@@ -14252,6 +14433,30 @@ entries:
   sinusbot:
   - apiVersion: v2
     appVersion: 1.0.2
+    created: "2025-12-04T22:08:35.69036134Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: TeamSpeak & Discord Bot
+    digest: 803bf15b477f26c29a9c7a150bf92176b7327138ce2f3557e6b9b826dfc359c6
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/sinusbot
+    icon: https://pbs.twimg.com/profile_images/613423613711122432/fFJZiB_t_400x400.png
+    keywords:
+    - sinusbot
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: sinusbot
+    sources:
+    - https://github.com/sinusbot/sinusbot-docker
+    - https://hub.docker.com/r/sinusbot/docker
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/sinusbot-4.5.0/sinusbot-4.5.0.tgz
+    version: 4.5.0
+  - apiVersion: v2
+    appVersion: 1.0.2
     created: "2025-10-27T07:40:29.214528962Z"
     dependencies:
     - name: common
@@ -15145,6 +15350,31 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/sinusbot-1.1.0.tgz
     version: 1.1.0
   strongswan:
+  - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2025-12-04T22:08:35.828477777Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: strongSwan – the OpenSource IPsec-based VPN Solution
+    digest: c34d76822db2976329018fbf88766cf6122009897291c694dd924b51e5f64e8b
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/strongswan
+    icon: https://strongswan.org/images/strongswan_neu.png
+    keywords:
+    - strongswan
+    - vpn
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: strongswan
+    sources:
+    - https://github.com/reitermarkus/strongswan
+    - https://ghcr.io/reitermarkus/strongswan
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/strongswan-5.2.0/strongswan-5.2.0.tgz
+    version: 5.2.0
   - apiVersion: v2
     appVersion: 2.1.0
     created: "2025-11-01T20:30:45.938506635Z"
@@ -16186,6 +16416,30 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/strongswan-1.3.0.tgz
     version: 1.3.0
   teamspeak:
+  - apiVersion: v2
+    appVersion: 3.13.7
+    created: "2025-12-04T22:08:35.958443596Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: TeamSpeak Server
+    digest: 66a090a140e81d9ec06ae1186a7d514e5606a60cbd7e7e818636b717dc2b39e1
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/teamspeak
+    icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
+    keywords:
+    - teamspeak
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: teamspeak
+    sources:
+    - https://hub.docker.com/_/teamspeak
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/teamspeak-4.5.0/teamspeak-4.5.0.tgz
+    version: 4.5.0
   - apiVersion: v2
     appVersion: 3.13.7
     created: "2025-10-27T07:23:03.836629293Z"
@@ -17899,4 +18153,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-11-28T09:19:51.282944837Z"
+generated: "2025-12-04T22:08:35.961398266Z"
