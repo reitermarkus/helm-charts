@@ -3,6 +3,31 @@ entries:
   freshrss:
   - apiVersion: v2
     appVersion: 1.27.1
+    created: "2025-12-16T22:01:21.092561971Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 81593c9b00330de3b3bf7c3c4a3b71acf925f416c85afd57239bcd3b8500f13d
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/freshrss
+    icon: https://avatars.githubusercontent.com/u/9414285
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: freshrss
+    sources:
+    - https://github.com/FreshRSS/FreshRSS
+    - https://hub.docker.com/r/linuxserver/freshrss
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/freshrss-9.6.1/freshrss-9.6.1.tgz
+    version: 9.6.1
+  - apiVersion: v2
+    appVersion: 1.27.1
     created: "2025-12-04T22:08:34.712226915Z"
     dependencies:
     - name: common
@@ -1426,6 +1451,36 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/freshrss-6.6.0.tgz
     version: 6.6.0
   inventree:
+  - apiVersion: v2
+    appVersion: 1.1.6
+    created: "2025-12-16T22:01:21.322038479Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.35.5
+    description: InvenTree is a self-hosted inventory management system
+    digest: 53d748f613991ffb2bcbf8e1aef6db88c9f66fa13f95dc9b5e958a9d25fa44a7
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/inventree
+    icon: https://inventree.org/assets/logo.png
+    keywords:
+    - inventree
+    - inventory
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: inventree
+    sources:
+    - https://inventree.org
+    - https://github.com/inventree/inventree
+    - https://hub.docker.com/r/inventree/inventree
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/inventree-14.2.2/inventree-14.2.2.tgz
+    version: 14.2.2
   - apiVersion: v2
     appVersion: 1.1.6
     created: "2025-12-09T06:35:19.999165436Z"
@@ -16448,6 +16503,30 @@ entries:
   teamspeak:
   - apiVersion: v2
     appVersion: 3.13.7
+    created: "2025-12-16T22:01:21.535205875Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: TeamSpeak Server
+    digest: 0d90bdac0b0ab80b145671e44f4190ec822a9af69d6f14ef49b61b5ce4da75ae
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/teamspeak
+    icon: https://teamspeak.com/user/themes/teamspeak/images/logo_inverse.svg
+    keywords:
+    - teamspeak
+    - voice-chat
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: teamspeak
+    sources:
+    - https://hub.docker.com/_/teamspeak
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/teamspeak-4.5.1/teamspeak-4.5.1.tgz
+    version: 4.5.1
+  - apiVersion: v2
+    appVersion: 3.13.7
     created: "2025-12-04T22:08:35.958443596Z"
     dependencies:
     - name: common
@@ -18183,4 +18262,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-12-09T06:35:20.000200382Z"
+generated: "2025-12-16T22:01:21.537533884Z"
