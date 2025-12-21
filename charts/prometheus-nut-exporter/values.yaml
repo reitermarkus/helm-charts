@@ -16,7 +16,7 @@ controllers:
           tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
-        # -- environment variables. See more environment variables in the [prometheus-nut-exporter documentation](https://github.com/HON95/prometheus-nut-exporter/blob/master/README.md).
+        # -- environment variables. See more environment variables in the [prometheus-nut-exporter documentation](https://github.com/HON95/prometheus-nut-exporter/blob/HEAD/README.md).
         # @default -- See below
         env:
           # TZ: UTC

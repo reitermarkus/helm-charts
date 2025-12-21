@@ -1,0 +1,51 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from a common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+controllers:
+  ipmi-server:
+    containers:
+      server:
+        image:
+          # -- image repository
+          repository: docker.io/mneveroff/ipmi-server
+          # -- image tag
+          tag: '{{ .Chart.AppVersion }}'
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        # -- environment variables. See more environment variables in the [ipmi-server documentation](https://github.com/mneveroff/ipmi-server/blob/HEAD/README.md).
+        # @default -- See below
+        env: {}
+          # TZ: UTC
+        ports:
+          - name: http
+            containerPort: 80
+        probes:
+          liveness:
+            enabled: true
+            type: HTTP
+            path: /
+            port: http
+          readiness:
+            enabled: true
+            type: HTTP
+            path: /
+            port: http
+          startup:
+            enabled: true
+            type: HTTP
+            path: /
+            port: http
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  web:
+    controller: ipmi-server
+    ports:
+      http:
+        port: 80
+        targetPort: http
