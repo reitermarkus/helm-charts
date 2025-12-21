@@ -9662,6 +9662,29 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/inventree-1.0.0.tgz
     version: 1.0.0
+  ipmi-server:
+  - apiVersion: v2
+    appVersion: 1.2.7
+    created: "2025-12-21T19:06:20.990209607Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: IPMI Server
+    digest: a43b1d22caaa594070ecddb7537a60f0481027215251b43ea243aad9a9b7573b
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/ipmi-server
+    keywords:
+    - ipmi
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: ipmi-server
+    sources:
+    - https://github.com/mneveroff/ipmi-server
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/ipmi-server-0.1.0/ipmi-server-0.1.0.tgz
+    version: 0.1.0
   lancache:
   - apiVersion: v2
     appVersion: latest
@@ -13289,6 +13312,29 @@ entries:
     - https://reitermarkus.github.io/helm-charts/stable/openhab-1.6.0.tgz
     version: 1.6.0
   prometheus-nut-exporter:
+  - apiVersion: v2
+    appVersion: 1.2.1
+    created: "2025-12-21T19:06:21.153982904Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.5.0
+    description: Prometheus NUT Exporter
+    digest: 28b637254bb570a0cdc93d33591eefa8558fc3725cfa26eb5526b7dbf4e2ed01
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/prometheus-nut-exporter
+    keywords:
+    - nut
+    - ups
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: prometheus-nut-exporter
+    sources:
+    - https://github.com/HON95/prometheus-nut-exporter
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/prometheus-nut-exporter-1.5.1/prometheus-nut-exporter-1.5.1.tgz
+    version: 1.5.1
   - apiVersion: v2
     appVersion: 1.2.1
     created: "2025-12-04T22:08:35.407179278Z"
@@ -18292,4 +18338,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2025-12-21T19:02:46.871344117Z"
+generated: "2025-12-21T19:06:21.154944738Z"
