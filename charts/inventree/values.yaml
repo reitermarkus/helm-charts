@@ -196,11 +196,12 @@ configMaps:
             handle {
               header Content-Disposition attachment
             }
-            # Don't force download of images.
-            @images {
-              path_regexp ^.*\.(jpe?g|j2k|png|bmp|tiff?|webp|gif)$
+
+            # Don't force download of images or documents.
+            @images_or_documents {
+              path_regexp ^.*\.(jpe?g|j2k|png|bmp|tiff?|webp|gif|svg|pdf)$
             }
-            handle @images {
+            handle @images_or_documents {
               header Content-Disposition inline
             }
 
