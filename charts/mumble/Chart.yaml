@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-appVersion: 1.5.857
+appVersion: 1.6.870
 description: Mumble Server
 name: mumble
 version: 4.6.1
