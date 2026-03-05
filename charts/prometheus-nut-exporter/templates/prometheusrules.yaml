@@ -23,6 +23,17 @@ spec:
           for: 5m
           labels:
             severity: critical
+        {{- range .Values.metrics.serviceMonitor.targets }}
+        - alert: NutExporterTargetAbsent
+          annotations:
+            description: NUT Exporter target has disappeared.
+            summary: NUT Exporter target is down.
+          expr: |
+            absent(up{job=~".*{{ include "bjw-s.common.lib.chart.names.fullname" . }}.*", target="{{ .hostname }}:{{ .port }}"} == 1)
+          for: 5m
+          labels:
+            severity: critical
+        {{- end }}
         - alert: UpsOnBattery
           annotations:
             description: UPS {{ "{{ $labels.ups }}" }} has lost power and is running on battery.
