@@ -14013,6 +14013,29 @@ entries:
   prometheus-nut-exporter:
   - apiVersion: v2
     appVersion: 1.2.1
+    created: "2026-03-05T19:56:58.228302557Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.6.2
+    description: Prometheus NUT Exporter
+    digest: 1635a468ae076e538b3446c5923605ef4657ab83251c136e2a6daee903ff9e03
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/prometheus-nut-exporter
+    keywords:
+    - nut
+    - ups
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: prometheus-nut-exporter
+    sources:
+    - https://github.com/HON95/prometheus-nut-exporter
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/prometheus-nut-exporter-1.6.2/prometheus-nut-exporter-1.6.2.tgz
+    version: 1.6.2
+  - apiVersion: v2
+    appVersion: 1.2.1
     created: "2026-01-22T18:38:00.144997993Z"
     dependencies:
     - name: common
@@ -19279,4 +19302,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2026-03-04T22:00:04.650367414Z"
+generated: "2026-03-05T19:56:58.229209326Z"
