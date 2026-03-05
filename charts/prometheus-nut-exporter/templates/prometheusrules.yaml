@@ -1,10 +1,11 @@
 {{- if and .Values.metrics.enabled .Values.metrics.prometheusRule.enabled }}
 {{- include "bjw-s.common.loader.init" . }}
+{{- $fullName := (include "bjw-s.common.lib.chart.names.fullname" .) -}}
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+  name: {{ $fullName }}
   labels:
     {{- include "bjw-s.common.lib.metadata.allLabels" . | nindent 4 }}
     {{- with .Values.metrics.prometheusRule.labels }}
@@ -12,14 +13,14 @@ metadata:
     {{- end }}
 spec:
   groups:
-    - name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}
+    - name: {{ $fullName }}
       rules:
         - alert: NutExporterAbsent
           annotations:
             description: NUT Exporter has disappeared from Prometheus target discovery.
             summary: NUT Exporter is down.
           expr: |
-            absent(up{job=~".*{{ include "bjw-s.common.lib.chart.names.fullname" . }}.*"} == 1)
+            absent(up{job="{{ $fullName }}"} == 1)
           for: 5m
           labels:
             severity: critical
@@ -29,7 +30,7 @@ spec:
             description: NUT Exporter target has disappeared.
             summary: NUT Exporter target is down.
           expr: |
-            absent(up{job=~".*{{ include "bjw-s.common.lib.chart.names.fullname" . }}.*", target="{{ .hostname }}:{{ .port }}"} == 1)
+            absent(up{job="{{ $fullName }}", target="{{ .hostname }}:{{ .port }}"} == 1)
           for: 5m
           labels:
             severity: critical
@@ -39,7 +40,7 @@ spec:
             description: UPS {{ "{{ $labels.ups }}" }} has lost power and is running on battery.
             summary: UPS is running on battery.
           expr: |
-            nut_ups_status{job=~".*{{ include "bjw-s.common.lib.chart.names.fullname" . }}.*", status=~"[OL]B"} == 1
+            nut_ups_status{job="{{ $fullName }}", status=~"[OL]B"} == 1
           for: 10s
           labels:
             severity: critical
@@ -49,7 +50,7 @@ spec:
               ready to shutdown.
             summary: UPS battery is low.
           expr: |
-            nut_ups_status{job=~".*{{ include "bjw-s.common.lib.chart.names.fullname" . }}.*", status="LB"} == 1
+            nut_ups_status{job="{{ $fullName }}", status="LB"} == 1
           for: 5s
           labels:
             severity: critical
