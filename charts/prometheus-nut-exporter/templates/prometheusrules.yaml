@@ -27,7 +27,7 @@ spec:
         {{- range .Values.metrics.serviceMonitor.targets }}
         - alert: NutExporterTargetAbsent
           annotations:
-            description: NUT Exporter target has disappeared.
+            description: NUT Exporter target {{ .hostname }}:{{ .port }} has disappeared.
             summary: NUT Exporter target is down.
           expr: |
             absent(up{job="{{ $fullName }}", target="{{ .hostname }}:{{ .port }}"} == 1)
