@@ -33,6 +33,7 @@ INVENTREE_DB_PASSWORD:
       key: password
 {{- else}}
 INVENTREE_DB_ENGINE: sqlite
+INVENTREE_DB_NAME: inventree
 {{- end }}
 {{- if (index .Values "redis-ha" "enabled") }}
 INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis-ha"
