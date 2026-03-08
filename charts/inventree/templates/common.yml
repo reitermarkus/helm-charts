@@ -31,7 +31,7 @@ INVENTREE_DB_PASSWORD:
     secretKeyRef:
       name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-app
       key: password
-{{- else}}
+{{- else }}
 INVENTREE_DB_ENGINE: sqlite
 INVENTREE_DB_NAME: inventree
 {{- end }}
@@ -49,6 +49,11 @@ global:
 {{ end }}
 
 controllers:
+  worker:
+    containers:
+      worker:
+        env:
+          {{ include "inventree.sharedEnv" . | nindent 10 }}
   inventree:
     initContainers:
       migrate:
@@ -56,9 +61,6 @@ controllers:
           {{ include "inventree.sharedEnv" . | nindent 10 }}
     containers:
       server:
-        env:
-          {{ include "inventree.sharedEnv" . | nindent 10 }}
-      worker:
         env:
           {{ include "inventree.sharedEnv" . | nindent 10 }}
 {{- end -}}
