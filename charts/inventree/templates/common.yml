@@ -1,30 +1,36 @@
 ---
 {{- include "bjw-s.common.loader.init" . }}
 
-# If there's an existing secret, reuse it, otherwise generate a new one.
-{{- define "inventree.postgres-password" -}}
-{{- $secret := (lookup "v1" "Secret" .Release.Namespace (printf "%v-postgres" (include "bjw-s.common.lib.chart.names.fullname" .)) ) -}}
-  {{- if $secret -}}
-    {{-  index $secret "data" "password" -}}
-  {{- else -}}
-    {{- randAlphaNum 32 | b64enc | quote -}}
-  {{- end -}}
-{{- end -}}
-
 {{- define "inventree.sharedEnv" -}}
 INVENTREE_AUTO_UPDATE: 'True'
 INVENTREE_TRUSTED_ORIGINS: http://localhost:8000
-INVENTREE_DB_NAME: inventree
 {{- if .Values.cnpg.enabled }}
 INVENTREE_DB_ENGINE: postgresql
-INVENTREE_DB_USER: inventree
+INVENTREE_DB_HOST:
+  valueFrom:
+    secretKeyRef:
+      name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-app
+      key: host
+INVENTREE_DB_PORT:
+  valueFrom:
+    secretKeyRef:
+      name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-app
+      key: port
+INVENTREE_DB_NAME:
+  valueFrom:
+    secretKeyRef:
+      name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-app
+      key: dbname
+INVENTREE_DB_USER:
+  valueFrom:
+    secretKeyRef:
+      name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-app
+      key: user
 INVENTREE_DB_PASSWORD:
   valueFrom:
     secretKeyRef:
-      name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres
+      name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-app
       key: password
-INVENTREE_DB_HOST: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-rw
-INVENTREE_DB_PORT: 5432
 {{- else}}
 INVENTREE_DB_ENGINE: sqlite
 {{- end }}
