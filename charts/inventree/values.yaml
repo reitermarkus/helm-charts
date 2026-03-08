@@ -6,6 +6,20 @@
 #
 
 controllers:
+  worker:
+    type: statefulset
+    containers:
+      worker:
+        image:
+          # -- image repository
+          repository: ghcr.io/inventree/inventree
+          # -- image tag
+          tag: '{{ .Chart.AppVersion }}'
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        command:
+          - invoke
+          - worker
   inventree:
     initContainers:
       migrate:
@@ -13,7 +27,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/inventree/inventree
           # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         command:
@@ -44,7 +58,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/inventree/inventree
           # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
+          tag: '{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [InvenTree documentation](https://docs.inventree.org/en/latest/start/config/).
@@ -92,22 +106,11 @@ controllers:
               timeoutSeconds: 1
               periodSeconds: 5
               failureThreshold: 30
-      worker:
-        image:
-          # -- image repository
-          repository: ghcr.io/inventree/inventree
-          # -- image tag
-          tag: "{{ .Chart.AppVersion }}"
-          # -- image pull policy
-          pullPolicy: IfNotPresent
-        command:
-          - invoke
-          - worker
 
 cnpg:
   enabled: false
   clusterSpec:
-    imageName: ghcr.io/cloudnative-pg/postgresql:18.0
+    imageName: ghcr.io/cloudnative-pg/postgresql:17.8-standard-trixie
     instances: 3
     storage:
       size: 1Gi
@@ -120,7 +123,7 @@ redis-ha:
       # Allow writes without replicas.
       min-replicas-to-write: 0
       # Disable AOF persistence.
-      appendonly: "no"
+      appendonly: 'no'
       # Disable RDB persistence.
       save: '""'
 
@@ -231,12 +234,13 @@ persistence:
   data:
     type: emptyDir
     advancedMounts:
+      # worker:
+      #   worker:
+      #     - path: /home/inventree/data
       inventree:
         migrate:
           - path: /home/inventree/data
         server:
-          - path: /home/inventree/data
-        worker:
           - path: /home/inventree/data
         proxy:
           - path: /var/www/static

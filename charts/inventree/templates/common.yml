@@ -11,9 +11,7 @@
   {{- end -}}
 {{- end -}}
 
-{{- define "inventree.sharedEnv" -}}
-INVENTREE_AUTO_UPDATE: 'True'
-INVENTREE_TRUSTED_ORIGINS: http://localhost:8000
+{{- define "inventree.dbEnv" -}}
 INVENTREE_DB_NAME: inventree
 {{- if .Values.cnpg.enabled }}
 INVENTREE_DB_ENGINE: postgresql
@@ -25,13 +23,23 @@ INVENTREE_DB_PASSWORD:
       key: password
 INVENTREE_DB_HOST: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-postgres-rw
 INVENTREE_DB_PORT: 5432
-{{- else}}
+{{- else }}
 INVENTREE_DB_ENGINE: sqlite
 {{- end }}
+{{- end -}}
+
+
+{{- define "inventree.cacheEnv" -}}
 {{- if (index .Values "redis-ha" "enabled") }}
 INVENTREE_CACHE_HOST: "{{ .Release.Name }}-redis-ha"
 INVENTREE_CACHE_PORT: 6379
 {{- end }}
+{{- end -}}
+
+{{- define "inventree.fullEnv" -}}
+INVENTREE_AUTO_UPDATE: 'True'
+INVENTREE_TRUSTED_ORIGINS: http://localhost:8000
+{{ include "inventree.dbEnv" . }}{{ include "inventree.cacheEnv" . }}
 {{ end }}
 
 {{- define "inventree.hardcodedValues" -}}
@@ -42,18 +50,21 @@ global:
 {{ end }}
 
 controllers:
+  worker:
+    containers:
+      worker:
+        env:
+          {{ include "inventree.dbEnv" . | nindent 10 }}
+          {{ include "inventree.cacheEnv" . | nindent 10 }}
   inventree:
     initContainers:
       migrate:
         env:
-          {{ include "inventree.sharedEnv" . | nindent 10 }}
+          {{ include "inventree.fullEnv" . | nindent 10 }}
     containers:
       server:
         env:
-          {{ include "inventree.sharedEnv" . | nindent 10 }}
-      worker:
-        env:
-          {{ include "inventree.sharedEnv" . | nindent 10 }}
+          {{ include "inventree.fullEnv" . | nindent 10 }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "inventree.hardcodedValues" . | fromYaml) -}}
 
