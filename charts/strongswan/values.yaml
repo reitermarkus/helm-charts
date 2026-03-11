@@ -13,7 +13,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/reitermarkus/strongswan
           # -- image tag
-          tag: "v{{ .Chart.AppVersion }}"
+          tag: 'v{{ .Chart.AppVersion }}'
           # -- image pull policy
           pullPolicy: IfNotPresent
         # -- environment variables. See more environment variables in the [strongswan documentation](https://github.com/reitermarkus/strongswan).
@@ -74,10 +74,6 @@ service:
     controller: strongswan
     sessionAffinity: ClientIP
     ports:
-      http:
-        enabled: false
-        port: 8000
-        targetPort: http
       isakmp:
         port: 500
         targetPort: isakmp
@@ -86,6 +82,14 @@ service:
         port: 4500
         targetPort: ike
         protocol: UDP
+  web:
+    controller: strongswan
+    enabled: false
+    ports:
+      http:
+        enabled: true
+        port: 8000
+        targetPort: http
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
