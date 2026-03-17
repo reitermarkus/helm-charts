@@ -42,11 +42,9 @@ jobs:
           CR_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "$GITHUB_TOKEN" | helm registry login ghcr.io -u "${GITHUB_REPOSITORY_OWNER}" --password-stdin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push charts to GitHub Container Registry
         # if: ${{ steps.chart-releaser.outputs.changed_charts }}
