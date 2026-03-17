@@ -41,6 +41,13 @@ jobs:
         env:
           CR_TOKEN: ${{ steps.generate-token.outputs.token }}
 
+      # FIXME: Needed until https://github.com/helm/chart-releaser-action/issues/74 is fixed.
+      - name: Update Helm dependencies
+        run: |
+          for chart_dir in charts/*; do
+            helm dependency update "${chart_dir}"
+          done
+
       - name: Run chart-releaser
         id: chart-releaser
         uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
