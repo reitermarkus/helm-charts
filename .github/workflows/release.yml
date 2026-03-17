@@ -49,8 +49,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push charts to GitHub Container Registry
-        if: ${{ steps.chart-releaser.outputs.changed_charts != '' }}
+        # if: ${{ steps.chart-releaser.outputs.changed_charts }}
         run: |
+          echo "CHANGED_CHARTS: '${CHANGED_CHARTS}'"
           IFS=',' read -r -a changed_charts <<< "${CHANGED_CHARTS}"
           echo "changed_charts: ${changed_charts[@]}"
 
