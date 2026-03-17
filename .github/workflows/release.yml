@@ -7,15 +7,12 @@ on:
 
 concurrency: release
 
-permissions:
-  contents: read
-  packages: write
-
 jobs:
   release:
     name: release
     permissions:
       contents: write
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
