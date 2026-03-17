@@ -34,12 +34,19 @@ jobs:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_APP_KEY }}
 
+      - name: Run chart-releaser (legacy)
+        uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
+        with:
+          skip_existing: true
+        env:
+          CR_TOKEN: ${{ steps.generate-token.outputs.token }}
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
         with:
-          skip_existing: 'true'
+          skip_upload: true
         env:
-          CR_TOKEN: ${{ steps.generate-token.outputs.token }}
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v4
