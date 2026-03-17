@@ -7,6 +7,10 @@ on:
 
 concurrency: release
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   release:
     name: release
@@ -54,11 +58,8 @@ jobs:
           echo "changed_charts: ${changed_charts[@]}"
 
           shopt -s nullglob
-          for pkg in .cr-release-packages/*; do
-            if [ -z "${pkg:-}" ]; then
-              break
-            fi
-
+          cd .cr-release-packages
+          for pkg in *.tgz; do
             echo "Pushing '${pkg}' …"
             helm push "${pkg}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
           done
