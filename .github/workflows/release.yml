@@ -59,6 +59,7 @@ jobs:
               break
             fi
 
+            echo "Pushing '${pkg}' …"
             helm push "${pkg}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
           done
         env:
