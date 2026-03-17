@@ -41,20 +41,6 @@ jobs:
         env:
           CR_TOKEN: ${{ steps.generate-token.outputs.token }}
 
-      # FIXME: Needed until https://github.com/helm/chart-releaser-action/issues/74 is fixed.
-      - name: Add Helm repositories
-        run: |
-          helm repo add bjw-s https://bjw-s-labs.github.io/helm-charts
-          helm repo add dandydev https://dandydeveloper.github.io/charts
-
-      - name: Run chart-releaser
-        id: chart-releaser
-        uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
-        with:
-          skip_upload: true
-        env:
-          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v4
         with:
