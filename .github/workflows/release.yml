@@ -42,11 +42,10 @@ jobs:
           CR_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       # FIXME: Needed until https://github.com/helm/chart-releaser-action/issues/74 is fixed.
-      - name: Update Helm dependencies
+      - name: Add Helm repositories
         run: |
-          for chart_dir in charts/*; do
-            helm dependency update "${chart_dir}"
-          done
+          helm repo add bjw-s https://bjw-s-labs.github.io/helm-charts
+          helm repo add dandydev https://dandydeveloper.github.io/charts
 
       - name: Run chart-releaser
         id: chart-releaser
