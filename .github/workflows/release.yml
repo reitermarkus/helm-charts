@@ -35,7 +35,7 @@ jobs:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_APP_KEY }}
 
-      - name: Run chart-releaser (legacy)
+      - name: Run chart-releaser
         id: chart-releaser
         uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
         with:
@@ -49,17 +49,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push charts to GitHub Container Registry
-        # if: ${{ steps.chart-releaser.outputs.changed_charts }}
+        if: ${{ steps.chart-releaser.outputs.changed_charts != '' }}
         run: |
-          echo "CHANGED_CHARTS: '${CHANGED_CHARTS}'"
-          IFS=',' read -r -a changed_charts <<< "${CHANGED_CHARTS}"
-          echo "changed_charts: ${changed_charts[@]}"
-
           shopt -s nullglob
           cd .cr-release-packages
           for pkg in *.tgz; do
             echo "Pushing '${pkg}' …"
             helm push "${pkg}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
           done
-        env:
-          CHANGED_CHARTS: ${{ steps.chart-releaser.outputs.changed_charts }}
