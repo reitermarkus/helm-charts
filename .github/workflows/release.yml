@@ -39,6 +39,7 @@ jobs:
           private_key: ${{ secrets.GH_APP_KEY }}
 
       - name: Run chart-releaser (legacy)
+        id: chart-releaser
         uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
         with:
           skip_existing: true
@@ -46,7 +47,7 @@ jobs:
           CR_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Login to GitHub Container Registry
-        run: echo "$GITHUB_TOKEN" | helm registry login ghcr.io -u "${GITHUB_REPOSITORY_OWNER}" --password-stdin
+        run: echo "${GITHUB_TOKEN?}" | helm registry login ghcr.io -u "${GITHUB_REPOSITORY_OWNER?}" --password-stdin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
