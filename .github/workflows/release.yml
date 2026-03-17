@@ -42,6 +42,7 @@ jobs:
           CR_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Run chart-releaser
+        id: chart-releaser
         uses: helm/chart-releaser-action@3e001cb8c68933439c7e721650f20a07a1a5c61e
         with:
           skip_upload: true
@@ -56,9 +57,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push charts to GitHub Container Registry
+        if: ${{ steps.chart-releaser.outputs.changed_charts != '' }}
         run: |
-          shopt -s nullglob
+          IFS=',' read -r -a changed_charts <<< "${CHANGED_CHARTS}"
+          echo "changed_charts: ${changed_charts[@]}"
 
+          shopt -s nullglob
           for pkg in .cr-release-packages/*; do
             if [ -z "${pkg:-}" ]; then
               break
@@ -66,3 +70,5 @@ jobs:
 
             helm push "${pkg}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
           done
+        env:
+          CHANGED_CHARTS: ${{ steps.chart-releaser.outputs.changed_charts }}
