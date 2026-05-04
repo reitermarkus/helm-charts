@@ -4,6 +4,8 @@
 {{- define "inventree.sharedEnv" -}}
 INVENTREE_AUTO_UPDATE: 'True'
 INVENTREE_TRUSTED_ORIGINS: http://localhost:8000
+INVENTREE_BACKGROUND_WORKERS: '1'
+INVENTREE_GUNICORN_WORKERS: '1'
 {{- if .Values.cnpg.enabled }}
 INVENTREE_DB_ENGINE: postgresql
 INVENTREE_DB_HOST:
