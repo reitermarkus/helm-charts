@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   freshrss:
   - apiVersion: v2
+    appVersion: 1.29.0
+    created: "2026-05-18T02:49:13.727559224Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 4.6.2
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: de0487d9509db7f986c7ce32c03116f33488f527342ba4da1ac013906a1de762
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/freshrss
+    icon: https://avatars.githubusercontent.com/u/9414285
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: freshrss
+    sources:
+    - https://github.com/FreshRSS/FreshRSS
+    - https://hub.docker.com/r/linuxserver/freshrss
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/freshrss-9.9.0/freshrss-9.9.0.tgz
+    version: 9.9.0
+  - apiVersion: v2
     appVersion: 1.28.1
     created: "2026-03-17T23:03:43.940389619Z"
     dependencies:
@@ -20240,4 +20265,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2026-05-18T02:46:26.144930537Z"
+generated: "2026-05-18T02:49:13.729076563Z"
