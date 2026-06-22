@@ -153,7 +153,8 @@ jobs:
 
       - name: Run tests
         run: |
-          helm plugin install https://github.com/vbehar/helm3-unittest --version v1.0.16
+          # FIXME: https://github.com/helm-unittest/helm-unittest/issues/777
+          helm plugin install https://github.com/helm-unittest/helm-unittest --version v1.1.1 --verify=false
           helm dep update '${{ matrix.chart.path }}'
           helm unittest -f "tests/**/*_test.yaml" '${{ matrix.chart.path }}'
 
