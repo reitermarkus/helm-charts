@@ -1,0 +1,19 @@
+---
+apiVersion: v2
+appVersion: 1.7.1
+description: Fleet for ESPHome
+name: fleet-for-esphome
+version: 0.1.0
+kubeVersion: '>=1.32.0-0'
+keywords:
+  - esphome
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/fleet-for-esphome
+sources:
+  - https://github.com/weirded/fleet-for-esphome
+maintainers:
+  - name: reitermarkus
+    email: me@reitermark.us
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts/
+    version: 5.0.1
