@@ -21,7 +21,7 @@ global:
 {{- $_ := mergeOverwrite .Values (include "fleet-for-esphome.harcodedValues" . | fromYaml) -}}
 
 {{- define "fleet-for-esphome.harcodedValues2" -}}
-{{- $mainEnv := .Values.controllers.fleet-for-esphome.containers.server.env }}
+{{- $mainEnv := (index .Values.controllers "fleet-for-esphome").containers.server.env }}
 controllers:
   fleet-for-esphome:
     containers:
