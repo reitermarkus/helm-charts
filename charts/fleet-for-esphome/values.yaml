@@ -51,3 +51,11 @@ service:
       http:
         port: 80
         targetPort: http
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  data:
+    type: emptyDir
+    globalMounts:
+      - path: /data
