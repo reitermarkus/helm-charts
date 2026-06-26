@@ -20,6 +20,11 @@ controllers:
         # @default -- See below
         env: {}
           # TZ: UTC
+          # SERVER_TOKEN:
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: fleet-for-esphome
+          #       key: server_token
         ports:
           - name: http
             containerPort: 8765
