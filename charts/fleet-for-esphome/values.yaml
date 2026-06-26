@@ -60,6 +60,10 @@ service:
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
+  config:
+    type: emptyDir
+    globalMounts:
+      - path: /config/esphome
   data:
     type: emptyDir
     globalMounts:
