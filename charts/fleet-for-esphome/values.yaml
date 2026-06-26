@@ -39,6 +39,8 @@ controllers:
             type: HTTP
             path: /
             port: http
+    pod:
+      hostNetwork: true
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
