@@ -49,8 +49,11 @@ controllers:
 
     pod:
       # -- Configure the Security Context for the Pod
-      securityContext: {}
-        # fsGroup: 1000
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       # -- The server binary is only available for x86_64.
       nodeSelector:
         kubernetes.io/arch: amd64
