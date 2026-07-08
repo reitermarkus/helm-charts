@@ -13392,6 +13392,32 @@ entries:
     version: 1.0.0
   openhab:
   - apiVersion: v2
+    appVersion: 5.2.0
+    created: "2026-07-08T22:31:13.734637845Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 5.0.1
+    description: openHAB - a vendor and technology agnostic open source automation
+      software for your home
+    digest: 80c840875d427dc58205bc7b6599b53f5b087b111101790646f8bf551b6559d6
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/openhab
+    icon: https://www.openhab.org/openhab-logo-square.png
+    keywords:
+    - openhab
+    - home-automation
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: openhab
+    sources:
+    - https://www.openhab.org
+    - https://hub.docker.com/r/openhab/openhab
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/openhab-7.1.0/openhab-7.1.0.tgz
+    version: 7.1.0
+  - apiVersion: v2
     appVersion: 5.1.4
     created: "2026-06-10T00:29:01.752625954Z"
     dependencies:
@@ -20993,4 +21019,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2026-07-08T22:25:40.199382527Z"
+generated: "2026-07-08T22:31:13.735540004Z"
