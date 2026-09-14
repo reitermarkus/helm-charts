@@ -10,6 +10,7 @@ keywords:
 home: https://github.com/reitermarkus/helm-charts/tree/main/charts/fleet-for-esphome
 sources:
   - https://github.com/weirded/fleet-for-esphome
+  - https://ghcr.io/weirded/esphome-dist-server
 maintainers:
   - name: reitermarkus
     email: me@reitermark.us
