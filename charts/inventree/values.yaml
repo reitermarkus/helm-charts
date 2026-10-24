@@ -114,6 +114,9 @@ cnpg:
 
 redis-ha:
   enabled: true
+  image:
+    repository: public.ecr.aws/docker/library/redis
+    tag: 8.8.3-alpine
   replicas: 1
   redis:
     config:
