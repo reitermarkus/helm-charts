@@ -12,4 +12,4 @@ persistence:
 redis-ha:
   hardAntiAffinity: false
   image:
-    repository: ~
+    repository: docker.io/library/redis
