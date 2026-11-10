@@ -4,3 +4,5 @@ persistence:
 
 redis-ha:
   hardAntiAffinity: false
+  image:
+    repository: ~
