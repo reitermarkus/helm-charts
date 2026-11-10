@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   fleet-for-esphome:
   - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2026-11-10T11:59:18.340857771Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 5.3.0
+    description: Fleet for ESPHome
+    digest: 9b13080fb5e9b80a15715b4827089d42b3f35e3a9638b9a9aa94fbdd26ac4862
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/fleet-for-esphome
+    keywords:
+    - esphome
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: fleet-for-esphome
+    sources:
+    - https://github.com/weirded/fleet-for-esphome
+    - https://ghcr.io/weirded/esphome-dist-server
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/fleet-for-esphome-0.6.0/fleet-for-esphome-0.6.0.tgz
+    version: 0.6.0
+  - apiVersion: v2
     appVersion: 1.7.3
     created: "2026-11-10T11:08:15.225352055Z"
     dependencies:
@@ -22208,4 +22231,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2026-11-10T11:08:17.058604241Z"
+generated: "2026-11-10T11:59:18.341537218Z"
