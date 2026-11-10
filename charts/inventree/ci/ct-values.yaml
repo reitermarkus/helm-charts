@@ -1,3 +1,10 @@
+controllers:
+  inventree:
+    containers:
+      proxy:
+        image:
+          repository: docker.io/library/caddy
+
 persistence:
   data:
     enabled: true
