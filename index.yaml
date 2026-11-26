@@ -14265,6 +14265,29 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/mumble-1.0.0.tgz
     version: 1.0.0
+  music-assistant-alexa-skill:
+  - apiVersion: v2
+    appVersion: 0.0.39-beta
+    created: "2026-11-26T20:36:04.814709349Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts/
+      version: 5.3.0
+    description: Music Assistant Alexa Skill
+    digest: b3ec210a89afe93d549db8e9a80e3421afa6204fe8eb5f711a698cead66c3c0c
+    home: https://github.com/reitermarkus/helm-charts/tree/main/charts/music-assistant-alexa-skill
+    keywords:
+    - ipmi
+    kubeVersion: '>=1.32.0-0'
+    maintainers:
+    - email: me@reitermark.us
+      name: reitermarkus
+    name: music-assistant-alexa-skill
+    sources:
+    - https://github.com/alams154/music-assistant-alexa-skill-prototype
+    urls:
+    - https://github.com/reitermarkus/helm-charts/releases/download/music-assistant-alexa-skill-1.0.0/music-assistant-alexa-skill-1.0.0.tgz
+    version: 1.0.0
   openhab:
   - apiVersion: v2
     appVersion: 5.2.5
@@ -22463,4 +22486,4 @@ entries:
     urls:
     - https://reitermarkus.github.io/helm-charts/stable/traefik-forward-auth-2.3.0.tgz
     version: 2.3.0
-generated: "2026-11-26T20:34:06.209041829Z"
+generated: "2026-11-26T20:36:04.81710981Z"
