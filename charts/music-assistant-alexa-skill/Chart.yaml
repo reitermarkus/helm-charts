@@ -1,0 +1,19 @@
+---
+apiVersion: v2
+appVersion: 0.0.39-beta
+description: Music Assistant Alexa Skill
+name: music-assistant-alexa-skill
+version: 1.0.0
+kubeVersion: '>=1.32.0-0'
+keywords:
+  - ipmi
+home: https://github.com/reitermarkus/helm-charts/tree/main/charts/music-assistant-alexa-skill
+sources:
+  - https://github.com/alams154/music-assistant-alexa-skill-prototype
+maintainers:
+  - name: reitermarkus
+    email: me@reitermark.us
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts/
+    version: 5.3.0
